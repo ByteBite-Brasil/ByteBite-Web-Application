@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
 :root{
     --primary-color:#DA291C;
     --second-color:#c90a02;
     --bg-color: #f7f7f7;
     --gap: 3rem;
+    --font-inter: inter;
 }
 *{
     box-sizing: border-box;
@@ -173,4 +176,79 @@ a{
     margin-bottom: 1.5rem;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap');
+   /*--------------Cadastro--------------*/
+
+   .box{
+    background-image: url(assets/background/layered-waves-haikei.svg);
+    width: 100%;
+    /* Mude a linha abaixo caso precise mudar o footer */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+   }
+
+   .box-form{
+       margin-top: 200px;
+       width: 50vh;
+       height: 60vh;
+       background-color: #D9D9D9;
+       border-top-left-radius: 5px;
+       border-bottom-left-radius: 5px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       text-align: center;
+    }
+    
+
+    .form p{
+        font-family: var(--font-inter);
+        font-size: 25px;
+        padding-top: 25px;
+    }
+
+    .form input{
+        background: #666666;
+        color: white;
+        border: none;
+        width: 251px;
+        height: 24px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .form button{
+        border-radius: 15px;
+        width: 150px;
+        height: 33px;
+        border: none;
+        background: #C90A02;
+        font-family: var(--font-inter);
+        font-size: 24px;
+        margin-top: 30px;
+    }
+    
+    
+    .box-logo{
+        margin-top: 200px;
+        width: 50vh;
+        height: 60vh;
+        background-color: #c3c1c1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+   }
+
+   .logo img{
+    width: 374px;
+   }
+
+   .logo{
+       font-family: var(--font-inter);
+       font-size: 24px;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       text-align: center;
+   }
