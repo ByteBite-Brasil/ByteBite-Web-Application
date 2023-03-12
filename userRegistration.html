@@ -5,18 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/jpg"/>
     <title>ByteBite Solutions</title>
 </head>
-<body>
+<body id="bg-body">
 
     <aside class="menu">
         <div class="main-content menu-content">
         <h1><a href=""><img src="assets/logo/data-company-logo-creator-with-a-computer-chip-icon-388b-el1.png" alt="LOGO"></a></h1>
         <nav>
             <ul>
-                <li><a href="#vant"> Home</a></li>
-                <li><a href=""> Login</a></li>
-                <li><a href=""> Cadastre-se</a></li>
+                <li><a href="index.html"> Home</a></li>
+                <li><a href="login.html"> Login</a></li>
+                <li><a href="userRegistration.html" style="color:aliceblue"> Cadastre-se</a></li>
             </ul>
         </nav>
     </div>
@@ -27,15 +28,19 @@
   <div class="box">
     <div class="box-form">
         <div class="form">
-            <p>Nome Completo:</p>
-            <input id="nome">
-            <p>Email:</p>
-            <input id="email">
-            <p>Senha:</p>
-            <input id="senha">
-            <p>Confirme a senha:</p>
-            <input id="confirmacaoSenha"><br>
-            <button onclick="">Cadastrar</button>
+            <h1>Registre-se</h1>
+            <!-- <p>Razão Social</p> -->
+            <input id="razaoSocial" placeholder="Razão Social:">
+            <!-- <p>CNPJ:</p> -->
+            <input id="cnpj" placeholder="CNPJ:">
+            <!-- <p>Email:</p> -->
+            <input id="email" placeholder="E-mail:" type="email">
+            <!-- <p>Senha:</p> -->
+            <input id="senha" placeholder="Senha:"  type="password">
+            <!-- <p>Confirme a senha:</p> -->
+            <input id="confirmacaoSenha" placeholder="Confirmação de senha:" type="password"><br>
+            <button onclick="">Salvar</button>
+            <p><a href="login.html"><u>Já tem conta? Entre aqui</u></a></p>
         </div>
     </div>
     <div class="box-logo">
