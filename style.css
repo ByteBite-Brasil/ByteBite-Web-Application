@@ -261,6 +261,7 @@ a {
   font-size: 20px;
 }
 
+
 .form button {
   border-radius: 15px;
   width: 50%;
@@ -275,6 +276,54 @@ a {
 .box-logo {
   margin-top: 200px;
   width: 30%;
+  width: 29rem;
+  height: 28rem;
+  background-color: #c3c1c1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.form p {
+  font-family: var(--font-inter);
+  font-size: 25px;
+  padding-top: 15px;
+}
+
+.form input {
+  background: #666666;
+  color: rgb(0, 0, 0);
+  border-bottom-left-radius: black 3px solid;
+  width: 251px;
+  height: 27px;
+  border-radius: 5px;
+  margin-top: 3vh;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  font-size: 18px;
+}
+
+.form input::placeholder {
+  color: black;
+  font-weight: auto;
+  font-size: 17px;
+  font-style: italic;
+}
+
+.form button {
+  border-radius: 5px;
+  width: 150px;
+  height: 33px;
+  background: #ff0000;
+  font-family: var(--font-inter);
+  font-size: 24px;
+  margin-top: 3vh;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+}
+
+.box-logo {
+  margin-top: 200px;
+  width: 50vh;
   height: 60vh;
   background-color: #c3c1c1;
   display: flex;
@@ -308,7 +357,12 @@ a {
 /*--------------Login-------------*/
 .form h1 {
   font-family: var(--font-inter);
-}
+  font-size: 32px;
+  text-align:left;
+
+  /* para deixar alinhado com os inputs, se mudar o form, pode apagar esse margin */
+  margin-left: 65px;
+  }
 
 .form a {
   color: blue;
@@ -316,11 +370,51 @@ a {
   font-size: 16px;
 }
 
-.logo {
-  font-family: var(--font-inter);
-  font-size: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+/* inicio responsividade */
+
+@media only screen and (max-width:600px) {
+
+  .body{
+    width: 100%;
+  }
+
+  .menu{
+    width: 600px;
+    height: 100px;
+    /* border: green solid 3px; */
+    background-color: #c90a02;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .box{
+    /* border: rgb(0, 9, 128) solid 3px; */
+   width: 600px;
+   background-image: none;
+  }
+  .form{
+    border: violet 3px solid;
+  }
+  .box-form{
+    border: orange 3px solid;
+  }
+.box-logo{
+  display: none;
 }
+.box-logo img{
+  display: none;
+}
+.box-logo p {
+  display: none;
+}
+
+.title-sub-title{
+  display: none;
+}
+
+.intro-text-content h2{
+  margin-top: 60px;
+}
+
+}
+
