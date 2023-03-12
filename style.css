@@ -370,6 +370,13 @@ a {
   display: none;
 }
 
+.title-sub-title{
+  display: none;
+}
+
+.intro-text-content h2{
+  margin-top: 60px;
+}
 
 }
 
