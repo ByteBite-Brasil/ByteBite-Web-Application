@@ -233,49 +233,6 @@ a {
   text-align: center;
 }
 
-.form input {
-  /* background: #666666; */
-  background: #d9d9d9;
-  color: black;
-  /* border: none; */
-  border-radius: 5px;
-  border-bottom: 2px solid black;
-  width: 251px;
-  height: 24px;
-  margin-top: 2rem;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-#razaoSocial::placeholder {
-  color: black;
-  font-weight: 800;
-  font-size: 20px;
-}
-
-#cnpj::placeholder {
-  color: black;
-  font-weight: 800;
-  font-size: 20px;
-}
-
-#email::placeholder {
-  color: black;
-  font-weight: 800;
-  font-size: 20px;
-}
-
-#senha::placeholder {
-  color: black;
-  font-weight: 800;
-  font-size: 20px;
-}
-
-#confirmacaoSenha::placeholder {
-  color: black;
-  font-weight: 800;
-  font-size: 20px;
-}
-
 .form button {
   border-radius: 15px;
   width: 150px;
@@ -301,27 +258,37 @@ a {
 .form p {
   font-family: var(--font-inter);
   font-size: 25px;
-  padding-top: 25px;
+  padding-top: 15px;
 }
 
 .form input {
   background: #666666;
-  color: white;
-  border: none;
+  color: rgb(0, 0, 0);
+  border-bottom-left-radius: black 3px solid;
   width: 251px;
-  height: 24px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 27px;
+  border-radius: 5px;
+  margin-top: 3vh;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  font-size: 18px;
+}
+
+.form input::placeholder {
+  color: black;
+  font-weight: auto;
+  font-size: 17px;
+  font-style: italic;
 }
 
 .form button {
-  border-radius: 15px;
+  border-radius: 5px;
   width: 150px;
   height: 33px;
-  border: none;
-  background: #c90a02;
+  background: #ff0000;
   font-family: var(--font-inter);
   font-size: 24px;
-  margin-top: 30px;
+  margin-top: 3vh;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
 }
 
 .box-logo {
@@ -352,7 +319,12 @@ a {
 /*--------------Login-------------*/
 .form h1 {
   font-family: var(--font-inter);
-}
+  font-size: 32px;
+  text-align:left;
+
+  /* para deixar alinhado com os inputs, se mudar o form, pode apagar esse margin */
+  margin-left: 65px;
+  }
 
 .form a {
   color: blue;
@@ -360,11 +332,5 @@ a {
   font-size: 16px;
 }
 
-.logo {
-  font-family: var(--font-inter);
-  font-size: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
+
+
