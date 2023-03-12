@@ -176,10 +176,14 @@ a{
     margin-bottom: 1.5rem;
 }
 
-   /*--------------Cadastro--------------*/
+/*--------------Cadastro--------------*/
+
+    #bg-body{
+    background: url(assets/background/layered-waves-haikei.svg);
+    }
 
    .box{
-    background-image: url(assets/background/layered-waves-haikei.svg);
+    /* background-image: url(assets/background/layered-waves-haikei.svg); */
     width: 100%;
     /* Mude a linha abaixo caso precise mudar o footer */
     height: 100vh;
@@ -189,8 +193,8 @@ a{
 
    .box-form{
        margin-top: 200px;
-       width: 50vh;
-       height: 60vh;
+       width: 25rem;
+       height: 28rem;
        background-color: #D9D9D9;
        border-top-left-radius: 5px;
        border-bottom-left-radius: 5px;
@@ -208,13 +212,49 @@ a{
     }
 
     .form input{
-        background: #666666;
-        color: white;
-        border: none;
+        /* background: #666666; */
+        background: #D9D9D9;
+        color: black;
+        /* border: none; */
+        border-radius: 5px;
+        border-bottom: 2px solid black;
         width: 251px;
         height: 24px;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin-top: 2rem;
+        box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.25);
     }
+
+    #razaoSocial::placeholder{
+        color: black;
+        font-weight: 800;
+        font-size: 20px;
+    }
+
+    #cnpj::placeholder{
+        color: black;
+        font-weight: 800;
+        font-size: 20px;
+    }
+
+    #email::placeholder{
+        color: black;
+        font-weight: 800;
+        font-size: 20px;
+    }
+
+    #senha::placeholder{
+        color: black;
+        font-weight: 800;
+        font-size: 20px;
+    }
+
+    #confirmacaoSenha::placeholder{
+        color: black;
+        font-weight: 800;
+        font-size: 20px;
+    }
+
+    
 
     .form button{
         border-radius: 15px;
@@ -230,8 +270,8 @@ a{
     
     .box-logo{
         margin-top: 200px;
-        width: 50vh;
-        height: 60vh;
+        width: 29rem;
+        height: 28rem;
         background-color: #c3c1c1;
         display: flex;
         justify-content: center;
@@ -252,3 +292,4 @@ a{
        align-items: center;
        text-align: center;
    }
+
