@@ -386,8 +386,8 @@ a {
     background: #C90A02;
     font-family: var(--font-inter);
     font-size: 1.4rem;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 25px;
+    margin-bottom: 10px;
     align-items: center;
 }
 
@@ -502,5 +502,6 @@ a {
     border-bottom-left-radius: 0px;
     border-radius: 10px;
   }
+
 
   }
