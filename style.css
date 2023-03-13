@@ -411,7 +411,7 @@ a {
 }
 
 .logo img {
-    width: 374px;
+    width: 100%;
 }
 
 .logo {
@@ -428,10 +428,11 @@ a {
 .form h1 {
   font-family: var(--font-inter);
   font-size: 32px;
-  text-align:left;
+  display: flex;
+  
 
   /* para deixar alinhado com os inputs, se mudar o form, pode apagar esse margin */
-  margin-left: 65px;
+  /* margin-left: 65px; */
   }
 
 .form a {
@@ -462,10 +463,13 @@ a {
     }
     .form{
       border: violet 3px solid;
-
+      width: 80%;
+      /* height: 100px; */
     }
     .box-form{
       border: orange 3px solid;
+      height: 80%;
+      margin-top: 110px;
     }
   .box-logo{
     display: none;
@@ -476,6 +480,27 @@ a {
   .sobre-img{
     display:none;
   }
+  .form h1{
+    margin-top: 5px;
+    font-size: 20px;
+    justify-content: center;
+  }
 
+  .form p{
+    font-size: 14px;
+  }
+
+  .box-form button{
+    width: 40%;
+    height: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
   
+  .box-form{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-radius: 10px;
+  }
+
   }
