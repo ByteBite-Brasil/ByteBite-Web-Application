@@ -441,7 +441,7 @@ a {
   font-size: 16px;
 }
 
-@media only screen and (max-width:600px) {
+@media only screen and (max-width: 600px) and (min-width: 400px) {
 
     .body{
       width: 100%;
@@ -455,7 +455,65 @@ a {
       display: flex;
       flex-direction: row-reverse;
     }
-  
+    .menu ul li a {
+        display: block;
+        font-size: 0.8rem;
+        padding: 2rem;
+        position: relative;
+        font-weight: 600;
+    }
+    .main-bg {
+        background-position: center;
+    }
+    .grid-content{
+        justify-content: center;
+        align-items: center;
+    }
+    .footer-box h4 {
+        margin-top: 5px;
+    }
+    .intro-text-content h2 {
+        font-size: 1.5rem;
+        margin-left: 20px;
+    }
+    .intro-text-content p{
+        font-size: 0.8rem;
+        margin-left: 20px;
+        text-align: center;
+    }
+    .intro-text-content{
+        align-items: center;
+    }
+    .intro-img img{
+        max-width: 90%;
+    }
+    .main-content{
+        padding: 0;
+        
+    }
+    .imgtoten2{
+        display: none;
+    }
+    .section {
+        min-height: auto;
+    }
+    .intro-content {
+        gap: 2em;
+        height: 80vh;
+    }
+    .intro-content-invert{
+        display: flex;
+        height: 40vh;
+        align-items: center;
+        justify-content: center;
+    }
+    .btns {
+        align-self: center;
+    }
+    .main-footer{
+        gap: 20px;
+    }
+
     .box{
       /* border: rgb(0, 9, 128) solid 3px; */
      width: 600px;
