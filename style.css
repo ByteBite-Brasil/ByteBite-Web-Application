@@ -468,6 +468,7 @@ a {
     .grid-content{
         justify-content: center;
         align-items: center;
+        height: 750px;
     }
     .grid-text {
         gap: 10px;
@@ -531,14 +532,14 @@ a {
      background-image: none;
     }
     .form{
-      border: violet 3px solid;
+      /* border: violet 3px solid; */
       width: 80%;
       /* height: 100px; */
     }
     .box-form{
-      border: orange 3px solid;
+      /* border: orange 3px solid; */
       height: 80%;
-      margin-top: 110px;
+      margin-top: 90px;
     }
   .box-logo{
     display: none;
@@ -571,6 +572,5 @@ a {
     border-bottom-left-radius: 0px;
     border-radius: 10px;
   }
-
 
   }
