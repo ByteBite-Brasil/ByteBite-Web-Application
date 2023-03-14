@@ -449,7 +449,7 @@ a {
   
     .menu{
       width: 600px;
-      height: 100px;
+      height: 60px;
       /* border: green solid 3px; */
       box-shadow: 0.3px 0.3px 0.3px rgba(25, 25, 25, 0.447);
       display: flex;
@@ -468,7 +468,13 @@ a {
     .grid-content{
         justify-content: center;
         align-items: center;
+        height: 750px;
     }
+    /* .grid-text{ */
+        /* margin-top: 260px; */
+        /* margin-bottom: 300px; */
+        /* height: 150%; */
+    /* } */
     .footer-box h4 {
         margin-top: 5px;
     }
@@ -506,6 +512,8 @@ a {
         height: 40vh;
         align-items: center;
         justify-content: center;
+        /* margin-top: 30px; */
+        /* background-color: #c3c1c1; */
     }
     .btns {
         align-self: center;
@@ -520,14 +528,14 @@ a {
      background-image: none;
     }
     .form{
-      border: violet 3px solid;
+      /* border: violet 3px solid; */
       width: 80%;
       /* height: 100px; */
     }
     .box-form{
-      border: orange 3px solid;
+      /* border: orange 3px solid; */
       height: 80%;
-      margin-top: 110px;
+      margin-top: 90px;
     }
   .box-logo{
     display: none;
@@ -560,6 +568,5 @@ a {
     border-bottom-left-radius: 0px;
     border-radius: 10px;
   }
-
 
   }
