@@ -468,7 +468,7 @@ a {
     .grid-content{
         justify-content: center;
         align-items: center;
-        height: 750px;
+        height: auto;
     }
     .grid-text {
         gap: 10px;
