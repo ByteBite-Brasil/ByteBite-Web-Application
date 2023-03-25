@@ -29,11 +29,11 @@
         <div class="form">
             <h1>Realize o login</h1>
             <p>E-mail:</p>
-            <input id="email" placeholder="exemplo@gmail.com" type="email">
+            <input id="email_input" placeholder="exemplo@gmail.com" type="email">
             <p>Senha:</p>
-            <input id="senha" placeholder="********" type="password">         
+            <input id="senha_input" placeholder="********" type="password">         
         </div>
-        <button class="btns" >Entrar</button>
+        <button class="btns" onclick="entrar()" >Entrar</button>
         <p><a href="userRegistration.html"><u>Criar nova conta</u></a></p>
     </div>
     <div class="box-logo">
@@ -45,3 +45,10 @@
 </div>
 </body>
 </html>
+
+
+<div class="alerta_erro">
+    <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+    </div>
+</div>
