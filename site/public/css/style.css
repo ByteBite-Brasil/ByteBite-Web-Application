@@ -22,14 +22,14 @@ html {
 
 .main-bg {
     background-color: #f7f7f7;
-    background-image: url("assets/background/layered-waves-haikei.svg");
+    background-image: url("../assets/background/layered-waves-haikei-invert.svg");
     background-size: cover;
     background-position: center center;
 }
 
 .main-bg-invert {
     background-color: #f7f7f7;
-    background-image: url("assets/background/layered-waves-haikei-invert.svg");
+    background-image: url("../assets/background/layered-waves-haikei-invert.svg");
     background-size: cover;
     background-position: center center;
 }
@@ -54,7 +54,7 @@ html {
 
 .white-bg {
     background-color: var(--bg-color);
-    background-image: url("assets/background/stacked-waves-haikei.svg");
+    background-image: url("../assets/background/stacked-waves-haikei.svg");
     background-size: cover;
     background-position: center center;
 }
@@ -284,7 +284,7 @@ a {
 
 
 .main-footer {
-    background-image: url("assets/background/stacked-waves-haikei.svg");
+    background-image: url("../assets/background/stacked-waves-haikei.svg");
     color: black;
     display: flex;
     flex-direction: row;
@@ -339,7 +339,7 @@ a {
 /*--------------Cadastro--------------*/
 
 .box {
-    background-image: url(assets/background/layered-waves-haikei.svg);
+    background-image: url(../assets/background/layered-waves-haikei.svg);
     width: 100%;
     /* Mude a linha abaixo caso precise mudar o footer */
     height: 100vh;
