@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro funcionário</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/jpg" />
+</head>
+
+<body class="telasCad">
+    <header>
+        <aside class="menu">
+            <div class="menu-content">
+                <span><a href="index.html"><img id="logo"
+                            src="assets/logo/data-company-logo-creator-with-a-computer-chip-icon-388b-el1.png"
+                            alt="LOGO"></a></span>
+                <nav>
+                    <ul>
+                        <li><a href="Usuários" style="color: #c90a02">Usuários</a></li>
+                        <li><a href="cadMaquinas.html" >Máquinas</a></li>
+                        <li><a href="Ao vivo">Visualizar</a></li>
+                    </ul>
+            </div>
+        </aside>
+    </header>
+
+    <div id="formCadastroUser">
+        <!-- <form action=""> -->
+
+        <h2 class="title">Cadastre seu funcionário</h2>
+        <label for="username">Nome</label>
+        <div class="input"><input id="username" type="text" placeholder="Username"></div>
+        <label for="email">Email</label>
+        <div class="input"><input id="email" type="email" placeholder="exemplo@gmail"></div>
+        <label for="phone">Telefone</label>
+        <div class="input"><input id="telefone" type="" placeholder="(11)0000-0000"></div>
+        <label for="senha">Senha</label>
+        <div class="input"><input id="senha" type="password" placeholder="*****"></div>
+        <label for="permissao">Permissão</label>
+        <div class="input">
+            <select name="permissao" id="permissao">
+                <option value="">Selecione</option>
+                <option value="">Visualização</option>
+                <option value="">Modificação</option>
+                <option value="">Administrador</option>
+            </select>
+        </div>
+        <label for="genero">Genêro</label>
+        <div class="input">
+            <select name="genero" id="genero">
+                <option value="">Selecione</option>
+                <option value="">Feminino</option>
+                <option value="">Masculino</option>
+                <option value="">Prefiro não dizer</option>
+            </select>
+        </div>
+        <div id="btn"><button type="submit">Cadastrar</button></div>
+
+        <!-- </form> -->
+        <!-- com o desenvolver, criar um pop-up de ação válida e inválida -->
+    </div>
+
+</body>
+
+</html>
