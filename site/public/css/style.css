@@ -451,8 +451,9 @@ a {
 .telasCad {
     width: 100%;
     height: 120vh;
-    /* background-color: #6e6969; */
-    background-image: url("../assets/background/lex\ your\ word\ knowledge\,\ let\'s\ play\ this\ Presentation\ Party!.png");
+    background-color: #6e6969;
+    /*  opção com img abaixo */
+    /* background-image: url("../assets/background/lex\ your\ word\ knowledge\,\ let\'s\ play\ this\ Presentation\ Party!.png"); */
     background-size: cover;
     background-position: center center;
     margin-top: 4.0rem;
