@@ -52,7 +52,7 @@ body{
     height: 30px;
     border-bottom: 3px solid;
     border-color: #c90a02;
-    border-radius: 10px;
+    border-radius: 2px;
 }
 .navbar--item {
     font-size: 16px;
@@ -78,4 +78,21 @@ body{
     color: var(--primary-text);
     font-weight: bold;
     font-family: var(--font-family-subtitle);
+}
+.selecionarMaquina{
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+}
+
+.escolhaTotem{
+    border: solid 2px var(--secundary-text);
+    height: 3em;
+    width: 11em;
+    text-align: center;
+    font-family: var(--font-family-subtitle);
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #000000;
+    color: var(--primary-text);
 }
