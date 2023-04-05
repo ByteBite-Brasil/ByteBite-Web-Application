@@ -5,32 +5,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro funcionário</title>
+    <title>Cadastro Usuário</title>
+    <link rel="stylesheet" href="../public/dashboard/dashboards.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body class="telasCad">
-    <header>
-        <aside class="menu">
-            <div class="menu-content">
-                <span><a href="index.html"><img id="logo"
-                            src="assets/logo/data-company-logo-creator-with-a-computer-chip-icon-388b-el1.png"
-                            alt="LOGO"></a></span>
-                <nav>
-                    <ul>
-                        <li><a href="Usuários" style="color: #c90a02">Usuários</a></li>
-                        <li><a href="cadMaquinas.html" >Máquinas</a></li>
-                        <li><a href="Ao vivo">Visualizar</a></li>
-                    </ul>
-            </div>
-        </aside>
+    <header class="menu">
+        <div class="menu-content">
+            <span id="box_logo">
+                <a href="index.html">
+                    <img id="logo" src="assets/logo/data-company-logo-creator-with-a-computer-chip-icon-388b-el1.png"
+                        alt="LOGO">
+                </a>
+            </span>
+        </div>
     </header>
+
+    <div id="section_navbar">
+
+        <div class="page--title">
+            <h4>Dashboard</h4>
+        </div>
+        <div class="navigation--bar">
+
+            <a href="">Dashboard</a>
+
+            <div class="navbar--item">
+                <a href="cadMaquinas.html">Cadastro Máquina</a>
+            </div>
+            <div class="navbar--item">
+                <div class="navbar--item active">
+                    <a href=cadastroFun.html">Cadastro Usuário</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="formCadastroUser">
         <!-- <form action=""> -->
 
-        <h2 class="title">Cadastre seu funcionário</h2>
+        <h2 class="title">Cadastre um Usuário</h2>
         <label for="username">Nome</label>
         <div class="input"><input id="username" type="text" placeholder="Username"></div>
         <label for="email">Email</label>
