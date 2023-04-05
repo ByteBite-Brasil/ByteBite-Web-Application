@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,13 @@
     <title>ByteBite | Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
+
 <body>
     <header class="dash--header">
         <img src="../assets/logo/BBS-logo.png" alt="">
@@ -18,7 +22,7 @@
     <div class="page--title">
         <h4>Dashboard</h4>
     </div>
-    <div class="navigation--bar" >
+    <div class="navigation--bar">
         <div class="navbar--item active">
             <a href="">Dashboard</a>
         </div>
@@ -51,5 +55,14 @@
             <option value="">TOTEM 04</option>
         </select>
     </div>
+
+    <div class="areaGrafico">
+        <div class="grafico">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="temp1"><span>50 ºC</span></div>
+    </div>
+    <script src="dashboard.js"></script>
 </body>
+
 </html>
