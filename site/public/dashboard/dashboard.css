@@ -107,13 +107,9 @@ body {
 }
 
 .areaGrafico {
-    margin: auto;
-    margin-top: 30px;
-    width: 90%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .grafico {
@@ -122,9 +118,18 @@ body {
     width: 40em;
     background-color: #1b1a1a;
     border: solid 1px var(--secundary-text);
+    border-radius: 10px;
+    box-shadow: 4px 4px#000000;
 
 }
-
+.graficoRam {
+    height: 20em;
+    width: 40em;
+    background-color: #1b1a1a;
+    border: solid 1px var(--secundary-text);
+    border-radius: 10px;
+    box-shadow: 4px 4px#000000;
+}
 .temp1 {
 
     display: flex;
@@ -135,4 +140,13 @@ body {
     align-items: center;
     font-size: 90px;
     color: rgb(26, 200, 26);
+}
+.hardware {
+    margin-top: 40px;   
+}
+.hardware h1 {
+    text-align: center;
+    color: var(--primary-text);
+    margin-bottom: 30px;
+    font-family: var(--font-family-subtitle);
 }

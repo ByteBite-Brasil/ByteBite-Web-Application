@@ -17,7 +17,7 @@
 
 <body>
     <header class="dash--header">
-        <img src="../assets/logo/BBS-logo.png" alt="">
+        <img src="../assets/logo/Logo_Branca.png" alt="">
     </header>
     <div class="page--title">
         <h4>Dashboard</h4>
@@ -55,12 +55,38 @@
             <option value="">TOTEM 04</option>
         </select>
     </div>
-
-    <div class="areaGrafico">
-        <div class="grafico">
-            <canvas id="myChart"></canvas>
+    <div class="hardware">
+        <h1>CPU</h1>
+        <div class="areaGrafico">
+            <div class="grafico">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="grafico">
+                <canvas id="temp1"></canvas>
+            </div>
+            <!-- <div class="temp1"><span>50 ºC</span></div> -->
         </div>
-        <div class="temp1"><span>50 ºC</span></div>
+    </div>
+    <div class="hardware">
+        <h1>DISCO</h1>
+        <div class="areaGrafico">
+            <div class="grafico">
+                <canvas id="myChart1"></canvas>
+            </div>
+            <div class="grafico">
+                <canvas id="temp2"></canvas>
+            </div>
+            <!-- <div class="temp1"><span>50 ºC</span></div> -->
+        </div>
+    </div>
+    <div class="hardware">
+        <h1>MEMÓRIA RAM</h1>
+        <div class="areaGrafico">
+            <div class="graficoRam">
+                <canvas id="consumoRam"></canvas>
+            </div>
+            <!-- <div class="temp1"><span>50 ºC</span></div> -->
+        </div>
     </div>
     <script src="dashboard.js"></script>
 </body>
