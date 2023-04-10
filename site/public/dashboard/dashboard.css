@@ -1,0 +1,170 @@
+:root {
+    --background-color: #161616;
+    --first-plan-color: #363636;
+    --secundary-text: #A7A6A6;
+    --primary-text: #EEEEEE;
+    --red-bytebite: #c90a02;
+    --font-family-title: 'Oswald', sans-serif;
+    --font-family-subtitle: 'Roboto', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+/* header */
+.dash--header {
+    height: 80px;
+    background-color: var(--background-color);
+}
+
+.dash--header img {
+    height: 60px;
+    margin-top: 15px;
+}
+
+.page--title {
+    color: var(--primary-text);
+    font-family: var(--font-family-title);
+    font-size: 30px;
+    text-transform: uppercase;
+    width: 96%;
+    text-align: end;
+}
+
+/* navbar */
+.navigation--bar {
+    display: flex;
+    width: 28%;
+    justify-content: space-between;
+    margin-left: 3%;
+}
+
+.navigation--bar a {
+    text-decoration: none;
+    color: var(--secundary-text);
+    font-family: var(--font-family-subtitle);
+    font-weight: bold;
+}
+
+.active {
+    height: 30px;
+    border-bottom: 3px solid;
+    border-color: #c90a02;
+    border-radius: 2px;
+}
+
+.navbar--item {
+    font-size: 16px;
+}
+
+/* kpis */
+.kpis {
+    width: 50%;
+    margin: auto;
+    margin-top: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.kpi {
+    border: 1px solid var(--secundary-text);
+    width: 10em;
+    height: 8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: var(--primary-text);
+    font-weight: bold;
+    font-family: var(--font-family-subtitle);
+}
+
+.selecionarMaquina {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+}
+
+.escolhaTotem {
+    border: solid 2px var(--secundary-text);
+    height: 3em;
+    width: 11em;
+    text-align: center;
+    font-family: var(--font-family-subtitle);
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #000000;
+    color: var(--primary-text);
+}
+
+.areaGrafico {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.grafico {
+
+    height: 20em;
+    width: 40em;
+    background-color: #1b1a1a;
+    border: solid 1px var(--secundary-text);
+    border-radius: 10px;
+    box-shadow: 4px 4px#000000;
+
+}
+.graficoRam {
+    height: 20em;
+    width: 40em;
+    background-color: #1b1a1a;
+    border: solid 1px var(--secundary-text);
+    border-radius: 10px;
+    box-shadow: 4px 4px#000000;
+}
+.temp1 {
+
+    display: flex;
+    height: 320px;
+    width: 640px;
+    border: solid 1px var(--secundary-text);
+    justify-content: center;
+    align-items: center;
+    font-size: 90px;
+    color: rgb(26, 200, 26);
+}
+.hardware {
+    margin-top: 40px;   
+}
+.hardware h1 {
+    text-align: center;
+    color: var(--primary-text);
+    margin-bottom: 30px;
+    font-family: var(--font-family-subtitle);
+}
+
+.selecionarMaquina{
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .escolhaTotem{
+    border: solid 2px var(--secundary-text);
+    height: 3em;
+    width: 11em;
+    text-align: center;
+    font-family: var(--font-family-subtitle);
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #000000;
+    color: var(--primary-text);
+  }
