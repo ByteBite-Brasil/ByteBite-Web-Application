@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Usuário</title>
+    <link rel="stylesheet" href="../public/dashboard/dashboards.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body class="telasCad">
+    <header class="menu">
+        <div class="menu-content">
+            <span id="box_logo">
+                <a href="index.html">
+                    <img id="logo" src="assets/logo/data-company-logo-creator-with-a-computer-chip-icon-388b-el1.png"
+                        alt="LOGO">
+                </a>
+            </span>
+        </div>
+    </header>
+
+    <div id="section_navbar">
+
+        <div class="page--title">
+            <h4>Dashboard</h4>
+        </div>
+        <div class="navigation--bar">
+
+            <a href="">Dashboard</a>
+
+            <div class="navbar--item">
+                <a href="cadMaquinas.html">Cadastro Máquina</a>
+            </div>
+            <div class="navbar--item">
+                <div class="navbar--item active">
+                    <a href=cadastroFun.html">Cadastro Usuário</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="formCadastroUser">
+        <!-- <form action=""> -->
+
+        <h2 class="title">Cadastre um Usuário</h2>
+        <label for="username">Nome</label>
+        <div class="input"><input id="username" type="text" placeholder="Username"></div>
+        <label for="email">Email</label>
+        <div class="input"><input id="email" type="email" placeholder="exemplo@gmail"></div>
+        <label for="phone">Telefone</label>
+        <div class="input"><input id="telefone" type="" placeholder="(11)0000-0000"></div>
+        <label for="senha">Senha</label>
+        <div class="input"><input id="senha" type="password" placeholder="*****"></div>
+        <label for="permissao">Permissão</label>
+        <div class="input">
+            <select name="permissao" id="permissao">
+                <option value="">Selecione</option>
+                <option value="">Visualização</option>
+                <option value="">Modificação</option>
+                <option value="">Administrador</option>
+            </select>
+        </div>
+        <label for="genero">Genêro</label>
+        <div class="input">
+            <select name="genero" id="genero">
+                <option value="">Selecione</option>
+                <option value="">Feminino</option>
+                <option value="">Masculino</option>
+                <option value="">Prefiro não dizer</option>
+            </select>
+        </div>
+        <div id="btn"><button type="submit">Cadastrar</button></div>
+
+        <!-- </form> -->
+        <!-- com o desenvolver, criar um pop-up de ação válida e inválida -->
+    </div>
+
+</body>
+
+</html>
