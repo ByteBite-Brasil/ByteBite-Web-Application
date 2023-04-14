@@ -16,93 +16,114 @@
 </head>
 
 <body>
-    <header class="menu">
-        <div class="menu-content">
-            <span id="box_logo">
-                <a href="../index.html">
-                    <img id="logo" src="../assets/logo/data-company-logo-creator-with-a-computer-chip-icon-388b-el1.png"
-                        alt="LOGO">
-                </a>
-            </span>
+
+    <div class="side-menu">
+        <div class="brand-nome">
+            <img src="../assets/logo/data-company-logo-creator-with-a-computer-chip-icon-388b-el1.png" width="250px"
+                style="margin-top: 150px;">
         </div>
+        <ul>
+            <a href="dashboard.html">
+                <li><img src="../assets/icons/dashboard_icon.png" width="30px">&nbsp; Dashboard</li>
+            </a>
+            <a href="../cadMaquinas.html">
+                <li><img src="../assets/icons/kiosk_icon.png" width="30px">&nbsp;Nova Máquina</li>
+            </a>
+            <a href="../cadastroFun.html">
+                <li><img id="pad_img" src="../assets/icons/add-user_icon.png" width="20px">&nbsp;Novo Usuário</li>
+            </a>
+            <a href="">
+                <li><img src="../assets/icons/resume_icon.png" width="20px">&nbsp; Editar Perfil</li>
+            </a>
+            <a href="../index.html">
+                <li><img src="../assets/icons/logout_icon.png" width="20px">&nbsp; Sair</li>
+            </a>
+        </ul>
+    </div>
+
+    <header class="menu">
+
     </header>
 
-    <div id="section_navbar">
+
+
+
+    <!-- <div id="section_navbar">
 
         <div class="page--title">
             <h4>Dashboard</h4>
         </div>
         <div class="navigation--bar">
             <div class="navbar--item active">
-            <a href="">Dashboard</a>
-        </div>
-        <div class="navbar--item">
+                <a href="">Dashboard</a>
+            </div>
+            <div class="navbar--item">
 
-            <a href="../cadMaquinas.html">Cadastro Máquina</a>
+                <a href="../cadMaquinas.html">Cadastro Máquina</a>
 
+            </div>
+            <div class="navbar--item">
+                <a href="../cadastroFun.html">Cadastro Usuário</a>
+            </div>
         </div>
-        <div class="navbar--item">
-            <a href="../cadastroFun.html">Cadastro Usuário</a>
-        </div>
-    </div>
-    </div>
+    </div> -->
 
-    <div class="kpis">
-        <div class="kpi">
-            <span>KPI</span>
-        </div>
-        <div class="kpi">
-            <span>KPI</span>
-        </div>
-        <div class="kpi">
-            <span>KPI</span>
-        </div>
-        <div class="kpi">
-            <span>KPI</span>
-        </div>
-    </div>
-    <div class="selecionarMaquina">
-        <select name="" id="sel_maquina" class="escolhaTotem">
-            <option value="">TOTEM 01</option>
-            <option value="">TOTEM 02</option>
-            <option value="">TOTEM 03</option>
-            <option value="">TOTEM 04</option>
-        </select>
-    </div>
-    <div class="hardware">
-        <h1>CPU</h1>
-        <div class="areaGrafico">
-            <div class="grafico">
-                <canvas id="myChart"></canvas>
+    <div class="container">
+
+        <div class="kpis">
+            <div class="kpi">
+                <span>KPI</span>
             </div>
-            <div class="grafico">
-                <canvas id="temp1"></canvas>
+            <div class="kpi">
+                <span>KPI</span>
             </div>
-            <!-- <div class="temp1"><span>50 ºC</span></div> -->
+            <div class="kpi">
+                <span>KPI</span>
+            </div>
+            <div class="kpi">
+                <span>KPI</span>
+            </div>
         </div>
-    </div>
-    <div class="hardware">
-        <h1>DISCO</h1>
-        <div class="areaGrafico">
-            <div class="grafico">
-                <canvas id="myChart1"></canvas>
-            </div>
-            <div class="grafico">
-                <canvas id="temp2"></canvas>
-            </div>
-            <!-- <div class="temp1"><span>50 ºC</span></div> -->
+        <div class="selecionarMaquina">
+            <select name="" id="sel_maquina" class="escolhaTotem">
+                <option value="">TOTEM 01</option>
+                <option value="">TOTEM 02</option>
+                <option value="">TOTEM 03</option>
+                <option value="">TOTEM 04</option>
+            </select>
         </div>
-    </div>
-    <div class="hardware">
-        <h1>MEMÓRIA RAM</h1>
-        <div class="areaGrafico">
-            <div class="graficoRam">
-                <canvas id="consumoRam"></canvas>
+        <div class="hardware">
+            <h1>CPU</h1>
+            <div class="areaGrafico">
+                <div class="grafico1">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="grafico">
+                    <canvas id="temp1"></canvas>
+                </div>
             </div>
-            <!-- <div class="temp1"><span>50 ºC</span></div> -->
         </div>
+        <div class="hardware">
+            <h1>DISCO</h1>
+            <div class="areaGrafico">
+                <div class="grafico1">
+                    <canvas id="myChart1"></canvas>
+                </div>
+                <div class="grafico">
+                    <canvas id="temp2"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="hardware">
+            <h1>MEMÓRIA RAM</h1>
+            <div class="areaGrafico">
+                <div class="graficoRam">
+                    <canvas id="consumoRam"></canvas>
+                </div>
+            </div>
+        </div>
+        <script src="dashboard.js"></script>
     </div>
-    <script src="dashboard.js"></script>
 </body>
 
 </html>
