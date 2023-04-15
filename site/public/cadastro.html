@@ -18,8 +18,7 @@
                 <ul>
                     <li><a href="index.html"> Home</a></li>
                     <li><a href="login.html"> Login</a></li>
-                    <li><a href="#avant" style="color: #c90a02
-                    ;"> Cadastre-se</a></li>
+                    <li><a href="#avant" style="color: #c90a02;"> Cadastre-se</a></li>
                 </ul>
             </nav>
         </div>
@@ -29,7 +28,7 @@
 
   <div class="box">
     <div class="box-form">
-        <div class="form">
+        <div class="form dataEtp" id="dataEtp" >
             <h1>Registre-se</h1>
             <p>Razão Social</p>
             <input id="razao_social_input" placeholder="Xtpo Xtpo Ltda">
@@ -41,10 +40,27 @@
             <input id="senha_input" placeholder="********"  type="password">
             <p>Confirme a senha:</p>
             <input id="confirmacao_senha_input" placeholder="********" type="password"><br>
+            <p><a href="login.html"><u>Já tem conta? Entre aqui</u></a></p>
             
         </div>
-        <button class="btns" onclick="cadastrar()">Salvar</button>
-        <p><a href="login.html"><u>Já tem conta? Entre aqui</u></a></p>
+        <div class="form adressEtp" id="adressEtp" >
+            <h1>Endereço</h1>
+            <p>CEP:</p>
+            <input id="cep_input" placeholder="00000-000">
+            <p>Logradouro:</p>
+            <input id="rua_input" placeholder="Rua Haddock Lobo">
+            <p>Numero:</p>
+            <input id="num_input" placeholder="1234" >
+            <p>Cidade:</p>
+            <input id="cidade_input" placeholder="São Paulo"  >
+            <p>Estado:</p>
+            <input id="estado_input" placeholder="SP" ><br>
+            <button class="btns" onclick="cadastrar()">Salvar</button>
+            
+            
+            
+        </div>
+        
     </div>
     <div class="box-logo">
         <div class="logo">
@@ -57,6 +73,8 @@
 </html>
 
 <script>
+   
+
     function cadastrar() {
         // aguardar();
 
@@ -67,8 +85,14 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        var cepVar = cep_input.value;
+        var ruaVar = rua_input.value;
+        var numVar = num_input.value;
+        var cidadeVar = cidade_input.value;
+        var estadoVar = estado_input.value;
 
-        if (razaoVar == "" || cnpjVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        if (razaoVar == "" || cnpjVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" ||
+            cepVar == "" || ruaVar == "" || numVar == "" || cidadeVar == "" || estadoVar == "") {
             // cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
@@ -91,7 +115,13 @@
                 razaoServer: razaoVar,
                 cnpjServer: cnpjVar, 
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
+                cepServer : cepVar,
+                ruaServer : ruaVar,
+                numServer: numVar,
+                cidadeServer : cidadeVar,
+                estadoServer: estadoVar
+
             })
         }).then(function (resposta) {
 

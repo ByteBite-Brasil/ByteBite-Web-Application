@@ -66,6 +66,11 @@ function cadastrar(req, res) {
     var cnpj = req.body.cnpjServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var cep = req.body.cepServer;
+    var rua = req.body.ruaServer;
+    var num = req.body.numServer;
+    var cidade = req.body.cidadeServer;
+    var estado = req.body.estadoServer;
 
     // Faça as validações dos valores
     if (razao == undefined) {
@@ -76,10 +81,20 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
+    } else if (cep == undefined) {
+        res.status(400).send("Seu Cep está undefined!");
+    }else if (rua == undefined){
+        res.status(400).send("Seu logradouro está undefined!");
+    } else if (num == undefined){    
+        res.status(400).send("O numéro do seu endereço está undefined!");
+    } else if (cidade == undefined) {
+        res.status(400).send("Sua cidade está undefined!");
+    } else if (estado == undefined) {
+        res.status(400).send("Seu estado está undefined!");
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(razao, cnpj, email, senha)
+        usuarioModel.cadastrar(razao, cnpj, email, senha, cep, rua, num, cidade, estado)
             .then(
                 function (resultado) {
                     res.json(resultado);

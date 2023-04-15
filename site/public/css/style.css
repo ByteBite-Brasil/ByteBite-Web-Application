@@ -394,15 +394,15 @@ a {
 
 .box-form {
     margin-top: 150px;
-    width: 50vh;
+    width: 100vh;
     height: 70vh;
     background-color: #D9D9D9;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-around;
+    flex-direction: row;
     
 }
 
