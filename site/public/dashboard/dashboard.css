@@ -89,8 +89,10 @@ body {
 .container {
     position: absolute;
     right: 0;
-    width: 85%;
-    height: 226vh;
+    width: 90%;
+    height: 230vh;
+    margin-right: 30px;
+    
     /* background: #5F818A; */
 }
 

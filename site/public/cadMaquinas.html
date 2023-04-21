@@ -8,41 +8,63 @@
     <title>ByteBite | Máquinas</title>
     <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/jpg" />
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="../public/dashboard/dashboards.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styleNavbar.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
 <body class="telasCad">
-
-    <header class="menu">
-        <div class="menu-content">
-            <span id="box_logo">
-                <a href="index.html">
-                    <img id="logo" src="assets/logo/data-company-logo-creator-with-a-computer-chip-icon-388b-el1.png"
-                        alt="LOGO">
+     <!-- Navbar -->
+     <div class="side_bar">
+        <div class="logo_content">
+            <div class="logo_nav">
+                <i class='bx bx1-c-plus-plus'></i>
+                <div class="logo_name">
+                    <img src="assets/logo/Logo_Branca.png" alt="" style="width: 120px; margin-top: 30%;">
+                    </div>
+            </div>
+            
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <a href="dashboard/dashboard.html">
+                    <i class='bx bx-line-chart'></i>
+                    <span class="links_name"> Dashboard</span>
                 </a>
-            </span>
-        </div>
-    </header>
-    <div id="section_navbar">
-
-        <div class="page--title">
-            <h4>Cadastro de máquinas</h4>
-        </div>
-        <div class="navigation--bar">
-
-            <a href="dashboard/dashboard.html">Dashboard</a>
-
-            <div class="navbar--item">
-                <div class="navbar--item active">
-                    <a href="cadMaquinas.html">Cadastro Máquina</a>
-                </div>
-            </div>
-            <div class="navbar--item">
-                <a href="cadastroFun.html">Cadastro Usuário</a>
-            </div>
-        </div>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="cadastroFun.html">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="links_name">Usuários</span>
+                </a>
+                <span class="tooltip">Usuários</span>
+            </li>
+            <li>
+                <a href="cadMaquinas.html">
+                    <i class='bx bx-border-all'></i>
+                    <span class="links_name">Máquinas</span>
+                </a>
+                <span class="tooltip">Máquinas</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-user-circle'></i>
+                    <span class="links_name">Perfil</span>
+                </a>
+                <span class="tooltip">Perfil</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links_name">Sair</span>
+                </a>
+                <span class="tooltip">Sair</span>
+            </li>
+        </ul>
     </div>
     <div class="bodyCadMaquina">
 
@@ -77,6 +99,13 @@
         </div>
     </div>
 </body>
-
-
 </html>
+<script>
+    let btn = document.querySelector("#btn");
+    let side_bar = document.querySelector(".side_bar");
+
+    btn.onclick = function () {
+        side_bar.classList.toggle("active");
+    }
+
+</script>
