@@ -382,6 +382,10 @@ a {
 
 /*--------------Cadastro--------------*/
 
+.hide{
+    display: none;
+}
+
 .box {
     background-image: url(../assets/background/layered-waves-haikei.svg);
     width: 100%;
@@ -394,16 +398,25 @@ a {
 
 .box-form {
     margin-top: 150px;
-    width: 100vh;
+    width: 60vh;
     height: 70vh;
     background-color: #D9D9D9;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: row;
+    /* text-align: center; */
+    /* align-items: center; */
+    justify-content: center;
+    /* flex-direction: column; */
     
+}
+
+.dataEtp{
+    align-items: center;
+}
+
+.adressEtp{
+    align-items: center;
 }
 
 
@@ -468,6 +481,10 @@ a {
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+.mid-box{
+    margin-top: 25%;
 }
 
 /*login*/
@@ -659,7 +676,7 @@ select {
 
     .menu ul li a {
         display: block;
-        font-size: 0.8rem;
+        font-size: 20px;
         padding: 2rem;
         position: relative;
         font-weight: 600;
@@ -766,6 +783,11 @@ select {
         margin-top: 90px;
     }
 
+    .mid-box{
+        display: flex;
+        align-items: center;    
+        flex-direction: column;
+    }
     .box-logo {
         display: none;
     }
@@ -776,12 +798,12 @@ select {
 
     .form h1 {
         margin-top: 5px;
-        font-size: 20px;
+        font-size: 35px;
         justify-content: center;
     }
 
     .form p {
-        font-size: 14px;
+        font-size: 24px;
     }
 
     .box-form button {
