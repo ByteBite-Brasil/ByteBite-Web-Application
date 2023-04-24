@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteBite | Perfil</title>
+    <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/jpg" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styleNavbar.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="side_bar">
+        <div class="logo_content">
+            <div class="logo_nav">
+                <i class='bx bx1-c-plus-plus'></i>
+                <div class="logo_name">
+                    <img src="assets/logo/Logo_Branca.png" alt="" style="width: 120px; margin-top: 30%;">
+                </div>
+            </div>
+
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <a href="dashboard/dashboard.html">
+                    <i class='bx bx-line-chart'></i>
+                    <span class="links_name">Dashboards</span>
+                </a>
+                <span class="tooltip">Dashboards</span>
+            </li>
+            <li>
+                <a href="cadastroFun.html">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="links_name">Usuários</span>
+                </a>
+                <span class="tooltip">Usuários</span>
+            </li>
+            <li>
+                <a href="cadMaquinas.html">
+                    <i class='bx bx-border-all'></i>
+                    <span class="links_name">Máquinas</span>
+                </a>
+                <span class="tooltip">Máquinas</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-user-circle'></i>
+                    <span class="links_name">Perfil</span>
+                </a>
+                <span class="tooltip">Perfil</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links_name">Sair</span>
+                </a>
+                <span class="tooltip">Sair</span>
+            </li>
+        </ul>
+    </div>
+    <div class="TelaPerfil">
+        <header class="header">
+            <h1 class="header-title">Bem-vindo ao seu perfil</h1>
+        </header class="header">
+        <main class="main">
+            <label style="color: white;">Consulte a baixo seus painéis que estão cadastrados em nosso sistema.
+                Você tem total acesso a editar e excluir suas máquinas cadastradas.
+            </label>
+            <button type="button" class="buttonCadPer blue" id="ExcluirEmpresa">Excluir conta da empresa</button>
+            <table class="records">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Responsável</th>
+                        <th>E-mail</th>
+                        <th>Celular</th>
+                        <th>Cidade</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>100</td>
+                        <td>Breno</td>
+                        <td>Brenojose1@gmail.com</td>
+                        <td>(11)989890797</td>
+                        <td>Jundiaí</td>
+                        <td>
+                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
+                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>130</td>
+                        <td>Micah</td>
+                        <td>micahRodrigues@gmail.com</td>
+                        <td>(11)956749123</td>
+                        <td>São Paulo </td>
+                        <td>
+                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
+                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>140</td>
+                        <td>Joaquim</td>
+                        <td>joaquimRibeiro@gmail.com</td>
+                        <td>(11)978405758</td>
+                        <td>Jandira</td>
+                        <td>
+                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
+                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>188</td>
+                        <td>Lucas</td>
+                        <td>Lucas@gmail.com</td>
+                        <td>(11)945245555</td>
+                        <td>Trianon-MASP</td>
+                        <td>
+                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
+                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>198</td>
+                        <td>Lucia</td>
+                        <td>Lucia@gmail.com</td>
+                        <td>(11)985736788</td>
+                        <td>Mauá</td>
+                        <td>
+                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
+                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                        <td>Mariana</td>
+                        <td>mariana1230@gmail.com</td>
+                        <td>(11)908768675</td>
+                        <td>Santo André</td>
+                        <td>
+                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
+                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>177</td>
+                        <td>Túlio</td>
+                        <td>tulio@gmail.com</td>
+                        <td>(11)908086746</td>
+                        <td>São Caetano</td>
+                        <td>
+                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
+                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>112</td>
+                        <td>Jandira</td>
+                        <td>jandira@gmail.com</td>
+                        <td>(11)908765437</td>
+                        <td>Caieiras</td>
+                        <td>
+                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
+                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>113</td>
+                        <td>Victor</td>
+                        <td>victor@gmail.com</td>
+                        <td>(11)908648209</td>
+                        <td>Praia Grande</td>
+                        <td>
+                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
+                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="modal" id="modalExcluirEmpresa">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2>Excluir conta da empresa</h2>
+                        <span class="modal-close" id="modalClose">✖</span>
+                    </header>
+                    <form class="modal-form">
+                        <label for=""><b>ATENÇÃO</b><br>Ao excluir a conta empresarial você não terá mais acesso aos
+                            conteúdos disponibilizados
+                            pela ByteBite, e eles não poderão ser recuperados. Para mais informações consulte nosso
+                            site.
+                        </label>
+                    </form>
+                    <footer class="modal-footer">
+                        <button class="buttonCadPer green" id="sucessoExcluirEmpresa">Excluir</button>
+                        <button class="buttonCadPer blue" id="cancelarClienteExcluirEmpresa">Cancelar</button>
+                    </footer>
+                </div>
+            </div>
+
+            <div class="modal" id="modalEditar">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2>Editar usuário</h2>
+                        <span class="modal-close" id="modalClose1">✖</span>
+                    </header>
+                    <form class="modal-form">
+                        <div><input class="input" id="id" type="number" placeholder="Id para editação"></div>
+                        <div><input class="input" id="username" type="text" placeholder="Nome do responsável"></div>
+                        <div><input class="input" id="email" type="email" placeholder="exemplo@gmail"></div>
+                        <div><input class="input" id="telefone" type="" placeholder="(11)0000-0000"></div>
+                        <div><input class="input" id="senha" type="password" placeholder="Senha"></div>
+
+                        <div>
+                            <select name="permissao" id="permissao" class="input">
+                                <option value="">Selecione</option>
+                                <option value="">Visualização</option>
+                                <option value="">Modificação</option>
+                                <option value="">Administrador</option>
+                            </select>
+                        </div>
+                        <div><input class="input" id="senha" type="password" placeholder="Confirme a senha"></div>
+                        <div>
+                            <select name="genero" id="genero" class="input">
+                                <option value="">Selecione</option>
+                                <option value="">Feminino</option>
+                                <option value="">Masculino</option>
+                                <option value="">Prefiro não dizer</option>
+                            </select>
+                        </div>
+                    </form>
+                    <label style="margin-left: 5px;">⚠️⚠️Ao editar os dados de um usuário, você não perderá os respectivos dados!!!</label>
+
+                    <footer class="modal-footer">
+                        
+                        <button class="buttonCadPer green" id="sucessoEditar">Salvar</button>
+                        <button class="buttonCadPer blue" id="cancelarClienteEditar">Cancelar</button>
+                    </footer>
+                </div>
+            </div>
+
+            <div class="modal" id="modalExcluirMaquina">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2>Excluir cliente</h2>
+                        <span class="modal-close" id="modalClose2">✖</span>
+                    </header>
+                    <form class="modal-form">
+                        <label for="">Deseja mesmo excluir a máquina?</label>
+                    </form>
+                    <footer class="modal-footer">
+                        <button class="buttonCadPer green" id="sucessoExcluirMaquina">Excluir</button>
+                        <button class="buttonCadPer blue" id="cancelarClienteExcluirMaquina">Cancelar</button>
+                    </footer>
+                </div>
+            </div>
+            <div class="modal" id="modalConcluir">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2>Excluir cliente</h2>
+                        <span class="modal-close" id="modalClose3">✖</span>
+                    </header>
+                    <form class="modal-form">
+                        <label for="">Execussão realizada com sucesso!!!</label>
+                    </form>
+                    <footer class="modal-footer">
+                        <button class="buttonCadPer blue" id="ok">OK</button>
+                    </footer>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</body>
+
+</html>
+<script>
+    // nav bar
+    let btn = document.querySelector("#btn");
+    let side_bar = document.querySelector(".side_bar");
+
+    btn.onclick = function () {
+        side_bar.classList.toggle("active");
+    }
+</script>
+<script>
+    // pop-ups
+    // variaveis
+    const openModal = () => document.getElementById('modalExcluirEmpresa').classList.add('active');
+    const closeModal = () => document.getElementById('modalExcluirEmpresa').classList.remove('active');
+
+
+    const openModal1 = () => document.getElementById('modalEditar').classList.add('active');
+    const closeModal1 = () => document.getElementById('modalEditar').classList.remove('active');
+
+
+    const openModal2 = () => document.getElementById('modalExcluirMaquina').classList.add('active');
+    const closeModal2 = () => document.getElementById('modalExcluirMaquina').classList.remove('active');
+
+    const sucesso = () => document.getElementById('modalConcluir').classList.add('active')
+    const closeModal3 = () => document.getElementById('modalConcluir').classList.remove('active')
+
+
+
+    // funcoes
+    document.getElementById('ExcluirEmpresa').addEventListener('click', openModal)
+    document.getElementById('modalClose').addEventListener('click', closeModal)
+    document.getElementById('cancelarClienteExcluirEmpresa').addEventListener('click', closeModal)
+    document.getElementById('sucessoExcluirEmpresa').addEventListener('click', closeModal)
+    document.getElementById('sucessoExcluirEmpresa').addEventListener('click', sucesso)
+    document.getElementById('modalClose3').addEventListener('click', closeModal3)
+    document.getElementById('ok').addEventListener('click', closeModal3)
+
+
+    document.getElementById('editarCliente').addEventListener('click', openModal1)
+    document.getElementById('modalClose1').addEventListener('click', closeModal1)
+    document.getElementById('cancelarClienteEditar').addEventListener('click', closeModal1)
+    document.getElementById('sucessoEditar').addEventListener('click', closeModal1)
+    document.getElementById('sucessoEditar').addEventListener('click', sucesso)
+    document.getElementById('modalClose3').addEventListener('click', closeModal3)
+    document.getElementById('ok').addEventListener('click', closeModal3)
+
+
+    document.getElementById('excluirCliente').addEventListener('click', openModal2);
+    document.getElementById('modalClose2').addEventListener('click', closeModal2)
+    document.getElementById('cancelarClienteExcluirMaquina').addEventListener('click', closeModal2)
+    document.getElementById('sucessoExcluirMaquina').addEventListener('click', closeModal2)
+    document.getElementById('sucessoExcluirMaquina').addEventListener('click', sucesso)
+    document.getElementById('modalClose3').addEventListener('click', closeModal3)
+    document.getElementById('ok').addEventListener('click', closeModal3)
+
+
+</script>
