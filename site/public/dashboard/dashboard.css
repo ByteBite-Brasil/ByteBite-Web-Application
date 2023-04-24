@@ -200,12 +200,22 @@ a {
     width: 10em;
     height: 8em;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    text-align: center;
     border-radius: 10px;
     color: var(--primary-text);
     font-weight: bold;
     font-family: var(--font-family-subtitle);
+    justify-content: space-around;
+}
+.kpiruim {
+    color: red;
+}
+.kpiboa {
+    color: rgb(26, 200, 26);
+}
+.datakpi span {
+    font-size: 30px;
 }
 
 .selecionarMaquina {
