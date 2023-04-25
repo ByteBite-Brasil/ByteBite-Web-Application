@@ -61,21 +61,21 @@
         <div class="input">
             <select name="permissao" id="permissao">
                 <option value="">Selecione</option>
-                <option value="">Visualização</option>
-                <option value="">Modificação</option>
-                <option value="">Administrador</option>
+                <option value="Analista">Visualização</option>
+                <option value="Técnico">Modificação</option>
+                <option value="Adminstrador">Administrador</option>
             </select>
         </div>
         <label for="genero">Genêro</label>
         <div class="input">
             <select name="genero" id="genero">
                 <option value="">Selecione</option>
-                <option value="">Feminino</option>
-                <option value="">Masculino</option>
-                <option value="">Prefiro não dizer</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Prefiro não identificar">Prefiro não dizer</option>
             </select>
         </div>
-        <div id="btn"><button type="submit">Cadastrar</button></div>
+        <div id="btn"><button type="submit" onclick="cadastrarFunc()">Cadastrar</button></div>
 
         <!-- </form> -->
         <!-- com o desenvolver, criar um pop-up de ação válida e inválida -->
@@ -84,3 +84,66 @@
 </body>
 
 </html>
+
+<script>
+
+    function cadastrarFunc() {
+
+        var nomeVar = username.value;
+        var emailVar = email.value;
+        var telefoneVar = telefone.value;
+        var senhaVar = senha.value;
+        var permissaoVar = permissao.value;
+        var generoVar = genero.value;
+        const idEmpresaVar = sessionStorage.ID_USUARIO;
+
+
+        if (nomeVar == "" || emailVar == "" || telefoneVar == "" || senhaVar == "" || permissaoVar == "" || generoVar == "" || idEmpresaVar == "") {
+
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            return false;
+        }
+
+        fetch("/usuarios/cadastrarFunc", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                telefoneServer: telefoneVar,
+                senhaServer: senhaVar,
+                permissaoServer: permissaoVar,
+                generoServer: generoVar,
+                idEmpresaServer: idEmpresaVar,
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                console.log("Cadastro realizado com sucesso!")
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+        });
+
+        return false;
+    }
+
+
+
+
+
+</script>

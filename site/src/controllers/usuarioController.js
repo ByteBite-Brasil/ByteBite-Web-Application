@@ -98,6 +98,54 @@ function cadastrar(req, res) {
     }
 }
 
+function cadastrarFunc(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var telefone = req.body.telefoneServer;
+    var senha = req.body.senhaServer;
+    var permissao = req.body.permissaoServer;
+    var genero = req.body.generoServer;
+    var idempresa = req.body.idEmpresaServer;
+
+
+
+    // Faça as validações dos valores
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu Cnpj está undefined!");
+    } else if (telefone == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else if (permissao == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else if (genero == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else if (idempresa == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarFunc(email, senha, nome, permissao, idempresa, telefone, genero)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 function getIdEmpresa(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var email = req.body.emailServer;
@@ -186,5 +234,6 @@ module.exports = {
     getIdEmpresa,
     cadastrarEndereco,
     listar,
-    testar
+    testar,
+    cadastrarFunc
 }
