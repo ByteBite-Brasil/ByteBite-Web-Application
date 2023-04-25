@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ByteBite | Dashboard</title>
-    <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/jpg"/>
+    <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/jpg" />
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="../css/styleNavbar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,16 +22,16 @@
 
 <body>
 
-       <!-- Navbar -->
-       <div class="side_bar">
+    <!-- Navbar -->
+    <div class="side_bar">
         <div class="logo_content">
             <div class="logo_nav">
                 <i class='bx bx1-c-plus-plus'></i>
                 <div class="logo_name">
                     <img src="../assets/logo/Logo_Branca.png" alt="" style="width: 120px; margin-top: 30%;">
-                    </div>
+                </div>
             </div>
-            
+
             <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="nav_list">
@@ -76,57 +76,82 @@
     <div class="container">
 
         <div class="kpis">
-            <div class="kpi">
-                <span>KPI</span>
+            <div class="selecionarMaquina">
+                <select name="" id="sel_maquina" class="escolhaTotem">
+                    <option value="">TOTEM 01</option>
+                    <option value="">TOTEM 02</option>
+                    <option value="">TOTEM 03</option>
+                    <option value="">TOTEM 04</option>
+                </select>
             </div>
             <div class="kpi">
-                <span>KPI</span>
-            </div>
-            <div class="kpi">
-                <span>KPI</span>
-            </div>
-            <div class="kpi">
-                <span>KPI</span>
-            </div>
-        </div>
-        <div class="selecionarMaquina">
-            <select name="" id="sel_maquina" class="escolhaTotem">
-                <option value="">TOTEM 01</option>
-                <option value="">TOTEM 02</option>
-                <option value="">TOTEM 03</option>
-                <option value="">TOTEM 04</option>
-            </select>
-        </div>
-        <div class="hardware">
-            <h1>CPU</h1>
-            <div class="areaGrafico">
-                <div class="grafico1">
-                    <canvas id="myChart"></canvas>
+                <span>TEMPERATURA PROCESSADOR NO DIA</span>
+                <div class="datakpi kpiruim">
+                    <span>85ºC</span>
                 </div>
-                <div class="grafico">
-                    <canvas id="temp1"></canvas>
+            </div>
+            <div class="kpi kpi2">
+                <span>MAIOR USO DO PROCESSADOR NO DIA</span>
+                <div class="datakpi kpiboa">
+                    <span>60%</span>
+                </div>
+            </div>
+            <div class="kpi kpi3">
+                <span>MAIOR USO DA MEMÓRIA RAM NO DIA</span>
+                <div class="datakpi kpiruim">
+                    <span>100%</span>
+                </div>
+            </div>
+            <div class="alerta">
+                <img src="../assets/images/alert_gif.gif" alt="">
+                <div class="alertBox">
+                    <span class="kpiruim">Temperatura acima da normalidade!</span>
+                    <button class="btnAlert">Verificar</button>
                 </div>
             </div>
         </div>
-        <div class="hardware">
-            <h1>DISCO</h1>
-            <div class="areaGrafico">
-                <div class="grafico1">
-                    <canvas id="myChart1"></canvas>
+        
+        <div class="dadosTotem">
+            <div class="hardware">
+                <h1>CPU</h1>
+                <div class="areaGrafico">
+                    <div class="grafico1">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <div class="grafico">
+                        <canvas id="temp1"></canvas>
+                    </div>
                 </div>
-                <div class="grafico">
-                    <canvas id="temp2"></canvas>
+            </div>
+            <div class="hardware">
+                <h1>DISCO</h1>
+                <div class="areaGrafico">
+                    <div class="grafico1">
+                        <canvas id="myChart1"></canvas>
+                    </div>
+                    <div class="grafico">
+                        <canvas id="temp2"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="hardware">
+                <h1>MEMÓRIA RAM</h1>
+                <div class="areaGraficoRam">
+                    <div class="graficoRam">
+                        <canvas id="consumoRam"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="hardware">
+                <h1>JANELAS DO SISTEMA</h1>
+                <div class="areaGraficoJanelas">
+                    <div class="graficoJanelas">
+                       <h1 id="dataJanelas">2 JANELAS ATIVAS</h1>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="hardware">
-            <h1>MEMÓRIA RAM</h1>
-            <div class="areaGrafico">
-                <div class="graficoRam">
-                    <canvas id="consumoRam"></canvas>
-                </div>
-            </div>
-        </div>
+        
         <script src="dashboard.js"></script>
     </div>
 </body>
