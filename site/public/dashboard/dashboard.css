@@ -267,7 +267,7 @@ a {
     flex-direction: column;
     justify-content: space-around;
     padding: 5px;
-    height: 30em;
+    height: 35.5em;
 }
 
 #dataJanelas{
@@ -284,24 +284,25 @@ a {
 }
 .areaGraficoRam{
     height: 30em;
-    margin-top: 36.5px;
+    margin-top: 22px;
+    margin-right: 20px;
 }
 .areaGraficoJanelas{
     height: 30em;
-    margin-top: 36.5px;
+    margin-top: 22px;
 }
 
 .grafico {
-    height: 12em;
-    width: 24em;
+    height: 17em;
+    width: 34em;
     background-color: #1b1a1a;
     border: solid 1px var(--secundary-text);
     border-radius: 10px;
 }
 
 .grafico1 {
-    height: 12em;
-    width: 24em;
+    height: 17em;
+    width: 34em;
     background-color: #1b1a1a;
     border: solid 1px var(--secundary-text);
     border-radius: 10px;
@@ -310,16 +311,16 @@ a {
 }
 
 .graficoRam {
-    height: 12em;
-    width: 24em;
+    height: 17em;
+    width: 34em;
     background-color: #1b1a1a;
     border: solid 1px var(--secundary-text);
     border-radius: 10px;
 }
 
 .graficoJanelas{
-    height: 12em;
-    width: 24em;
+    height: 17em;
+    width: 34em;
     background-color: #1b1a1a;
     border: solid 1px var(--secundary-text);
     border-radius: 10px;
@@ -342,7 +343,7 @@ a {
 
 .dadosTotem{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
 }
 .hardware{
