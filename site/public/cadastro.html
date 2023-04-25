@@ -18,8 +18,7 @@
                 <ul>
                     <li><a href="index.html"> Home</a></li>
                     <li><a href="login.html"> Login</a></li>
-                    <li><a href="#avant" style="color: #c90a02
-                    ;"> Cadastre-se</a></li>
+                    <li><a href="#avant" style="color: #c90a02;"> Cadastre-se</a></li>
                 </ul>
             </nav>
         </div>
@@ -29,7 +28,8 @@
 
   <div class="box">
     <div class="box-form">
-        <div class="form">
+        <div>
+        <div class="form dataEtp" id="dataEtp" style="display: block;" >
             <h1>Registre-se</h1>
             <p>Razão Social</p>
             <input id="razao_social_input" placeholder="Xtpo Xtpo Ltda">
@@ -41,10 +41,25 @@
             <input id="senha_input" placeholder="********"  type="password">
             <p>Confirme a senha:</p>
             <input id="confirmacao_senha_input" placeholder="********" type="password"><br>
+            <p><a href="login.html"><u>Já tem conta? Entre aqui</u></a></p>
             
         </div>
+        <div class="form adressEtp" id="adressEtp" style="display: none;">
+            <h1>Endereço</h1>
+            <p>CEP:</p>
+            <input id="cep_input" placeholder="00000-000">
+            <p>Logradouro:</p>
+            <input id="rua_input" placeholder="Rua Haddock Lobo">
+            <p>Numero:</p>
+            <input id="num_input" placeholder="1234" >
+            <p>Cidade:</p>
+            <input id="cidade_input" placeholder="São Paulo"  >
+            <p>Estado:</p>
+            <input id="estado_input" placeholder="SP" ><br>    
+        </div>
+        <button class="btns" id="cadastrarEndereco">Cadastrar Endereço</button>
         <button class="btns" onclick="cadastrar()">Salvar</button>
-        <p><a href="login.html"><u>Já tem conta? Entre aqui</u></a></p>
+    </div>
     </div>
     <div class="box-logo">
         <div class="logo">
@@ -57,29 +72,40 @@
 </html>
 
 <script>
-    function cadastrar() {
-        // aguardar();
+   
+    var button = document.getElementById("cadastrarEndereco");
+    button.addEventListener("click", function(){
+        var adress = document.getElementById("adressEtp");
+        var data = document.getElementById("dataEtp");
+        if(adress.style.display === "none"){
+            adress.style.display = "block";
+        }else{
+            adress.style.display = "none";
+        }
 
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
+        if(data.style.display === "block"){
+            data.style.display = "none";
+        }else{
+            data.style.display = "block";
+        }
+    })
+
+    function cadastrar() {
+        
         var razaoVar = razao_social_input.value;
         var cnpjVar = cnpj_input.value;
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        
 
         if (razaoVar == "" || cnpjVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            // cardErro.style.display = "block"
+
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
-            // finalizarAguardar();
             return false;
         }
-        // else {
-        //     setInterval(sumirMensagem, 5000)
-        // }
-
-        // Enviando o valor da nova input
+        
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
@@ -91,36 +117,145 @@
                 razaoServer: razaoVar,
                 cnpjServer: cnpjVar, 
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
+               
+
             })
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                // cardErro.style.display = "block";
+               
+                getIdEmpresa()
+                console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login")
 
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
-                
-                limparFormulario();
-                // finalizarAguardar();
+               
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
+      
         });
 
         return false;
     }
 
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none"
-    // }
+//GET
+    function getIdEmpresa() {
+
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+           
+            return false;
+        }
+       
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/getIdEmpresa", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+           
+                
+            if (resposta.ok) {
+                console.log(resposta);
+                
+                resposta.json().then(json => {
+                    
+                    console.log(JSON.stringify(json));
+                    console.log(JSON.stringify(json.idEmpresa));
+                    const idempresa = json.idEmpresa;
+                    
+                    cadastrarEndereco(idempresa)
+         
+                });
+                
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+    function cadastrarEndereco(idempresa) {
+     
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+       
+        var cepVar = cep_input.value;
+        var ruaVar = rua_input.value;
+        var numVar = num_input.value;
+        var cidadeVar = cidade_input.value;
+        var estadoVar = estado_input.value;
+        var idEmpresaVar = idempresa;
+
+        if (cepVar == "" || ruaVar == "" || numVar == "" || cidadeVar == "" || estadoVar == "" || idEmpresaVar == "") {
+           
+            return false;
+        }
+       
+        fetch("/usuarios/cadastrarEndereco", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                
+                cepServer : cepVar,
+                ruaServer : ruaVar,
+                numServer: numVar,
+                cidadeServer : cidadeVar,
+                estadoServer: estadoVar,
+                idempresaServer : idEmpresaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+               
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+                
+              
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+         
+        });
+
+        return false;
+    }
 
 </script>
