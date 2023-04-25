@@ -6,103 +6,138 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ByteBite | Dashboard</title>
+    <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/jpg"/>
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="../css/styleNavbar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header class="menu">
-        <div class="menu-content">
-            <span id="box_logo">
-                <a href="../index.html">
-                    <img id="logo" src="../assets/logo/data-company-logo-creator-with-a-computer-chip-icon-388b-el1.png"
-                        alt="LOGO">
+
+       <!-- Navbar -->
+       <div class="side_bar">
+        <div class="logo_content">
+            <div class="logo_nav">
+                <i class='bx bx1-c-plus-plus'></i>
+                <div class="logo_name">
+                    <img src="../assets/logo/Logo_Branca.png" alt="" style="width: 120px; margin-top: 30%;">
+                    </div>
+            </div>
+            
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <a href="dashboard.html">
+                    <i class='bx bx-line-chart'></i>
+                    <span class="links_name"> Dashboard</span>
                 </a>
-            </span>
-        </div>
-    </header>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="../cadastroFun.html">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="links_name">Usuários</span>
+                </a>
+                <span class="tooltip">Usuários</span>
+            </li>
+            <li>
+                <a href="../cadMaquinas.html">
+                    <i class='bx bx-border-all'></i>
+                    <span class="links_name">Máquinas</span>
+                </a>
+                <span class="tooltip">Máquinas</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-user-circle'></i>
+                    <span class="links_name">Perfil</span>
+                </a>
+                <span class="tooltip">Perfil</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links_name">Sair</span>
+                </a>
+                <span class="tooltip">Sair</span>
+            </li>
+        </ul>
+    </div>
 
-    <div id="section_navbar">
+    <div class="container">
 
-        <div class="page--title">
-            <h4>Dashboard</h4>
-        </div>
-        <div class="navigation--bar">
-            <div class="navbar--item active">
-            <a href="">Dashboard</a>
-        </div>
-        <div class="navbar--item">
-
-            <a href="../cadMaquinas.html">Cadastro Máquina</a>
-
-        </div>
-        <div class="navbar--item">
-            <a href="../cadastroFun.html">Cadastro Usuário</a>
-        </div>
-    </div>
-    </div>
-
-    <div class="kpis">
-        <div class="kpi">
-            <span>KPI</span>
-        </div>
-        <div class="kpi">
-            <span>KPI</span>
-        </div>
-        <div class="kpi">
-            <span>KPI</span>
-        </div>
-        <div class="kpi">
-            <span>KPI</span>
-        </div>
-    </div>
-    <div class="selecionarMaquina">
-        <select name="" id="sel_maquina" class="escolhaTotem">
-            <option value="">TOTEM 01</option>
-            <option value="">TOTEM 02</option>
-            <option value="">TOTEM 03</option>
-            <option value="">TOTEM 04</option>
-        </select>
-    </div>
-    <div class="hardware">
-        <h1>CPU</h1>
-        <div class="areaGrafico">
-            <div class="grafico">
-                <canvas id="myChart"></canvas>
+        <div class="kpis">
+            <div class="kpi">
+                <span>KPI</span>
             </div>
-            <div class="grafico">
-                <canvas id="temp1"></canvas>
+            <div class="kpi">
+                <span>KPI</span>
             </div>
-            <!-- <div class="temp1"><span>50 ºC</span></div> -->
+            <div class="kpi">
+                <span>KPI</span>
+            </div>
+            <div class="kpi">
+                <span>KPI</span>
+            </div>
         </div>
-    </div>
-    <div class="hardware">
-        <h1>DISCO</h1>
-        <div class="areaGrafico">
-            <div class="grafico">
-                <canvas id="myChart1"></canvas>
-            </div>
-            <div class="grafico">
-                <canvas id="temp2"></canvas>
-            </div>
-            <!-- <div class="temp1"><span>50 ºC</span></div> -->
+        <div class="selecionarMaquina">
+            <select name="" id="sel_maquina" class="escolhaTotem">
+                <option value="">TOTEM 01</option>
+                <option value="">TOTEM 02</option>
+                <option value="">TOTEM 03</option>
+                <option value="">TOTEM 04</option>
+            </select>
         </div>
-    </div>
-    <div class="hardware">
-        <h1>MEMÓRIA RAM</h1>
-        <div class="areaGrafico">
-            <div class="graficoRam">
-                <canvas id="consumoRam"></canvas>
+        <div class="hardware">
+            <h1>CPU</h1>
+            <div class="areaGrafico">
+                <div class="grafico1">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="grafico">
+                    <canvas id="temp1"></canvas>
+                </div>
             </div>
-            <!-- <div class="temp1"><span>50 ºC</span></div> -->
         </div>
+        <div class="hardware">
+            <h1>DISCO</h1>
+            <div class="areaGrafico">
+                <div class="grafico1">
+                    <canvas id="myChart1"></canvas>
+                </div>
+                <div class="grafico">
+                    <canvas id="temp2"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="hardware">
+            <h1>MEMÓRIA RAM</h1>
+            <div class="areaGrafico">
+                <div class="graficoRam">
+                    <canvas id="consumoRam"></canvas>
+                </div>
+            </div>
+        </div>
+        <script src="dashboard.js"></script>
     </div>
-    <script src="dashboard.js"></script>
 </body>
 
 </html>
+<script>
+    let btn = document.querySelector("#btn");
+    let side_bar = document.querySelector(".side_bar");
+
+    btn.onclick = function () {
+        side_bar.classList.toggle("active");
+    }
+
+</script>
