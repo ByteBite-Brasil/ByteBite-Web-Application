@@ -28,7 +28,7 @@
 
   <div class="box">
     <div class="box-form">
-        <div>
+      <div class="mid-box">
         <div class="form dataEtp" id="dataEtp" style="display: block;" >
             <h1>Registre-se</h1>
             <p>Razão Social</p>
@@ -57,8 +57,8 @@
             <p>Estado:</p>
             <input id="estado_input" placeholder="SP" ><br>    
         </div>
-        <button class="btns" id="cadastrarEndereco">Cadastrar Endereço</button>
-        <button class="btns" onclick="cadastrar()">Salvar</button>
+        <button class="btns" id="cadastrarEndereco" style="display: block;">Endereço+</button>
+        <button class="btns" onclick="cadastrar()" id="cadas" style="display: none;">Salvar</button>
     </div>
     </div>
     <div class="box-logo">
@@ -79,14 +79,20 @@
         var data = document.getElementById("dataEtp");
         if(adress.style.display === "none"){
             adress.style.display = "block";
+            cadas.style. display = "block";
+            
         }else{
             adress.style.display = "none";
+            cadas.style. display = "none";
+            
         }
 
         if(data.style.display === "block"){
             data.style.display = "none";
+            button.style.display = "none";
         }else{
             data.style.display = "block";
+            button.style.display = "block";
         }
     })
 
