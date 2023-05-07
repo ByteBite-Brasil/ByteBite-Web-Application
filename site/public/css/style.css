@@ -632,7 +632,7 @@ select {
 
 }
 
-#btnmaq {
+.btnmaq {
     margin-top: 2%;
     width: 100%;
     text-align: center;
@@ -642,7 +642,7 @@ select {
 
 }
 
-#btnmaq button {
+.btnmaq button {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(-45deg, rgb(139, 19, 19), #ff7253, rgb(139, 19, 19));
     width: 100%;
@@ -653,7 +653,7 @@ select {
     cursor: pointer;
 }
 
-#btnmaq button:hover {
+.btnmaq button:hover {
     background: linear-gradient(-45deg, #ff7253, rgb(139, 19, 19), #ff7253);
 }
 
