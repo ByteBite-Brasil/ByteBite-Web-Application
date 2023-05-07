@@ -52,7 +52,7 @@
                 <span class="tooltip">Máquinas</span>
             </li>
             <li>
-                <a href="index.html">
+                <a href="telaPerfil.html">
                     <i class='bx bx-user-circle'></i>
                     <span class="links_name">Perfil</span>
                 </a>
@@ -73,18 +73,19 @@
         </header class="header">
         <main class="main">
             <label style="color: white;">Consulte a baixo seus painéis que estão cadastrados em nosso sistema.
-                Você tem total acesso a editar e excluir suas máquinas cadastradas.
+                Você tem total acesso a editar e excluir seu usuários cadastrados.
             </label>
+            <button type="button" class="buttonCadPer blue" id="ExcluirEmpresa">Editar conta da empresa</button>
             <button type="button" class="buttonCadPer blue" id="ExcluirEmpresa">Excluir conta da empresa</button>
             <table class="records">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Responsável</th>
+                        <th>Nome</th>
                         <th>E-mail</th>
                         <th>Celular</th>
                         <th>Cidade</th>
-                        <th>Ação</th>
+                        <th>Ação</th>       
                     </tr>
                 </thead>
                 <tbody>
@@ -217,29 +218,22 @@
                         <span class="modal-close" id="modalClose1">✖</span>
                     </header>
                     <form class="modal-form">
-                        <div><input class="input" id="id" type="number" placeholder="Id para editação"></div>
+                        
                         <div><input class="input" id="username" type="text" placeholder="Nome do responsável"></div>
                         <div><input class="input" id="email" type="email" placeholder="exemplo@gmail"></div>
                         <div><input class="input" id="telefone" type="" placeholder="(11)0000-0000"></div>
-                        <div><input class="input" id="senha" type="password" placeholder="Senha"></div>
+                        <div><input class="input" id="senha" type="password" placeholder="Nova senha"></div>
 
                         <div>
                             <select name="permissao" id="permissao" class="input">
-                                <option value="">Selecione</option>
+                                <option value="0">Permissão de usuário</option>
                                 <option value="">Visualização</option>
                                 <option value="">Modificação</option>
-                                <option value="">Administrador</option>
+                                
                             </select>
                         </div>
-                        <div><input class="input" id="senha" type="password" placeholder="Confirme a senha"></div>
-                        <div>
-                            <select name="genero" id="genero" class="input">
-                                <option value="">Selecione</option>
-                                <option value="">Feminino</option>
-                                <option value="">Masculino</option>
-                                <option value="">Prefiro não dizer</option>
-                            </select>
-                        </div>
+                        <div><input class="input" id="senha" type="password" placeholder="Confirme a nova senha"></div>
+                        
                     </form>
                     <label style="margin-left: 5px;">⚠️⚠️Ao editar os dados de um usuário, você não perderá os respectivos dados!!!</label>
 
@@ -333,13 +327,11 @@
     document.getElementById('ok').addEventListener('click', closeModal3)
 
 
-    document.getElementById('excluirCliente').addEventListener('click', openModal2);
+    document.getElementById('excluirCliente').addEventListener('click', openModal2)
     document.getElementById('modalClose2').addEventListener('click', closeModal2)
     document.getElementById('cancelarClienteExcluirMaquina').addEventListener('click', closeModal2)
     document.getElementById('sucessoExcluirMaquina').addEventListener('click', closeModal2)
     document.getElementById('sucessoExcluirMaquina').addEventListener('click', sucesso)
     document.getElementById('modalClose3').addEventListener('click', closeModal3)
     document.getElementById('ok').addEventListener('click', closeModal3)
-
-
 </script>
