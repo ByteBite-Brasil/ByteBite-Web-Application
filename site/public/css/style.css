@@ -728,6 +728,10 @@ select {
     background-color: red;
 }
 
+.buttonCadPer.orange {
+    background-color: orange;
+}
+
 .buttonCadPer:hover {
     box-shadow: inset 200px 0 0 rgb(0, 0, 0);
 }
