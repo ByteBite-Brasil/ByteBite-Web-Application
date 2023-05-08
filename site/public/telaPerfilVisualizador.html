@@ -102,6 +102,69 @@
                 </div>
             </div>
 
+            <div class="modal" id="modalEditar">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2>Editar usuário</h2>
+                        <span class="modal-close" id="modalClose1">✖</span>
+                    </header>
+                    <form class="modal-form">
+                        
+                        <div><input class="input" id="username" type="text" placeholder="Nome do responsável"></div>
+                        <div><input class="input" id="email" type="email" placeholder="exemplo@gmail"></div>
+                        <div><input class="input" id="telefone" type="" placeholder="(11)0000-0000"></div>
+                        <div><input class="input" id="senha" type="password" placeholder="Nova senha"></div>
+
+                        <div>
+                            <select name="permissao" id="permissao" class="input">
+                                <option value="0">Permissão de usuário</option>
+                                <option value="">Visualização</option>
+                                <option value="">Modificação</option>
+                                <option value="">Administrador</option>
+                            </select>
+                        </div>
+                        <div><input class="input" id="senha" type="password" placeholder="Confirme a nova senha"></div>
+                        
+                    </form>
+                    <label style="margin-left: 5px;">⚠️⚠️Ao editar os dados de um usuário, você não perderá os respectivos dados!!!</label>
+
+                    <footer class="modal-footer">
+                        
+                        <button class="buttonCadPer green" id="sucessoEditar">Salvar</button>
+                        <button class="buttonCadPer blue" id="cancelarClienteEditar">Cancelar</button>
+                    </footer>
+                </div>
+            </div>
+
+            <div class="modal" id="modalExcluirMaquina">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2>Excluir cliente</h2>
+                        <span class="modal-close" id="modalClose2">✖</span>
+                    </header>
+                    <form class="modal-form">
+                        <label for="">Deseja mesmo excluir a máquina?</label>
+                    </form>
+                    <footer class="modal-footer">
+                        <button class="buttonCadPer green" id="sucessoExcluirMaquina">Excluir</button>
+                        <button class="buttonCadPer blue" id="cancelarClienteExcluirMaquina">Cancelar</button>
+                    </footer>
+                </div>
+            </div>
+            <div class="modal" id="modalConcluir">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2>Sucesso</h2>
+                        <span class="modal-close" id="modalClose3">✖</span>
+                    </header>
+                    <form class="modal-form">
+                        <label for="">Execussão realizada com sucesso!!!</label>
+                    </form>
+                    <footer class="modal-footer">
+                        <button class="buttonCadPer blue" id="ok">OK</button>
+                    </footer>
+                </div>
+            </div>
 
         </main>
     </div>
@@ -116,4 +179,52 @@
     btn.onclick = function () {
         side_bar.classList.toggle("active");
     }
+</script>
+<script>
+    // pop-ups
+    // variaveis
+    const openModal = () => document.getElementById('modalExcluirEmpresa').classList.add('active');
+    const closeModal = () => document.getElementById('modalExcluirEmpresa').classList.remove('active');
+
+
+    const openModal1 = () => document.getElementById('modalEditar').classList.add('active');
+    const closeModal1 = () => document.getElementById('modalEditar').classList.remove('active');
+
+
+    const openModal2 = () => document.getElementById('modalExcluirMaquina').classList.add('active');
+    const closeModal2 = () => document.getElementById('modalExcluirMaquina').classList.remove('active');
+
+    const sucesso = () => document.getElementById('modalConcluir').classList.add('active')
+    const closeModal3 = () => document.getElementById('modalConcluir').classList.remove('active')
+
+
+
+    // funcoes
+    document.getElementById('ExcluirEmpresa').addEventListener('click', openModal)
+    document.getElementById('modalClose').addEventListener('click', closeModal)
+    document.getElementById('cancelarClienteExcluirEmpresa').addEventListener('click', closeModal)
+    document.getElementById('sucessoExcluirEmpresa').addEventListener('click', closeModal)
+    document.getElementById('sucessoExcluirEmpresa').addEventListener('click', sucesso)
+    document.getElementById('modalClose3').addEventListener('click', closeModal3)
+    document.getElementById('ok').addEventListener('click', closeModal3)
+
+
+    document.getElementById('editarCliente').addEventListener('click', openModal1)
+    document.getElementById('modalClose1').addEventListener('click', closeModal1)
+    document.getElementById('cancelarClienteEditar').addEventListener('click', closeModal1)
+    document.getElementById('sucessoEditar').addEventListener('click', closeModal1)
+    document.getElementById('sucessoEditar').addEventListener('click', sucesso)
+    document.getElementById('modalClose3').addEventListener('click', closeModal3)
+    document.getElementById('ok').addEventListener('click', closeModal3)
+
+
+    document.getElementById('excluirCliente').addEventListener('click', openModal2);
+    document.getElementById('modalClose2').addEventListener('click', closeModal2)
+    document.getElementById('cancelarClienteExcluirMaquina').addEventListener('click', closeModal2)
+    document.getElementById('sucessoExcluirMaquina').addEventListener('click', closeModal2)
+    document.getElementById('sucessoExcluirMaquina').addEventListener('click', sucesso)
+    document.getElementById('modalClose3').addEventListener('click', closeModal3)
+    document.getElementById('ok').addEventListener('click', closeModal3)
+
+
 </script>

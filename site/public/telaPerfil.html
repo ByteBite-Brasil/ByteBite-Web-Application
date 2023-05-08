@@ -75,11 +75,20 @@
             <label style="color: white;">Consulte a baixo seus painéis que estão cadastrados em nosso sistema.
                 Você tem total acesso a editar e excluir seu usuários cadastrados.
             </label>
-            <td>
-                <button type="button" class="buttonCadPer orange" id="EditarEmpresa">Editar conta da empresa</button>
-                <button type="button" class="buttonCadPer blue" id="ExcluirEmpresa">Excluir conta da empresa</button>
-            </td>
-            </label>
+            <div class="botoes-editar-excluir">
+                <label id="editar-botao">
+                    <button type="button" class="buttonCadPer orange" id="EditarEmpresa">Editar conta da
+                        empresa</button>
+                </label>
+                <label id="excluir-botao">
+                    <button type="button" class="buttonCadPer blue" id="ExcluirEmpresa">Excluir conta da
+                        empresa</button>
+                </label>
+            </div>
+            <div class="title-grid-user">
+                <label>Meus usuários cadastrados</label>
+            </div>
+
             <table class="records">
                 <thead>
                     <tr>
@@ -125,28 +134,7 @@
                             <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>188</td>
-                        <td>Lucas</td>
-                        <td>Lucas@gmail.com</td>
-                        <td>(11)945245555</td>
-                        <td>Trianon-MASP</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>198</td>
-                        <td>Lucia</td>
-                        <td>Lucia@gmail.com</td>
-                        <td>(11)985736788</td>
-                        <td>Mauá</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
+
                 </tbody>
             </table>
             <div class="modal" id="modalExcluirEmpresa">
@@ -235,7 +223,7 @@
                         <label for="">Deseja mesmo excluir a máquina?</label>
                     </form>
                     <footer class="modal-footer">
-                        <button class="buttonCadPer green" id="sucessoEcxluirMaquina">Excluir</button>
+                        <button class="buttonCadPer green" id="sucessoExcluirMaquina">Excluir</button>
                         <button class="buttonCadPer blue" id="cancelarClienteExcluirMaquina">Cancelar</button>
                     </footer>
                 </div>
@@ -243,7 +231,7 @@
             <div class="modal" id="modalConcluir">
                 <div class="modal-content">
                     <header class="modal-header">
-                        <h2>Excluir cliente</h2>
+                        <h2>Sucesso</h2>
                         <span class="modal-close" id="modalClose3">✖</span>
                     </header>
                     <form class="modal-form">
@@ -281,7 +269,6 @@
 
     const openModal1 = () => document.getElementById('modalEditar').classList.add('active');
     const closeModal1 = () => document.getElementById('modalEditar').classList.remove('active');
-
 
     const openModal2 = () => document.getElementById('modalExcluirMaquina').classList.add('active');
     const closeModal2 = () => document.getElementById('modalExcluirMaquina').classList.remove('active');
