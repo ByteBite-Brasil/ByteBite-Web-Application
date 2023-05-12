@@ -2,7 +2,7 @@ async function cadastrarMaquina(){
     var nomeMaquina = ipt_maqNome.value;
     var senhaMaquina = ipt_senhaMaq.value;
     var fkEmpresa = sessionStorage.ID_USUARIO;
-
+    
     try {
         const conexao = await fetch("/maquina/cadastrarMaquina", {
             method: "POST",
