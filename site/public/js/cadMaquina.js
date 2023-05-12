@@ -43,6 +43,6 @@ function construirCardsMaquinas(maquinas){
         cardMaquina.className = "btnmaq"
         cardMaquina.appendChild(buttonMaq);
         minhasMaquinas.appendChild(cardMaquina);
-        buttonMaq.innerHTML = maquina.idMaquina;
+        buttonMaq.innerHTML = maquina.nome;
     });
 }
