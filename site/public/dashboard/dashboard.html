@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="obterTodosOsgraficos()">
 
     <!-- Navbar -->
     <div class="side_bar">
@@ -78,10 +78,7 @@
         <div class="kpis">
             <div class="selecionarMaquina">
                 <select name="" id="sel_maquina" class="escolhaTotem">
-                    <option value="">TOTEM 01</option>
-                    <option value="">TOTEM 02</option>
-                    <option value="">TOTEM 03</option>
-                    <option value="">TOTEM 04</option>
+                    
                 </select>
             </div>
             <div class="kpi">
@@ -110,7 +107,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="dadosTotem">
             <div class="hardware">
                 <h1>CPU</h1>
@@ -146,12 +143,12 @@
                 <h1>JANELAS DO SISTEMA</h1>
                 <div class="areaGraficoJanelas">
                     <div class="graficoJanelas">
-                       <h1 id="dataJanelas">2 JANELAS ATIVAS</h1>
+                        <h1 id="dataJanelas">2 JANELAS ATIVAS</h1>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <script src="dashboard.js"></script>
     </div>
 </body>
