@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteBite | Perfil</title>
+    <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/jpg" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styleNavbar.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="side_bar">
+        <div class="logo_content">
+            <div class="logo_nav">
+                <i class='bx bx1-c-plus-plus'></i>
+                <div class="logo_name">
+                    <img src="assets/logo/Logo_Branca.png" alt="" style="width: 120px; margin-top: 30%;">
+                </div>
+            </div>
+
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <a href="dashboard/dashboard.html">
+                    <i class='bx bx-line-chart'></i>
+                    <span class="links_name">Dashboards</span>
+                </a>
+                <span class="tooltip">Dashboards</span>
+            </li>
+            <li>
+                <a href="cadastroFun.html">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="links_name">Usuários</span>
+                </a>
+                <span class="tooltip">Usuários</span>
+            </li>
+            <li>
+                <a href="cadMaquinas.html">
+                    <i class='bx bx-border-all'></i>
+                    <span class="links_name">Máquinas</span>
+                </a>
+                <span class="tooltip">Máquinas</span>
+            </li>
+            <li>
+                <a href="telaPerfil.html">
+                    <i class='bx bx-user-circle'></i>
+                    <span class="links_name">Perfil</span>
+                </a>
+                <span class="tooltip">Perfil</span>
+            </li>
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links_name">Sair</span>
+                </a>
+                <span class="tooltip">Sair</span>
+            </li>
+        </ul>
+    </div>
+    <div class="TelaPerfil">
+        <header class="header">
+            <h1 class="header-title">Bem-vindo ao seu perfil!</h1>
+        </header class="header">
+        <main class="main">
+            <label style="color: white;">Consulte a baixo seus dados cadastrados.
+            </label>
+            <table class="records">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Celular</th>
+                        <th>Cidade</th>
+                        <th>Permissão</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Breno</td>
+                        <td>Brenojose1@gmail.com</td>
+                        <td>(11)989890797</td>
+                        <td>Jundiaí</td>
+                        <td>Visualizador</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </main>
+    </div>
+</body>
+
+</html>
+<script>
+    // nav bar
+    let btn = document.querySelector("#btn");
+    let side_bar = document.querySelector(".side_bar");
+
+    btn.onclick = function () {
+        side_bar.classList.toggle("active");
+    }
+</script>

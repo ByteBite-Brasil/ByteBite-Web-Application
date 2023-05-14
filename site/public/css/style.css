@@ -728,6 +728,10 @@ select {
     background-color: red;
 }
 
+.buttonCadPer.orange {
+    background-color: orange;
+}
+
 .buttonCadPer:hover {
     box-shadow: inset 200px 0 0 rgb(0, 0, 0);
 }
@@ -778,6 +782,7 @@ select {
     background-color: #00000090;
     opacity: 0;
     z-index: -1;
+    border: none;
 
 }
 
@@ -808,7 +813,7 @@ select {
     text-align: center;
     user-select: none;
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 10px;
 }
 
 .modal-close:hover {
@@ -821,7 +826,7 @@ select {
     flex-direction: column;
     gap: 20px;
     width: 50vw;
-    margin: 15vh auto;
+    margin: 30vh auto;
     padding-bottom: 20px;
     background-color: white;
     box-shadow: 1px 1px 10px black;
@@ -857,6 +862,15 @@ select {
     padding: 0 20px;
 }
 
+.title-grid-user{
+    width: 100%;
+    margin-top: 15px;
+    font-family: 'Poppins',sans-serif;
+    text-transform: capitalize;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+}
 
 /* Responsividade */
 
