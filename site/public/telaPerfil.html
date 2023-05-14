@@ -52,7 +52,7 @@
                 <span class="tooltip">Máquinas</span>
             </li>
             <li>
-                <a href="index.html">
+                <a href="telaPerfil.html">
                     <i class='bx bx-user-circle'></i>
                     <span class="links_name">Perfil</span>
                 </a>
@@ -73,14 +73,27 @@
         </header class="header">
         <main class="main">
             <label style="color: white;">Consulte a baixo seus painéis que estão cadastrados em nosso sistema.
-                Você tem total acesso a editar e excluir suas máquinas cadastradas.
+                Você tem total acesso a editar e excluir seu usuários cadastrados.
             </label>
-            <button type="button" class="buttonCadPer blue" id="ExcluirEmpresa">Excluir conta da empresa</button>
+            <div class="botoes-editar-excluir">
+                <label id="editar-botao">
+                    <button type="button" class="buttonCadPer orange" id="EditarEmpresa">Editar conta da
+                        empresa</button>
+                </label>
+                <label id="excluir-botao">
+                    <button type="button" class="buttonCadPer blue" id="ExcluirEmpresa">Excluir conta da
+                        empresa</button>
+                </label>
+            </div>
+            <div class="title-grid-user">
+                <label>Meus usuários cadastrados</label>
+            </div>
+
             <table class="records">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Responsável</th>
+                        <th>Nome</th>
                         <th>E-mail</th>
                         <th>Celular</th>
                         <th>Cidade</th>
@@ -121,72 +134,6 @@
                             <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>188</td>
-                        <td>Lucas</td>
-                        <td>Lucas@gmail.com</td>
-                        <td>(11)945245555</td>
-                        <td>Trianon-MASP</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>198</td>
-                        <td>Lucia</td>
-                        <td>Lucia@gmail.com</td>
-                        <td>(11)985736788</td>
-                        <td>Mauá</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>123</td>
-                        <td>Mariana</td>
-                        <td>mariana1230@gmail.com</td>
-                        <td>(11)908768675</td>
-                        <td>Santo André</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>177</td>
-                        <td>Túlio</td>
-                        <td>tulio@gmail.com</td>
-                        <td>(11)908086746</td>
-                        <td>São Caetano</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>112</td>
-                        <td>Jandira</td>
-                        <td>jandira@gmail.com</td>
-                        <td>(11)908765437</td>
-                        <td>Caieiras</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>113</td>
-                        <td>Victor</td>
-                        <td>victor@gmail.com</td>
-                        <td>(11)908648209</td>
-                        <td>Praia Grande</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
 
                 </tbody>
             </table>
@@ -210,6 +157,27 @@
                 </div>
             </div>
 
+            <div class="modal" id="modalEditarEmpresa">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2>Editar dados da empresa</h2>
+                        <span class="modal-close" id="modalClose4">✖</span>
+                    </header>
+                    <form class="modal-form">
+                        <!-- Inserir dos dados da empresa puxando do banco no placeholder  -->
+                        <div><input class="input" id="razaoSocial" type="text" placeholder="Razão Social"></div>
+                        <div><input class="input" id="email" type="email" placeholder="exemplo@gmail"></div>
+                        <div><input class="input" id="CNPJ" type="text" placeholder="23.920.541/0001-33"></div>
+                        <div><input class="input" id="senha" type="password" placeholder="Nova senha"></div>
+                        <div><input class="input" id="senha" type="password" placeholder="Confirme a nova senha"></div>
+                    </form>
+                    <footer class="modal-footer">
+                        <button class="buttonCadPer green" id="sucessoEditarEmpresa">Salvar</button>
+                        <button class="buttonCadPer blue" id="cancelarClienteEditarEmpresa">Cancelar</button>
+                    </footer>
+                </div>
+            </div>
+
             <div class="modal" id="modalEditar">
                 <div class="modal-content">
                     <header class="modal-header">
@@ -217,34 +185,28 @@
                         <span class="modal-close" id="modalClose1">✖</span>
                     </header>
                     <form class="modal-form">
-                        <div><input class="input" id="id" type="number" placeholder="Id para editação"></div>
-                        <div><input class="input" id="username" type="text" placeholder="Nome do responsável"></div>
+
+                        <div><input class="input" id="username" type="text" placeholder="Nome do usuário"></div>
                         <div><input class="input" id="email" type="email" placeholder="exemplo@gmail"></div>
                         <div><input class="input" id="telefone" type="" placeholder="(11)0000-0000"></div>
-                        <div><input class="input" id="senha" type="password" placeholder="Senha"></div>
+                        <div><input class="input" id="senha" type="password" placeholder="Nova senha"></div>
 
                         <div>
                             <select name="permissao" id="permissao" class="input">
-                                <option value="">Selecione</option>
+                                <option value="0">Permissão de usuário</option>
                                 <option value="">Visualização</option>
                                 <option value="">Modificação</option>
-                                <option value="">Administrador</option>
+
                             </select>
                         </div>
-                        <div><input class="input" id="senha" type="password" placeholder="Confirme a senha"></div>
-                        <div>
-                            <select name="genero" id="genero" class="input">
-                                <option value="">Selecione</option>
-                                <option value="">Feminino</option>
-                                <option value="">Masculino</option>
-                                <option value="">Prefiro não dizer</option>
-                            </select>
-                        </div>
+                        <div><input class="input" id="senha" type="password" placeholder="Confirme a nova senha"></div>
+
                     </form>
-                    <label style="margin-left: 5px;">⚠️⚠️Ao editar os dados de um usuário, você não perderá os respectivos dados!!!</label>
+                    <label style="margin-left: 20px;">Ao editar os dados de um usuário, você não perderá os
+                        respectivos dados!!!</label>
 
                     <footer class="modal-footer">
-                        
+
                         <button class="buttonCadPer green" id="sucessoEditar">Salvar</button>
                         <button class="buttonCadPer blue" id="cancelarClienteEditar">Cancelar</button>
                     </footer>
@@ -254,7 +216,7 @@
             <div class="modal" id="modalExcluirMaquina">
                 <div class="modal-content">
                     <header class="modal-header">
-                        <h2>Excluir cliente</h2>
+                        <h2>Excluir usuário</h2>
                         <span class="modal-close" id="modalClose2">✖</span>
                     </header>
                     <form class="modal-form">
@@ -269,7 +231,7 @@
             <div class="modal" id="modalConcluir">
                 <div class="modal-content">
                     <header class="modal-header">
-                        <h2>Excluir cliente</h2>
+                        <h2>Sucesso</h2>
                         <span class="modal-close" id="modalClose3">✖</span>
                     </header>
                     <form class="modal-form">
@@ -296,15 +258,18 @@
     }
 </script>
 <script>
-    // pop-ups
-    // variaveis
+    // modais
+
+    //EMPRESA
     const openModal = () => document.getElementById('modalExcluirEmpresa').classList.add('active');
     const closeModal = () => document.getElementById('modalExcluirEmpresa').classList.remove('active');
 
+    const openModal4 = () => document.getElementById('modalEditarEmpresa').classList.add('active');
+    const closeModal4 = () => document.getElementById('modalEditarEmpresa').classList.remove('active');
 
+    //USUARIOS
     const openModal1 = () => document.getElementById('modalEditar').classList.add('active');
     const closeModal1 = () => document.getElementById('modalEditar').classList.remove('active');
-
 
     const openModal2 = () => document.getElementById('modalExcluirMaquina').classList.add('active');
     const closeModal2 = () => document.getElementById('modalExcluirMaquina').classList.remove('active');
@@ -312,9 +277,8 @@
     const sucesso = () => document.getElementById('modalConcluir').classList.add('active')
     const closeModal3 = () => document.getElementById('modalConcluir').classList.remove('active')
 
-
-
-    // funcoes
+    // funcoes dos modais
+    //EMPRESA
     document.getElementById('ExcluirEmpresa').addEventListener('click', openModal)
     document.getElementById('modalClose').addEventListener('click', closeModal)
     document.getElementById('cancelarClienteExcluirEmpresa').addEventListener('click', closeModal)
@@ -323,7 +287,15 @@
     document.getElementById('modalClose3').addEventListener('click', closeModal3)
     document.getElementById('ok').addEventListener('click', closeModal3)
 
+    document.getElementById('EditarEmpresa').addEventListener('click', openModal4)
+    document.getElementById('modalClose4').addEventListener('click', closeModal4)
+    document.getElementById('cancelarClienteEditarEmpresa').addEventListener('click', closeModal4)
+    document.getElementById('sucessoEditarEmpresa').addEventListener('click', closeModal4)
+    document.getElementById('sucessoEditarEmpresa').addEventListener('click', sucesso)
+    document.getElementById('modalClose3').addEventListener('click', closeModal3)
+    document.getElementById('ok').addEventListener('click', closeModal3)
 
+    //USUARIOS
     document.getElementById('editarCliente').addEventListener('click', openModal1)
     document.getElementById('modalClose1').addEventListener('click', closeModal1)
     document.getElementById('cancelarClienteEditar').addEventListener('click', closeModal1)
@@ -332,7 +304,6 @@
     document.getElementById('modalClose3').addEventListener('click', closeModal3)
     document.getElementById('ok').addEventListener('click', closeModal3)
 
-
     document.getElementById('excluirCliente').addEventListener('click', openModal2);
     document.getElementById('modalClose2').addEventListener('click', closeModal2)
     document.getElementById('cancelarClienteExcluirMaquina').addEventListener('click', closeModal2)
@@ -340,6 +311,4 @@
     document.getElementById('sucessoExcluirMaquina').addEventListener('click', sucesso)
     document.getElementById('modalClose3').addEventListener('click', closeModal3)
     document.getElementById('ok').addEventListener('click', closeModal3)
-
-
 </script>
