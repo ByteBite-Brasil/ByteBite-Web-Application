@@ -1,11 +1,9 @@
-const ctx = document.getElementById('myChart');
+let myChart;
+let myChart1
 
-//var valorSelecionado = comboBox.value;
+function obterListaDeMaquinas() {
 
-//window.onload = obterDadosGrafico(valorSelecionado)
-
-function obterTodosOsgraficos() {
-
+    // Resolver a questao de quanto realizar login com usuario diferente de empresa, conseguir fazer a busca no banco das maquinas pela FK empresa, no momento esta somente via ID empresa.
     var idEmpresa = sessionStorage.ID_USUARIO
 
     fetch(`/medidas/getMaquinas`, {
@@ -31,7 +29,7 @@ function obterTodosOsgraficos() {
 
                 console.log(maquinas)
 
-                plotarMaquinas(maquinas)
+                plotarListaDeMaquinas(maquinas)
 
             });
 
@@ -49,51 +47,97 @@ function obterTodosOsgraficos() {
 
 }
 
-function plotarMaquinas(maquinas) {
+function plotarListaDeMaquinas(maquinas) {
 
-    var comboBox = document.getElementById("sel_maquina"); // Obtém uma referência à combobox
+    var comboBox = document.getElementById("sel_maquina");
 
-    maquinas.forEach(maquinas => { // Itera sobre as informações das máquinas
-        var option = document.createElement("option"); // Cria uma nova opção
-        option.value = maquinas.idMaquina; // Define o valor da opção como o ID da máquina
-        option.text = maquinas.nome; // Define o texto da opção como o nome da máquina
-        comboBox.add(option); // Adiciona a nova opção à combobox
+    maquinas.forEach(maquinas => {
+        var option = document.createElement("option");
+        option.value = maquinas.idMaquina;
+        option.text = maquinas.nome;
+        comboBox.add(option);
     });
 
     var valorSelecionado = maquinas[0].idMaquina
 
-    obterDadosGrafico(valorSelecionado)
+    obterDadosConsumoCPU(valorSelecionado)
 
 }
 
-var minhaSelect = document.getElementById("sel_maquina"); // Obtém uma referência ao elemento select
+var minhaSelect = document.getElementById("sel_maquina");
 
-minhaSelect.addEventListener("change", function () { // Adiciona um event listener ao elemento select
-    var valorSelecionado = minhaSelect.value; // Obtém o valor do option selecionado
-    obterDadosGrafico(valorSelecionado); // Chama a função minhaFuncao() com o valor selecionado como argumento
+minhaSelect.addEventListener("change", function () {
+
+    var valorSelecionado = minhaSelect.value;
+
+    obterDadosConsumoCPU(valorSelecionado);
+    obterDadosTemperaturaCPU(valorSelecionado);
+
 });
 
+let proximaAtualizacao;
 
-function obterDadosGrafico(valorSelecionado) {
+function obterDadosConsumoCPU(valorSelecionado, componente, tipo) {
 
-    console.log('estou aqui')
+    componente = 1;
+    tipo = 1
+
     console.log(valorSelecionado);
+    console.log(componente);
+    console.log(tipo);
 
-    // if (proximaAtualizacao != undefined) {
-    // clearTimeout(proximaAtualizacao);
-    // }
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
 
-    fetch(`/medidas/ultimas/${valorSelecionado}`, { cache: 'no-store' }).then(function (response) {
-        // console.log(idMaquina);
+    fetch(`/medidas/ultimas/cpu/consumo/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
 
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                resposta.reverse();
+                resposta.reverse()
 
-                // console.log(JSON.stringify(resposta[0].idLog))
+                console.log(resposta)
 
-                plotarGrafico(resposta,valorSelecionado);
+                plotarGraficoConsumoCPU(resposta);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+}
+
+function obterDadosTemperaturaCPU(valorSelecionado, componente, tipo) {
+
+    componente = 1;
+    tipo = 2
+
+    console.log(valorSelecionado);
+    console.log(componente);
+    console.log(tipo);
+
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/ultimas/cpu/temperatura/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse()
+
+                console.log(resposta)
+
+                plotarGraficoTemperaturaCPU(resposta);
+                // plotarGraficoConsumoDISCO(resposta);
+                // plotarGraficoConsumoRAM(resposta);
+
+
 
             });
         } else {
@@ -106,7 +150,7 @@ function obterDadosGrafico(valorSelecionado) {
 
 }
 
-function plotarGrafico(resposta,valorSelecionado) {
+function plotarGraficoConsumoCPU(resposta) {
 
     console.log('iniciando plotagem do gráfico...');
 
@@ -128,15 +172,11 @@ function plotarGrafico(resposta,valorSelecionado) {
         }]
     };
 
-    // Inserindo valores recebidos em estrutura para plotar o gráfico
     for (i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
 
-        if (registro.trataDe == 'Consumo' && registro.nome == 'Cpu') {
-            labels.push(registro.hora);
-            data.datasets[0].data.push(registro.medicao);
-        }
-
+        labels.push(registro.hora);
+        data.datasets[0].data.push(registro.medicao);
     }
 
     const config = {
@@ -165,113 +205,133 @@ function plotarGrafico(resposta,valorSelecionado) {
         },
     };
 
-    var myChart = new Chart(
-        document.getElementById('myChart'),
+    if (myChart) {
+        myChart.destroy();
+    }
+
+    myChart = new Chart(
+        document.getElementById('ConsumoCPU'),
         config
     );
 
-    setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+    // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+}
+
+function plotarGraficoTemperaturaCPU(resposta) {
+
+    console.log('iniciando plotagem do gráfico...');
+
+    let labels1 = [];
+
+    let data1 = {
+        labels: labels1,
+        datasets: [{
+            label: 'Temperatura - ºC',
+            data: [],
+            borderWidth: 1,
+            pointStyle: false,
+            borderWidth: 3,
+            borderColor: '#c90a02',
+            fill: true,
+            backgroundColor: '#7d0400',
+            color: '#c90a02',
+            tickBorderDash: [8, 4]
+        }]
+    };
+
+    for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+
+        labels1.push(registro.hora);
+        data1.datasets[0].data.push(registro.medicao);
+    }
+
+    const config1 = {
+        type: 'bar',
+        data: data1,
+        options: {
+            scales: {
+                x: {
+                    border: {
+                        display: false
+                    },
+                    grid: {
+                        display: false,
+                        drawTicks: true
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    border: { display: false },
+                    grid: {
+                        color: '#A7A6A6',
+                        border: false
+                    }
+                },
+            }
+        },
+    };
+
+    if (myChart1) {
+        myChart1.destroy();
+    }
+
+    myChart1 = new Chart(
+        document.getElementById('TemperaturaCPU'),
+        config1
+    );
+
+    // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
 }
 
 function atualizarGrafico(valorSelecionado, data, myChart) {
 
     fetch(`/medidas/tempo-real/${valorSelecionado}`, { cache: 'no-store' }).then(function (response) {
-      if (response.ok) {
-        response.json().then(function (novoRegistro) {
+        if (response.ok) {
+            response.json().then(function (novoRegistro) {
 
-          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-          console.log(`Dados atuais do gráfico:`);
-          console.log(data);
+                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                console.log(`Dados atuais do gráfico:`);
+                console.log(data);
 
-          if (novoRegistro[0].hora == data.labels[data.labels.length - 1]) {
-            console.log("---------------------------------------------------------------")
-            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-            console.log("Horário do novo dado capturado:")
-            console.log(novoRegistro[0].hora)
-            console.log("Horário do último dado capturado:")
-            console.log(data.labels[data.labels.length - 1])
-            console.log("---------------------------------------------------------------")
-          } else {
+                if (novoRegistro[0].hora == data.labels[data.labels.length - 1]) {
+                    console.log("---------------------------------------------------------------")
+                    console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                    console.log("Horário do novo dado capturado:")
+                    console.log(novoRegistro[0].hora)
+                    console.log("Horário do último dado capturado:")
+                    console.log(data.labels[data.labels.length - 1])
+                    console.log("---------------------------------------------------------------")
+                } else {
 
-            // tirando e colocando valores no gráfico
-            
-            data.labels.shift(); // apagar o primeiro
-            
-            data.labels.push(novoRegistro[0].hora); // incluir um novo momento
+                    // tirando e colocando valores no gráfico
 
-            data.datasets[0].data.shift();  // apagar o primeiro de temperatura
-            data.datasets[0].data.push(novoRegistro[0].medicao); // incluir uma nova medida de temperatura
+                    data.labels.shift(); // apagar o primeiro
 
-            myChart.update();
+                    data.labels.push(novoRegistro[0].hora); // incluir um novo momento
+
+                    data.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                    data.datasets[0].data.push(novoRegistro[0].medicao); // incluir uma nova medida de temperatura
+
+                    myChart.update();
 
 
-          }
+                }
 
-          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
-        });
-      } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
-      }
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+        }
     })
-      .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-      });
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
 
-  }
-
-
-
-
-
-// new Chart(ctx, {
-//     type: 'line',
-//     options: {
-//         responsive: true,
-
-
-//     },
-//     data: {
-//         labels: ['', '', '', '', '', '', '', '', '', ''],
-//         datasets: [{
-//             label: 'Consumo - % de Uso',
-//             data: [],
-//             borderWidth: 1,
-//             pointStyle: false,
-//             borderWidth: 3,
-//             borderColor: '#c90a02',
-//             fill: true,
-//             backgroundColor: '#7d0400',
-//             color: '#c90a02',
-//             tickBorderDash: [8, 4]
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             x: {
-//                 border: {
-//                     display: false
-//                 },
-//                 grid: {
-//                     display: false,
-//                     drawTicks: true
-
-//                 }
-//             },
-//             y: {
-//                 beginAtZero: true,
-//                 border: { display: false },
-
-//                 grid: {
-//                     color: '#A7A6A6',
-//                     border: false
-//                 }
-//             },
-//         }
-//     }
-// });
+}
 
 // const ctxTemp = document.getElementById('temp1');
 

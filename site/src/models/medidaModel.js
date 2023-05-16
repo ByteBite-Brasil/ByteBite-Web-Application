@@ -11,31 +11,46 @@ function getMaquinas(idEmpresa) {
     return database.executar(instrucaoSql);
 }
 
-function buscarUltimasMedidas(idMaquina, limite_linhas) {
-    
-        instrucaoSql = `SELECT top ${limite_linhas} lc.idLog, lc.data_, lc.hora, lc.medicao, c.total, c.unidadeMedida, tc.nome, tl.trataDe
-        FROM log_captura lc
-        INNER JOIN configuracao cfg ON lc.fk_configuracao = cfg.idConfiguracao
-        INNER JOIN componente c ON cfg.fk_componente = c.idComponente
-        INNER JOIN tipo_componente tc ON c.fk_tipo_componente = tc.idTipoComponente
-        INNER JOIN tipo_log tl ON lc.fk_tipo_log = tl.idTipoLog
-        WHERE cfg.fk_maquina = ${idMaquina}
-        order by lc.idLog desc`
+function buscarUltimasMedidasConsumoCPU(idMaquina, idComponente, idTipo, limite_linhas) {
+
+    instrucaoSql = `SELECT top ${limite_linhas} lc.idLog, lc.data_, lc.hora, lc.medicao, c.total, c.unidadeMedida, tc.nome, tl.trataDe
+    FROM log_captura lc
+    INNER JOIN configuracao cfg ON lc.fk_configuracao = cfg.idConfiguracao
+    INNER JOIN componente c ON cfg.fk_componente = c.idComponente
+    INNER JOIN tipo_componente tc ON c.fk_tipo_componente = tc.idTipoComponente
+    INNER JOIN tipo_log tl ON lc.fk_tipo_log = tl.idTipoLog
+    WHERE cfg.fk_maquina = ${idMaquina} AND c.fk_tipo_componente = ${idComponente} AND lc.fk_tipo_log = ${idTipo}
+    ORDER BY lc.idLog DESC;`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarUltimasMedidasTemperaturaCPU(idMaquina, idComponente, idTipo, limite_linhas) {
+
+    instrucaoSql = `SELECT top ${limite_linhas} lc.idLog, lc.data_, lc.hora, lc.medicao, c.total, c.unidadeMedida, tc.nome, tl.trataDe
+    FROM log_captura lc
+    INNER JOIN configuracao cfg ON lc.fk_configuracao = cfg.idConfiguracao
+    INNER JOIN componente c ON cfg.fk_componente = c.idComponente
+    INNER JOIN tipo_componente tc ON c.fk_tipo_componente = tc.idTipoComponente
+    INNER JOIN tipo_log tl ON lc.fk_tipo_log = tl.idTipoLog
+    WHERE cfg.fk_maquina = ${idMaquina} AND c.fk_tipo_componente = ${idComponente} AND lc.fk_tipo_log = ${idTipo}
+    ORDER BY lc.idLog DESC;`
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 function buscarMedidasEmTempoReal(idMaquina) {
-    
-        instrucaoSql = `SELECT top 1 lc.idLog, lc.data_, lc.hora, lc.medicao, c.total, c.unidadeMedida, tc.nome, tl.trataDe
+
+    instrucaoSql = `SELECT top 1 lc.idLog, lc.data_, lc.hora, lc.medicao, c.total, c.unidadeMedida, tc.nome, tl.trataDe
         FROM log_captura lc
         INNER JOIN configuracao cfg ON lc.fk_configuracao = cfg.idConfiguracao
         INNER JOIN componente c ON cfg.fk_componente = c.idComponente
         INNER JOIN tipo_componente tc ON c.fk_tipo_componente = tc.idTipoComponente
         INNER JOIN tipo_log tl ON lc.fk_tipo_log = tl.idTipoLog
-        WHERE cfg.fk_maquina = ${idMaquina}
-        order by lc.idLog desc`
+        WHERE cfg.fk_maquina = ${idMaquina} AND c.idComponente = ${idComponente}
+        ORDER BY lc.idLog DESC;`
 
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -45,6 +60,7 @@ function buscarMedidasEmTempoReal(idMaquina) {
 
 module.exports = {
     getMaquinas,
-    buscarUltimasMedidas,
+    buscarUltimasMedidasConsumoCPU,
+    buscarUltimasMedidasTemperaturaCPU,
     buscarMedidasEmTempoReal
 }
