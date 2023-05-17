@@ -48,8 +48,65 @@ function listarMaquinas(req, res) {
         );
 }
 
+function atualizaMaquina(req, res) {
+    var nomeMaquina = req.body.nomeMaquinaServer;
+    var idMaquina = req.body.idMaquinaServer;
+    var fkEmpresa = req.body.fkEmpresaServer;
+    if (nomeMaquina == undefined) {
+        res.status(400).send("Máquina indefinida");
+    } else if (idMaquina == undefined) {
+        res.status(400).send("Senha da Máquina indefinida!");
+    } else if (fkEmpresa == undefined) {
+        res.status(400).send("Senha da Máquina indefinida!");
+    } else {
+        maquinaModel.atualizarMaquina(nomeMaquina, idMaquina, fkEmpresa)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao atualizar a máquina! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function excluirMaquina(req, res) {
+    var idMaquina = req.body.idMaquinaServer;
+    var fkEmpresa = req.body.fkEmpresaServer;
+     if (idMaquina == undefined) {
+        res.status(400).send("Senha da Máquina indefinida!");
+    } else if (fkEmpresa == undefined) {
+        res.status(400).send("Senha da Máquina indefinida!");
+    } else {
+        maquinaModel.excluirMaquina(idMaquina, fkEmpresa)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao atualizar a máquina! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 
 module.exports = {
     cadastrarMaquina,
-    listarMaquinas
+    listarMaquinas,
+    atualizaMaquina,
+    excluirMaquina
 }

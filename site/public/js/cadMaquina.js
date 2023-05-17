@@ -1,3 +1,4 @@
+listarMaquinas();
 async function cadastrarMaquina(){
     var nomeMaquina = ipt_maqNome.value;
     var senhaMaquina = ipt_senhaMaq.value;
@@ -15,6 +16,8 @@ async function cadastrarMaquina(){
                 fkEmpresaServer: fkEmpresa
             })
         });
+        ipt_maqNome.value = "";
+        ipt_senhaMaq.value = "";
         listarMaquinas();
     } catch (error) {
         console.log(error);
@@ -37,12 +40,81 @@ async function listarMaquinas(){
 function construirCardsMaquinas(maquinas){
     var minhasMaquinas = document.getElementById("formMaquina");
     maquinas.forEach(maquina => {
-        const cardMaquina = document.createElement("div")
-        const buttonMaq = document.createElement("button")
-        buttonMaq.className = "btnmaq";
-        cardMaquina.className = "btnmaq"
-        cardMaquina.appendChild(buttonMaq);
+        const cardMaquina = document.createElement("tr");
+        const idTotem = document.createElement("td");
+        const nomeTotem = document.createElement("td");
+        const buttonArea = document.createElement("td")
+        const buttonEditar = document.createElement("button")
+        const buttonExcluir = document.createElement("button")
+        buttonEditar.innerHTML = "Editar";
+        buttonExcluir.innerHTML = "Excluir";
+        buttonEditar.className = "buttonCadPer green"
+        buttonExcluir.className = "buttonCadPer red"
+
         minhasMaquinas.appendChild(cardMaquina);
-        buttonMaq.innerHTML = maquina.nome;
+        cardMaquina.appendChild(idTotem)
+        cardMaquina.appendChild(nomeTotem)
+        buttonArea.appendChild(buttonEditar)
+        buttonArea.appendChild(buttonExcluir)
+        cardMaquina.appendChild(buttonArea)
+
+        idTotem.className = "tableLine"
+        nomeTotem.className = "tableLine";
+        buttonArea.className = "buttonsArea";
+
+        buttonEditar.setAttribute("id", "editarCliente")
+        buttonExcluir.setAttribute("id", "excluirCliente")
+
+        buttonEditar.addEventListener('click',() => openModal1(maquina.idMaquina, maquina.nome));
+        buttonExcluir.addEventListener('click', () => openModal2(maquina.idMaquina));
+
+        idTotem.innerHTML = `${maquina.idMaquina}`;
+        nomeTotem.innerHTML = `${maquina.nome}`;
+
     });
+
+}
+
+async function atualizarMaquina(id){
+    try {
+        var idMaquina = id;
+        var nomeMaquina = maquinaName.value;
+        var fkEmpresa = sessionStorage.ID_USUARIO;
+        const conexao = await fetch("/maquina/atualizarMaquina", {
+            method: "PUT",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeMaquinaServer: nomeMaquina,
+                idMaquinaServer: idMaquina,
+                fkEmpresaServer: fkEmpresa
+            })
+        });
+        listarMaquinas();
+    } catch(e){
+        throw new Exception(e);
+    }
+
+}
+
+async function excluirMaquina(id){
+    try {
+        var idMaquina = id;
+        var fkEmpresa = sessionStorage.ID_USUARIO;
+        const conexao = await fetch("/maquina/excluirMaquina", {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                idMaquinaServer: idMaquina,
+                fkEmpresaServer: fkEmpresa
+            })
+        });
+        conexao.ok(conexao.body);
+        listarMaquinas();
+    } catch(e){
+        throw new Exception(e);
+    }
 }

@@ -750,18 +750,18 @@ select {
 
 }
 
-.records td {
+.tableLine {
     height: 50px;
     padding-left: 20px;
     /* border: 3px black solid; */
-    color: white;
+    color: black;
     border-bottom: black 3px solid;
     border-left:black 3px solid ;
 }
 
 .records th:last-child,
 
-.records td:last-child {
+.buttonsArea {
     padding: 0;
     min-width: 140px;
     text-align: center;

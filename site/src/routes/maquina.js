@@ -9,6 +9,12 @@ router.post("/cadastrarMaquina", function (req, res) {
 router.get("/listarMaquinas/:fkEmpresa", function (req, res) {
     maquinaController.listarMaquinas(req, res);
 });
+router.put("/atualizarMaquina", function (req, res) {
+    maquinaController.atualizaMaquina(req, res);
+});
+router.delete("/excluirMaquina", function (req, res) {
+    maquinaController.excluirMaquina(req, res);
+});
 
 
 module.exports = router;
