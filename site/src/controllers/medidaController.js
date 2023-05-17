@@ -19,7 +19,7 @@ function getMaquinas(req, res) {
     });
 }
 
-function buscarUltimasMedidasConsumoCPU(req, res) {
+function buscarUltimasMedidas(req, res) {
 
     const limite_linhas = 10;
 
@@ -30,31 +30,7 @@ function buscarUltimasMedidasConsumoCPU(req, res) {
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    medidaModel.buscarUltimasMedidasConsumoCPU(idMaquina, idComponente, idTipo, limite_linhas).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
-
-function buscarUltimasMedidasTemperaturaCPU(req, res) {
-
-    const limite_linhas = 10;
-
-    var idMaquina = req.params.idMaquina;
-    var idComponente = req.params.idComponente;
-    var idTipo = req.params.idTipo;
-
-
-    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
-
-    medidaModel.buscarUltimasMedidasTemperaturaCPU(idMaquina, idComponente, idTipo, limite_linhas).then(function (resultado) {
+    medidaModel.buscarUltimasMedidas(idMaquina, idComponente, idTipo, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -88,8 +64,7 @@ function buscarMedidasEmTempoReal(req, res) {
 
 module.exports = {
     getMaquinas,
-    buscarUltimasMedidasConsumoCPU,
-    buscarUltimasMedidasTemperaturaCPU,
+    buscarUltimasMedidas,
     buscarMedidasEmTempoReal
 
 }

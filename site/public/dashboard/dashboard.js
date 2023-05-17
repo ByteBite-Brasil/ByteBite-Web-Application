@@ -1,5 +1,7 @@
 let myChart;
-let myChart1
+let myChart1;
+let myChart2;
+let myChart3;
 
 function obterListaDeMaquinas() {
 
@@ -44,7 +46,6 @@ function obterListaDeMaquinas() {
     });
 
     return false;
-
 }
 
 function plotarListaDeMaquinas(maquinas) {
@@ -61,6 +62,9 @@ function plotarListaDeMaquinas(maquinas) {
     var valorSelecionado = maquinas[0].idMaquina
 
     obterDadosConsumoCPU(valorSelecionado)
+    obterDadosTemperaturaCPU(valorSelecionado);
+    obterDadosConsumoDISCO(valorSelecionado);
+    obterDadosConsumoRAM(valorSelecionado);
 
 }
 
@@ -72,32 +76,31 @@ minhaSelect.addEventListener("change", function () {
 
     obterDadosConsumoCPU(valorSelecionado);
     obterDadosTemperaturaCPU(valorSelecionado);
+    obterDadosConsumoDISCO(valorSelecionado);
+    obterDadosConsumoRAM(valorSelecionado);
 
 });
 
 let proximaAtualizacao;
 
+
+// OBTER DADOS
 function obterDadosConsumoCPU(valorSelecionado, componente, tipo) {
 
     componente = 1;
     tipo = 1
 
-    console.log(valorSelecionado);
-    console.log(componente);
-    console.log(tipo);
-
     if (proximaAtualizacao != undefined) {
         clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/medidas/ultimas/cpu/consumo/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/medidas/ultimas/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
 
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse()
 
-                console.log(resposta)
 
                 plotarGraficoConsumoCPU(resposta);
             });
@@ -116,29 +119,18 @@ function obterDadosTemperaturaCPU(valorSelecionado, componente, tipo) {
     componente = 1;
     tipo = 2
 
-    console.log(valorSelecionado);
-    console.log(componente);
-    console.log(tipo);
-
     if (proximaAtualizacao != undefined) {
         clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/medidas/ultimas/cpu/temperatura/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/medidas/ultimas/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
 
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse()
 
-                console.log(resposta)
-
                 plotarGraficoTemperaturaCPU(resposta);
-                // plotarGraficoConsumoDISCO(resposta);
-                // plotarGraficoConsumoRAM(resposta);
-
-
-
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -150,6 +142,67 @@ function obterDadosTemperaturaCPU(valorSelecionado, componente, tipo) {
 
 }
 
+function obterDadosConsumoDISCO(valorSelecionado, componente, tipo) {
+
+    componente = 3;
+    tipo = 1
+
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/ultimas/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse()
+
+                plotarGraficoConsumoDISCO(resposta);
+
+
+
+
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+
+function obterDadosConsumoRAM(valorSelecionado, componente, tipo) {
+
+    componente = 2;
+    tipo = 1
+
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/ultimas/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse()
+
+
+                plotarGraficoConsumoRAM(resposta);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+}
+
+// PLOTAR DADOS
 function plotarGraficoConsumoCPU(resposta) {
 
     console.log('iniciando plotagem do gráfico...');
@@ -247,7 +300,7 @@ function plotarGraficoTemperaturaCPU(resposta) {
     }
 
     const config1 = {
-        type: 'bar',
+        type: 'line',
         data: data1,
         options: {
             scales: {
@@ -284,6 +337,142 @@ function plotarGraficoTemperaturaCPU(resposta) {
     // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
 }
 
+function plotarGraficoConsumoDISCO(resposta) {
+
+    console.log('iniciando plotagem do gráfico...');
+
+    let labels2 = [];
+
+    let data2 = {
+        labels: labels2,
+        datasets: [{
+            label: 'Consumo - %',
+            data: [],
+            borderWidth: 1,
+            pointStyle: false,
+            borderWidth: 3,
+            borderColor: '#c90a02',
+            fill: true,
+            backgroundColor: '#7d0400',
+            color: '#c90a02',
+            tickBorderDash: [8, 4]
+        }]
+    };
+
+    for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+
+        labels2.push(registro.hora);
+        data2.datasets[0].data.push(registro.medicao);
+    }
+
+    const config2 = {
+        type: 'line',
+        data: data2,
+        options: {
+            scales: {
+                x: {
+                    border: {
+                        display: false
+                    },
+                    grid: {
+                        display: false,
+                        drawTicks: true
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    border: { display: false },
+                    grid: {
+                        color: '#A7A6A6',
+                        border: false
+                    }
+                },
+            }
+        },
+    };
+
+    if (myChart2) {
+        myChart2.destroy();
+    }
+
+    myChart2 = new Chart(
+        document.getElementById('ConsumoDISCO'),
+        config2
+    );
+
+    // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+}
+
+function plotarGraficoConsumoRAM(resposta) {
+
+    console.log('iniciando plotagem do gráfico...');
+
+    let labels3 = [];
+
+    let data3 = {
+        labels: labels3,
+        datasets: [{
+            label: 'Consumo - %',
+            data: [],
+            borderWidth: 1,
+            pointStyle: false,
+            borderWidth: 3,
+            borderColor: '#c90a02',
+            fill: true,
+            backgroundColor: '#7d0400',
+            color: '#c90a02',
+            tickBorderDash: [8, 4]
+        }]
+    };
+
+    for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+
+        labels3.push(registro.hora);
+        data3.datasets[0].data.push(registro.medicao);
+    }
+
+    const config3 = {
+        type: 'line',
+        data: data3,
+        options: {
+            scales: {
+                x: {
+                    border: {
+                        display: false
+                    },
+                    grid: {
+                        display: false,
+                        drawTicks: true
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    border: { display: false },
+                    grid: {
+                        color: '#A7A6A6',
+                        border: false
+                    }
+                },
+            }
+        },
+    };
+
+    if (myChart3) {
+        myChart3.destroy();
+    }
+
+    myChart3 = new Chart(
+        document.getElementById('ConsumoRAM'),
+        config3
+    );
+
+    // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+}
+
+
+// ATUALIZAR DADOS
 function atualizarGrafico(valorSelecionado, data, myChart) {
 
     fetch(`/medidas/tempo-real/${valorSelecionado}`, { cache: 'no-store' }).then(function (response) {
@@ -332,56 +521,6 @@ function atualizarGrafico(valorSelecionado, data, myChart) {
         });
 
 }
-
-// const ctxTemp = document.getElementById('temp1');
-
-// new Chart(ctxTemp, {
-//     type: 'bar',
-//     options: {
-//         responsive: true,
-
-
-//     },
-//     data: {
-//         labels: ['', '', '', '', '', '', '', '', '', ''],
-//         datasets: [{
-//             label: 'Temperatura - ºC',
-//             data: [50, 51, 49, 53, 64, 50, 50, 51, 49, 100],
-//             borderWidth: 1,
-//             pointStyle: false,
-//             borderWidth: 3,
-//             borderColor: '#c90a02',
-//             fill: true,
-//             backgroundColor: '#7d0400',
-//             color: '#c90a02',
-//             tickBorderDash: [8, 4]
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             x: {
-//                 border: {
-//                     display: false
-//                 },
-//                 grid: {
-//                     display: false,
-//                     drawTicks: true
-
-//                 }
-//             },
-//             y: {
-//                 beginAtZero: true,
-//                 border: { display: false },
-
-//                 grid: {
-//                     color: '#A7A6A6',
-//                     border: false
-//                 }
-//             },
-//         }
-//     }
-// });
-
 
 // const ctx1 = document.getElementById('myChart1');
 

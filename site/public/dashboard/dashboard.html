@@ -82,68 +82,72 @@
                 </select>
             </div>
             <div class="kpi">
-                <span>TEMPERATURA PROCESSADOR NO DIA</span>
+                <span>TOP TEMPERATURA PROCESSADOR NO DIA</span>
                 <div class="datakpi kpiruim">
                     <span>85ºC</span>
                 </div>
             </div>
             <div class="kpi kpi2">
-                <span>MAIOR USO DO PROCESSADOR NO DIA</span>
+                <span>TOP USO DO PROCESSADOR NO DIA</span>
                 <div class="datakpi kpiboa">
                     <span>60%</span>
                 </div>
             </div>
             <div class="kpi kpi3">
-                <span>MAIOR USO DA MEMÓRIA RAM NO DIA</span>
+                <span>TOP USO DA MEMÓRIA RAM NO DIA</span>
                 <div class="datakpi kpiruim">
                     <span>100%</span>
                 </div>
             </div>
-            <div class="alerta">
+            <!-- <div class="alerta">
                 <img src="../assets/images/alert_gif.gif" alt="">
                 <div class="alertBox">
                     <span class="kpiruim">Temperatura acima da normalidade!</span>
                     <button class="btnAlert">Verificar</button>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="dadosTotem">
             <div class="hardware">
-                <h1>CPU</h1>
+                <h1>CONSUMO CPU</h1>
                 <div class="areaGrafico">
                     <div class="grafico1">
                         <canvas id="ConsumoCPU"></canvas>
                     </div>
+                    <h1>TEMPERATURA CPU</h1>
                     <div class="grafico">
-                        <canvas id="S"></canvas>
+                        <canvas id="TemperaturaCPU"></canvas>
                     </div>
                 </div>
             </div>
+
             <div class="hardware">
-                <h1>DISCO</h1>
+                <h1>CONSUMO DISCO</h1>
                 <div class="areaGrafico">
                     <div class="grafico1">
-                        <canvas id="myChart1"></canvas>
+                        <canvas id="ConsumoDISCO"></canvas>
                     </div>
+                    <H1>JANELAS DO SISTEMA</H1>
                     <div class="grafico">
-                        <canvas id="temp2"></canvas>
+                        <canvas id="Janelas"></canvas>
                     </div>
                 </div>
             </div>
+
             <div class="hardware">
-                <h1>MEMÓRIA RAM</h1>
-                <div class="areaGraficoRam">
-                    <div class="graficoRam">
-                        <canvas id="consumoRam"></canvas>
+                <h1>CONSUMO MEMÓRIA RAM</h1>
+                <div class="areaGrafico">
+                    <div class="grafico1">
+                        <canvas id="ConsumoRAM"></canvas>
                     </div>
-                </div>
-            </div>
-            <div class="hardware">
-                <h1>JANELAS DO SISTEMA</h1>
-                <div class="areaGraficoJanelas">
-                    <div class="graficoJanelas">
-                        <h1 id="dataJanelas">2 JANELAS ATIVAS</h1>
+                    <H1>ALERTAS</H1>
+                    <div class="grafico1">
+                        <!-- <img src="../assets/images/alert_gif.gif" alt="">
+                        <div class="alertBox">
+                            <span class="kpiruim">Temperatura acima da normalidade!</span>
+                            <button class="btnAlert">Verificar</button>
+                        </div> -->
                     </div>
                 </div>
             </div>
