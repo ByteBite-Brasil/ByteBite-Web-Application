@@ -81,57 +81,17 @@
 
         <div id="formMaquina">
             <h2 class="title">Minhas máquinas</h2>
-            <table class="records">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Máquina</th>
-                        <th>Ação</th>
-
-                    </tr>
-                </thead>
-                <tbody id="tableMaquina">
-                    <!-- <tr>
-                        <td style="color: black;">100</td>
-                        <td style="color: black;">TotenTeste</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="color: black;">101</td>
-                        <td style="color: black;">TotenTeste1</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="color: black;">102</td>
-                        <td style="color: black;">TotenTeste2</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="color: black;">103</td>
-                        <td style="color: black;">TotenTeste3</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="color: black;">104</td>
-                        <td style="color: black;">TotenTeste4</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr> -->
-                </tbody>
+            <div class="headerTable">
+                <div class="idMaq">
+                    <span>ID</span>
+                </div>
+                <div class="maquina">
+                    <span>MÁQUINA</span>
+                </div>
+                <div class="acaoMaquina">
+                    <span>AÇÃO</span>
+                </div>
+            </div>
         </div>
 
         <div class="modal" id="modalConcluir">
@@ -212,26 +172,29 @@
     const closeModal2 = () => document.getElementById('modalExcluirMaquina').classList.remove('active');
 
     const sucesso = () => document.getElementById('modalConcluir').classList.add('active')
-    const closeModal3 = () => document.getElementById('modalConcluir').classList.remove('active')
+    function closeModal3() { 
+        document.getElementById('modalConcluir').classList.remove('active')
+        window.location = 'cadMaquinas.html';
+    }
 
     // document.getElementById('editarCliente').addEventListener('click', openModal1)
     document.getElementById('modalClose1').addEventListener('click', closeModal1)
     document.getElementById('cancelarClienteEditar').addEventListener('click', closeModal1)
     document.getElementById('sucessoEditar').addEventListener('click', closeModal1)
     document.getElementById('sucessoEditar').addEventListener('click', sucesso)
-    document.getElementById('modalClose3').addEventListener('click', closeModal3)
-    document.getElementById('ok').addEventListener('click', closeModal3)
+    document.getElementById('modalClose3').addEventListener('click',() => closeModal3())
+    document.getElementById('ok').addEventListener('click', () => closeModal3())
 
     // document.getElementById('excluirCliente').addEventListener('click', openModal2)
     document.getElementById('modalClose2').addEventListener('click', closeModal2)
     document.getElementById('cancelarClienteExcluirMaquina').addEventListener('click', closeModal2)
     document.getElementById('sucessoExcluirMaquina').addEventListener('click', closeModal2)
     document.getElementById('sucessoExcluirMaquina').addEventListener('click', sucesso)
-    document.getElementById('modalClose3').addEventListener('click', closeModal3)
-    document.getElementById('ok').addEventListener('click', closeModal3)
+    document.getElementById('modalClose3').addEventListener('click', () => closeModal3())
+    document.getElementById('ok').addEventListener('click',()=> closeModal3())
     //MODAL DE SUCESSO NO CADASTRO
     document.getElementById('buttonCadastrar').addEventListener('click', sucesso);
-    document.getElementById('modalClose3').addEventListener('click', closeModal3)
-    document.getElementById('ok').addEventListener('click', closeModal3)
+    document.getElementById('modalClose3').addEventListener('click',() => closeModal3())
+    document.getElementById('ok').addEventListener('click',() => closeModal3)
 
 </script>

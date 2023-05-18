@@ -40,16 +40,25 @@ async function listarMaquinas(){
 function construirCardsMaquinas(maquinas){
     var minhasMaquinas = document.getElementById("formMaquina");
     maquinas.forEach(maquina => {
-        const cardMaquina = document.createElement("tr");
-        const idTotem = document.createElement("td");
-        const nomeTotem = document.createElement("td");
-        const buttonArea = document.createElement("td")
+        const cardMaquina = document.createElement("div");
+        const idTotem = document.createElement("div");
+        const nomeTotem = document.createElement("div");
+        const buttonArea = document.createElement("div")
         const buttonEditar = document.createElement("button")
         const buttonExcluir = document.createElement("button")
         buttonEditar.innerHTML = "Editar";
         buttonExcluir.innerHTML = "Excluir";
         buttonEditar.className = "buttonCadPer green"
         buttonExcluir.className = "buttonCadPer red"
+
+        cardMaquina.className = "bodyTable"
+        idTotem.className = "idMaquina"
+        nomeTotem.className = "nameMaquina"
+        buttonArea.className = "maqAcao"
+
+        idTotem.innerHTML = `${maquina.idMaquina}`
+        nomeTotem.innerHTML = `${maquina.nome}`
+
 
         minhasMaquinas.appendChild(cardMaquina);
         cardMaquina.appendChild(idTotem)
@@ -58,19 +67,11 @@ function construirCardsMaquinas(maquinas){
         buttonArea.appendChild(buttonExcluir)
         cardMaquina.appendChild(buttonArea)
 
-        idTotem.className = "tableLine"
-        nomeTotem.className = "tableLine";
-        buttonArea.className = "buttonsArea";
-
         buttonEditar.setAttribute("id", "editarCliente")
         buttonExcluir.setAttribute("id", "excluirCliente")
 
         buttonEditar.addEventListener('click',() => openModal1(maquina.idMaquina, maquina.nome));
         buttonExcluir.addEventListener('click', () => openModal2(maquina.idMaquina));
-
-        idTotem.innerHTML = `${maquina.idMaquina}`;
-        nomeTotem.innerHTML = `${maquina.nome}`;
-
     });
 
 }
@@ -91,7 +92,6 @@ async function atualizarMaquina(id){
                 fkEmpresaServer: fkEmpresa
             })
         });
-        listarMaquinas();
     } catch(e){
         throw new Exception(e);
     }
@@ -113,7 +113,6 @@ async function excluirMaquina(id){
             })
         });
         conexao.ok(conexao.body);
-        listarMaquinas();
     } catch(e){
         throw new Exception(e);
     }
