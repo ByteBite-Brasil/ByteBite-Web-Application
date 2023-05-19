@@ -48,6 +48,24 @@ function listarMaquinas(req, res) {
         );
 }
 
+function listarUsuarios(req, res) {
+    var idEmpresa = req.params.fkEmpresa;
+    maquinaModel.listarUsuarios(idEmpresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function atualizaMaquina(req, res) {
     var nomeMaquina = req.body.nomeMaquinaServer;
     var idMaquina = req.body.idMaquinaServer;
@@ -108,5 +126,6 @@ module.exports = {
     cadastrarMaquina,
     listarMaquinas,
     atualizaMaquina,
-    excluirMaquina
+    excluirMaquina,
+    listarUsuarios
 }

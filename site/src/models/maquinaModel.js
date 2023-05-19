@@ -13,7 +13,16 @@ function cadastrarMaquina(loginMaquina, senhaMaquina, fkEmpresa) {
 function listarMaquinas(fkEmpresa) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMaquinas()");
     var instrucao = `
-        SELECT * FROM maquina where fk_empresa_maquina = ${fkEmpresa};
+        SELECT * FROM maquina where fk_empresa_maquina = '${fkEmpresa}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function listarUsuarios(fkEmpresa) {
+    console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarUsuarios()");
+    var instrucao = `
+        SELECT * FROM usuario where fk_empresa_usuario = ${fkEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -44,5 +53,6 @@ module.exports = {
     cadastrarMaquina,
     listarMaquinas,
     atualizarMaquina,
-    excluirMaquina
+    excluirMaquina,
+    listarUsuarios
 }

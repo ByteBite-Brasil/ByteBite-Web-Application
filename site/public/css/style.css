@@ -692,7 +692,6 @@ select {
     margin-left: 110px;
     padding: 50px;
     box-shadow: 2px 2px 10px grey;
-    gap: 20px;
 }
 
 .modal-header h2 {
@@ -912,6 +911,58 @@ select {
     text-align: center;
 }
 
+/*TELA PERFIL EMPRESA */
+
+.areaUsuarios{
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: space-around;
+    color:#000;
+    font-size: 18px;
+    font-weight: bold;
+}
+#usuariosBody{
+    width: 100%;
+}
+.bodyUsuarios{
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    color: white;
+}
+.tableColumn{
+    background-color: wheat;
+    text-align: center;
+    border: 2px solid black;
+}
+.bodyUserTable{
+    text-align: center;
+    border: 2px solid black; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+}
+
+.id{
+    width: 10%;
+}
+.name{
+    width: 25%;
+}
+
+.celPhone{
+    width: 20%;
+}
+.email{
+    width: 30%;
+}
+.acao{
+    width: 15%;
+    display: flex;
+    justify-content: space-around;
+}
 /* Responsividade */
 
 @media only screen and (max-width: 600px) {
@@ -1079,5 +1130,6 @@ select {
         border-bottom-left-radius: 0px;
         border-radius: 10px;
     }
+
 
 }

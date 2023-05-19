@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-
+    <script src="js/perfilEmpresa.js"></script>
 </head>
 
 <body>
@@ -88,8 +88,45 @@
             <div class="title-grid-user">
                 <label>Meus usuários cadastrados</label>
             </div>
+            <div class="areaUsuarios">
+                <div class="tableColumn id">
+                    <span>ID</span>
+                </div>
+                <div class="tableColumn name">
+                    <span>Nome</span>
+                </div>
+                <div class="tableColumn celPhone">
+                    <span>Celular</span>
+                </div>
+                <div class="tableColumn email">
+                    <span>E-mail</span>
+                </div>
+                <div class="tableColumn acao">
+                    <span>Ação</span>
+                </div>
+            </div>
+            <div id="usuariosBody">
+                <div class="bodyUsuarios">
+                    <div class="bodyUserTable id">
+                        <span id="idUser">1000</span>
+                    </div>
+                    <div class="bodyUserTable name">
+                        <span id="nameUser">Lucas Silva</span>
+                    </div>
+                    <div class="bodyUserTable celPhone">
+                        <span id="telUser">(11)996402257</span>
+                    </div>
+                    <div class="bodyUserTable email">
+                        <span id="emailUser">lucas.martines@sptech.school</span>
+                    </div>
+                    <div class="bodyUserTable acao">
+                        <button class="buttonCadPer green">Editar</button>
+                        <button class="buttonCadPer red">Excluir</button>
+                    </div>
+                </div>
+            </div>
 
-            <table class="records">
+            <!-- <table class="records">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -136,7 +173,7 @@
                     </tr>
 
                 </tbody>
-            </table>
+            </table> -->
             <div class="modal" id="modalExcluirEmpresa">
                 <div class="modal-content">
                     <header class="modal-header">
@@ -296,7 +333,7 @@
     document.getElementById('ok').addEventListener('click', closeModal3)
 
     //USUARIOS
-    document.getElementById('editarCliente').addEventListener('click', openModal1)
+    // document.getElementById('editarCliente').addEventListener('click', openModal1)
     document.getElementById('modalClose1').addEventListener('click', closeModal1)
     document.getElementById('cancelarClienteEditar').addEventListener('click', closeModal1)
     document.getElementById('sucessoEditar').addEventListener('click', closeModal1)
@@ -304,7 +341,7 @@
     document.getElementById('modalClose3').addEventListener('click', closeModal3)
     document.getElementById('ok').addEventListener('click', closeModal3)
 
-    document.getElementById('excluirCliente').addEventListener('click', openModal2);
+    // document.getElementById('excluirCliente').addEventListener('click', openModal2);
     document.getElementById('modalClose2').addEventListener('click', closeModal2)
     document.getElementById('cancelarClienteExcluirMaquina').addEventListener('click', closeModal2)
     document.getElementById('sucessoExcluirMaquina').addEventListener('click', closeModal2)
