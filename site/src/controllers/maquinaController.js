@@ -121,6 +121,29 @@ function excluirMaquina(req, res) {
     }
 }
 
+function excluirEmpresa(req, res) {
+    var fkEmpresa = req.body.fkEmpresaServer;
+     if (fkEmpresa == undefined) {
+        res.status(400).send("Id empresa indefinido!");
+    } else {
+        maquinaModel.excluirEmpresa(fkEmpresa)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao atualizar a máquina! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 function excluirUsuario(req, res) {
     var idUser = req.body.idUserServer;
     var fkEmpresa = req.body.fkEmpresaServer;
@@ -193,5 +216,6 @@ module.exports = {
     excluirMaquina,
     listarUsuarios,
     excluirUsuario,
-    atualizarUsuario
+    atualizarUsuario,
+    excluirEmpresa
 }

@@ -112,3 +112,33 @@ async function editarUsuario(id, nome, email, telefone, senha, confirmacaoSenha)
         throw new Exception(e);
     }
 }
+
+async function excluirEmpresa(){
+    try {
+        var fkEmpresa = sessionStorage.ID_USUARIO;
+        const conexao = await fetch("/maquina/excluirEmpresa", {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                fkEmpresaServer: fkEmpresa
+            })
+        });
+        window.location = '../index.html'
+        conexao.ok(conexao.body);
+    } catch(e){
+        throw new Exception(e);
+    }
+}
+
+async function listarDadosEmpresa(){
+    var fkEmpresa = sessionStorage.ID_USUARIO;
+    
+    try {
+        const request = await fetch(`/maquina/listarDadosEmpresa/${fkEmpresa}`);
+        const dados = await request.json();
+    } catch (error) {
+        console.log(error);
+    }
+}

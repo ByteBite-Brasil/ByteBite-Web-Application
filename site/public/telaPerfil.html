@@ -108,55 +108,6 @@
             <div id="usuariosBody">
 
             </div>
-
-            <!-- <table class="records">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                        <th>Celular</th>
-                        <th>Cidade</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>100</td>
-                        <td>Breno</td>
-                        <td>Brenojose1@gmail.com</td>
-                        <td>(11)989890797</td>
-                        <td>Jundiaí</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>130</td>
-                        <td>Micah</td>
-                        <td>micahRodrigues@gmail.com</td>
-                        <td>(11)956749123</td>
-                        <td>São Paulo </td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>140</td>
-                        <td>Joaquim</td>
-                        <td>joaquimRibeiro@gmail.com</td>
-                        <td>(11)978405758</td>
-                        <td>Jandira</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table> -->
             <div class="modal" id="modalExcluirEmpresa">
                 <div class="modal-content">
                     <header class="modal-header">
@@ -273,7 +224,10 @@
     // modais
 
     //EMPRESA
-    const openModal = () => document.getElementById('modalExcluirEmpresa').classList.add('active');
+    function openModal() {
+        document.getElementById('modalExcluirEmpresa').classList.add('active');
+        document.getElementById('sucessoExcluirEmpresa').addEventListener('click', () => excluirEmpresa())
+    }
     const closeModal = () => document.getElementById('modalExcluirEmpresa').classList.remove('active');
 
     const openModal4 = () => document.getElementById('modalEditarEmpresa').classList.add('active');
@@ -303,13 +257,11 @@
 
     // funcoes dos modais
     //EMPRESA
-    document.getElementById('ExcluirEmpresa').addEventListener('click', openModal)
+    document.getElementById('ExcluirEmpresa').addEventListener('click', () => openModal())
     document.getElementById('modalClose').addEventListener('click', closeModal)
     document.getElementById('cancelarClienteExcluirEmpresa').addEventListener('click', closeModal)
     document.getElementById('sucessoExcluirEmpresa').addEventListener('click', closeModal)
-    document.getElementById('sucessoExcluirEmpresa').addEventListener('click', sucesso)
-    document.getElementById('modalClose3').addEventListener('click',() => closeModal3())
-    document.getElementById('ok').addEventListener('click', () => closeModal3())
+    document.getElementById('modalClose3').addEventListener('click', () => closeModal3())
 
     document.getElementById('EditarEmpresa').addEventListener('click', openModal4)
     document.getElementById('modalClose4').addEventListener('click', closeModal4)

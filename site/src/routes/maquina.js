@@ -24,6 +24,9 @@ router.put("/atualizarMaquina", function (req, res) {
 router.delete("/excluirMaquina", function (req, res) {
     maquinaController.excluirMaquina(req, res);
 });
+router.delete("/excluirEmpresa", function (req, res) {
+    maquinaController.excluirEmpresa(req, res);
+});
 
 
 module.exports = router;

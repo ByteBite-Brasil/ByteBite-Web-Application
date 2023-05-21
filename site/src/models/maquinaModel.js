@@ -59,6 +59,21 @@ function excluirMaquina(id, fkEmpresa) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+function excluirEmpresa(fkEmpresa) {
+    console.log("ACESSEI O ATUALIZAR MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function excluirEmpresa():", fkEmpresa);
+    var instrucao = `
+        DELETE FROM usuario WHERE fk_empresa_usuario = '${fkEmpresa}';
+
+        DELETE FROM endereco WHERE fk_empresa_endereco = '${fkEmpresa}';
+
+        DELETE FROM maquina WHERE fk_empresa_maquina = '${fkEmpresa}';
+
+        DELETE FROM empresa WHERE idEmpresa = '${fkEmpresa}';
+        
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 function excluirUser(id, fkEmpresa) {
     console.log("ACESSEI O ATUALIZAR MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function excluirUser():", id, fkEmpresa);
@@ -78,5 +93,6 @@ module.exports = {
     excluirMaquina,
     listarUsuarios,
     excluirUser,
-    atualizarUsuario
+    atualizarUsuario,
+    excluirEmpresa
 }
