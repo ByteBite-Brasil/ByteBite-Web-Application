@@ -14,6 +14,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
 </head>
 
 <body class="telasCad">
@@ -126,6 +129,7 @@
         if (nomeVar == "" || emailVar == "" || telefoneVar == "" || senhaVar == "" || permissaoVar == "" || generoVar == "" || idEmpresaVar == "") {
 
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            
             return false;
         }
 

@@ -872,6 +872,88 @@ select {
     text-align: center;
 }
 
+/* NOVO DASH */
+.table-t {
+    display: table;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+}
+
+.thead-t {
+    background-color: #c91515;
+    padding: 5px;
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+}
+
+.tr-t {
+    display: flex;
+    width: 100%;
+    /* border: black 3px solid; */
+}
+
+.th-t,
+.td-t {
+    flex: 1;
+    padding: 3px;
+    color: white;
+    margin-top: 8px;
+    font-size: 20px;
+
+
+}
+
+.tbody-t .tr-t{
+    border-radius: 10px;
+    border-bottom: 3px solid black;
+
+
+}
+
+.td-t {
+    display:block;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+.table-t label {
+    text-align: center;
+    font-size: 20px;
+    margin: 5px 5px;
+    padding: 1px;
+    display: block;
+}
+
+
+.table-t icon {
+    font-size: 28px;
+    padding: 1px;
+    display: block;
+}
+
+.visualizarInd a {
+    font-size: 23px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.table-t .tbody-t .tr-t:hover {
+    background-color: grey;
+}
+
+.visualizarInd{
+    width: 100%;
+    border-radius: 25px;
+    background-color: rgb(245, 245, 72);
+    font-family: 'Poppins',sans-serif;
+    font-size: 23px;
+}
+.legendas{
+    margin: 20px 20px;
+}
 /* Responsividade */
 
 @media only screen and (max-width: 600px) {
