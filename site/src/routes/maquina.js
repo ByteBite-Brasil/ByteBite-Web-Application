@@ -12,6 +12,12 @@ router.get("/listarMaquinas/:fkEmpresa", function (req, res) {
 router.get("/listarUsuarios/:fkEmpresa", function (req, res) {
     maquinaController.listarUsuarios(req, res);
 });
+router.delete("/excluirUsuario", function (req, res) {
+    maquinaController.excluirUsuario(req, res);
+});
+router.put("/atualizarUsuario", function (req, res) {
+    maquinaController.atualizarUsuario(req, res);
+});
 router.put("/atualizarMaquina", function (req, res) {
     maquinaController.atualizaMaquina(req, res);
 });

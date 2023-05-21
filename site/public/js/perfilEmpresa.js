@@ -61,7 +61,54 @@ function criarCardUsuario(usuarios){
         spanTel.innerHTML = `${usuario.telefone}`
         spanEmail.innerHTML = `${usuario.email}`
 
-        buttonEditar.addEventListener('click', openModal1);
-        buttonExcluir.addEventListener('click', openModal2);
+        buttonEditar.addEventListener('click',() => openModal1(usuario.idUsuario, usuario.nome, usuario.telefone, usuario.email));
+        buttonExcluir.addEventListener('click',() => openModal2(usuario.idUsuario));
     });
+}
+
+async function excluirUser(id){
+    try {
+        var idUser = id;
+        var fkEmpresa = sessionStorage.ID_USUARIO;
+        const conexao = await fetch("/maquina/excluirUsuario", {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                idUserServer: idUser,
+                fkEmpresaServer: fkEmpresa
+            })
+        });
+        conexao.ok(conexao.body);
+    } catch(e){
+        throw new Exception(e);
+    }
+}
+
+async function editarUsuario(id, nome, email, telefone, senha, confirmacaoSenha){
+    try {
+        var idUsuario = id;
+        var nomeUsuario = nome;
+        var fkEmpresa = sessionStorage.ID_USUARIO;
+        var emailUsuario = email;
+        var telefoneUsuario = telefone;
+        var senhaUsuario = senha;
+        const conexao = await fetch("/maquina/atualizarUsuario", {
+            method: "PUT",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuario,
+                nomeUsuarioServer: nomeUsuario,
+                fkEmpresaServer: fkEmpresa,
+                emailUsuarioServer: emailUsuario,
+                telefoneUsuarioServer: telefoneUsuario,
+                senhaUsuarioServer: senhaUsuario
+            })
+        });
+    } catch(e){
+        throw new Exception(e);
+    }
 }

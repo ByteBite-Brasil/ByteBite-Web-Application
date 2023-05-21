@@ -38,10 +38,32 @@ function atualizarMaquina(nomeMaquina, id, fkEmpresa) {
     return database.executar(instrucao);
 }
 
+function atualizarUsuario(nome, id, fkEmpresa, email, senha ,telefone) {
+    console.log("ACESSEI O ATUALIZAR MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizarUsuario():", nome, id, fkEmpresa, email, senha ,telefone);
+    var instrucao = `
+        UPDATE usuario SET nome = 
+            '${nome}', email = '${email}', senha = '${senha}', telefone = '${telefone}' 
+                where idUsuario = '${id}' and fk_empresa_usuario = '${fkEmpresa}';
+        
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function excluirMaquina(id, fkEmpresa) {
     console.log("ACESSEI O ATUALIZAR MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function excluirMaquina():", id, fkEmpresa);
     var instrucao = `
         DELETE FROM maquina WHERE idMaquina = '${id}' and fk_empresa_maquina = '${fkEmpresa}';
+        
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function excluirUser(id, fkEmpresa) {
+    console.log("ACESSEI O ATUALIZAR MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function excluirUser():", id, fkEmpresa);
+    var instrucao = `
+        DELETE FROM usuario WHERE idUsuario = '${id}' and fk_empresa_usuario = '${fkEmpresa}';
         
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -54,5 +76,7 @@ module.exports = {
     listarMaquinas,
     atualizarMaquina,
     excluirMaquina,
-    listarUsuarios
+    listarUsuarios,
+    excluirUser,
+    atualizarUsuario
 }
