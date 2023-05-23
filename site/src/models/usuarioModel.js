@@ -40,7 +40,7 @@ function cadastrarFunc(email, senha, nome, permissao, idempresa, telefone, gener
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO usuario (email, senha, nome, permissao, fk_empresa, telefone, genero) VALUES ('${email}', '${senha}', '${nome}', '${permissao}', '${idempresa}', '${telefone}', '${genero}');
+        INSERT INTO usuario (email, senha, nome, fk_permissao, fk_empresa_usuario, telefone, genero) VALUES ('${email}', '${senha}', '${nome}', '${permissao}', '${idempresa}', '${telefone}', '${genero}');
         
     `;
    
