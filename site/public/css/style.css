@@ -629,10 +629,11 @@ select {
     height: max-content;
     font-family: 'Poppins', sans-serif;
     font-size: 1.rem;
+    justify-content: center;
 
 }
 
-#btnmaq {
+.btnmaq {
     margin-top: 2%;
     width: 100%;
     text-align: center;
@@ -642,7 +643,7 @@ select {
 
 }
 
-#btnmaq button {
+.btnmaq button {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(-45deg, rgb(139, 19, 19), #ff7253, rgb(139, 19, 19));
     width: 100%;
@@ -653,7 +654,7 @@ select {
     cursor: pointer;
 }
 
-#btnmaq button:hover {
+.btnmaq button:hover {
     background: linear-gradient(-45deg, #ff7253, rgb(139, 19, 19), #ff7253);
 }
 
@@ -691,7 +692,6 @@ select {
     margin-left: 110px;
     padding: 50px;
     box-shadow: 2px 2px 10px grey;
-    gap: 20px;
 }
 
 .modal-header h2 {
@@ -736,40 +736,79 @@ select {
     box-shadow: inset 200px 0 0 rgb(0, 0, 0);
 }
 
-.records {
+
+.headerTable{
     width: 100%;
-    user-select: none;
-    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+}
+.title {
+    font-size: 40px;
 }
 
-.records th {
-    height: 50px;
-    background-color: #c90a02;
-    padding-left: 20px;
-    font-size: 1.2rem;
-
-}
-
-.records td {
-    height: 50px;
-    padding-left: 20px;
-    /* border: 3px black solid; */
-    color: white;
-    border-bottom: black 3px solid;
-    border-left:black 3px solid ;
-}
-
-.records th:last-child,
-
-.records td:last-child {
-    padding: 0;
-    min-width: 140px;
+.idMaq{
+    border: 2px solid black;
     text-align: center;
-
+    width: 20%;
+    background-color: #c90a02;
 }
 
-.records tr:hover {
-    background-color: grey;
+.maquina{
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    text-align: center;
+    width: 40%;
+    background-color: #c90a02;
+}
+
+.acaoMaquina{
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    text-align: center;
+    width: 40%;
+    background-color: #c90a02;
+}
+
+.idMaquina{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    text-align: center;
+    width: 20%;
+}
+
+.nameMaquina{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    text-align: center;
+    width: 40%;
+}
+
+.maqAcao{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    text-align: center;
+    width: 40%;
+}
+
+.bodyTable{
+    display: flex;
+    height: 55px;
 }
 
 
@@ -872,6 +911,58 @@ select {
     text-align: center;
 }
 
+/*TELA PERFIL EMPRESA */
+
+.areaUsuarios{
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: space-around;
+    color:#000;
+    font-size: 18px;
+    font-weight: bold;
+}
+#usuariosBody{
+    width: 100%;
+}
+.bodyUsuarios{
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    color: white;
+}
+.tableColumn{
+    background-color: wheat;
+    text-align: center;
+    border: 2px solid black;
+}
+.bodyUserTable{
+    text-align: center;
+    border: 2px solid black; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+}
+
+.id{
+    width: 10%;
+}
+.name{
+    width: 25%;
+}
+
+.celPhone{
+    width: 20%;
+}
+.email{
+    width: 30%;
+}
+.acao{
+    width: 15%;
+    display: flex;
+    justify-content: space-around;
+}
 /* Responsividade */
 
 @media only screen and (max-width: 600px) {
@@ -1039,5 +1130,6 @@ select {
         border-bottom-left-radius: 0px;
         border-radius: 10px;
     }
+
 
 }
