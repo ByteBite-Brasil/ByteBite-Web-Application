@@ -388,7 +388,7 @@ a {
 
 /*--------------Cadastro--------------*/
 
-.hide{
+.hide {
     display: none;
 }
 
@@ -417,11 +417,11 @@ a {
 
 }
 
-.dataEtp{
+.dataEtp {
     align-items: center;
 }
 
-.adressEtp{
+.adressEtp {
     align-items: center;
 }
 
@@ -489,7 +489,7 @@ a {
     text-align: center;
 }
 
-.mid-box{
+.mid-box {
     margin-left: 20%;
 }
 
@@ -737,7 +737,7 @@ select {
 }
 
 
-.headerTable{
+.headerTable {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -746,18 +746,19 @@ select {
     font-weight: bold;
     font-size: 20px;
 }
+
 .title {
     font-size: 40px;
 }
 
-.idMaq{
+.idMaq {
     border: 2px solid black;
     text-align: center;
     width: 20%;
     background-color: #c90a02;
 }
 
-.maquina{
+.maquina {
     border-top: 2px solid black;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
@@ -766,7 +767,7 @@ select {
     background-color: #c90a02;
 }
 
-.acaoMaquina{
+.acaoMaquina {
     border-top: 2px solid black;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
@@ -775,7 +776,7 @@ select {
     background-color: #c90a02;
 }
 
-.idMaquina{
+.idMaquina {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -786,7 +787,7 @@ select {
     width: 20%;
 }
 
-.nameMaquina{
+.nameMaquina {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -796,7 +797,7 @@ select {
     width: 40%;
 }
 
-.maqAcao{
+.maqAcao {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -806,7 +807,7 @@ select {
     width: 40%;
 }
 
-.bodyTable{
+.bodyTable {
     display: flex;
     height: 55px;
 }
@@ -828,7 +829,7 @@ select {
 .modal.active {
     opacity: 1;
     z-index: 1;
-    
+
 }
 
 .modal-header {
@@ -839,8 +840,8 @@ select {
     line-height: 40px;
     font-size: 1rem;
     background-color: #c90a02;
-    border-top-left-radius:12px ;
-    border-top-right-radius:12px ;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 
 .modal-close {
@@ -901,68 +902,160 @@ select {
     padding: 0 20px;
 }
 
-.title-grid-user{
+.title-grid-user {
     width: 100%;
     margin-top: 15px;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-transform: capitalize;
     font-size: 2rem;
     color: white;
     text-align: center;
 }
 
+/* NOVO DASH */
+.table-t {
+    display: table;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+}
+
+.thead-t {
+    background-color: #c91515;
+    padding: 5px;
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+}
+
+.tr-t {
+    display: flex;
+    width: 100%;
+    /* border: black 3px solid; */
+}
+
+.th-t,
+.td-t {
+    flex: 1;
+    padding: 3px;
+    color: white;
+    margin-top: 8px;
+    font-size: 20px;
+
+
+}
+
+.tbody-t .tr-t {
+    border-radius: 10px;
+    border-bottom: 3px solid black;
+
+
+}
+
+.td-t {
+    display: block;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+.table-t label {
+    text-align: center;
+    font-size: 20px;
+    margin: 5px 5px;
+    padding: 1px;
+    display: block;
+}
+
+
+.table-t icon {
+    font-size: 28px;
+    padding: 1px;
+    display: block;
+}
+
+.visualizarInd a {
+    font-size: 23px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.table-t .tbody-t .tr-t:hover {
+    background-color: grey;
+}
+
+.visualizarInd {
+    width: 100%;
+    border-radius: 25px;
+    background-color: rgb(245, 245, 72);
+    font-family: 'Poppins', sans-serif;
+    font-size: 23px;
+}
+
+.legendas {
+    margin: 20px 20px;
+}
+
 /*TELA PERFIL EMPRESA */
 
-.areaUsuarios{
+.areaUsuarios {
     display: flex;
     margin: 0 auto;
     width: 100%;
     justify-content: space-around;
-    color:#000;
+    color: #000;
     font-size: 18px;
     font-weight: bold;
 }
-#usuariosBody{
+
+#usuariosBody {
     width: 100%;
 }
-.bodyUsuarios{
+
+.bodyUsuarios {
     display: flex;
     margin: 0 auto;
     width: 100%;
     color: white;
 }
-.tableColumn{
+
+.tableColumn {
     background-color: wheat;
     text-align: center;
     border: 2px solid black;
 }
-.bodyUserTable{
+
+.bodyUserTable {
     text-align: center;
-    border: 2px solid black; 
+    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 55px;
 }
 
-.id{
+.id {
     width: 10%;
 }
-.name{
+
+.name {
     width: 25%;
 }
 
-.celPhone{
+.celPhone {
     width: 20%;
 }
-.email{
+
+.email {
     width: 30%;
 }
-.acao{
+
+.acao {
     width: 15%;
     display: flex;
     justify-content: space-around;
 }
+
 /* Responsividade */
 
 @media only screen and (max-width: 600px) {
@@ -1095,11 +1188,12 @@ select {
         margin-top: 90px;
     }
 
-    .mid-box{
+    .mid-box {
         display: flex;
-        align-items: center;    
+        align-items: center;
         flex-direction: column;
     }
+
     .box-logo {
         display: none;
     }
