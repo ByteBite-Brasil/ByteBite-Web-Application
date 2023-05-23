@@ -27,6 +27,13 @@ router.delete("/excluirMaquina", function (req, res) {
 router.delete("/excluirEmpresa", function (req, res) {
     maquinaController.excluirEmpresa(req, res);
 });
+router.get("/listarDadosEmpresa/:fkEmpresa", function (req, res) {
+    maquinaController.listarDadosEmpresa(req, res);
+});
+router.put("/atualizarEmpresa", function (req, res) {
+    maquinaController.atualizarEmpresa(req, res);
+});
+
 
 
 module.exports = router;

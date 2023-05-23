@@ -137,10 +137,11 @@
                     <form class="modal-form">
                         <!-- Inserir dos dados da empresa puxando do banco no placeholder  -->
                         <div><input class="input" id="razaoSocial" type="text" placeholder="Razão Social"></div>
-                        <div><input class="input" id="email" type="email" placeholder="exemplo@gmail"></div>
-                        <div><input class="input" id="CNPJ" type="text" placeholder="23.920.541/0001-33"></div>
-                        <div><input class="input" id="senha" type="password" placeholder="Nova senha"></div>
-                        <div><input class="input" id="senha" type="password" placeholder="Confirme a nova senha"></div>
+                        <div><input class="input" id="emailEmpresa" type="email" placeholder="exemplo@gmail"></div>
+                        <div><input class="input" id="cnpjEmpresa" type="text" placeholder="23.920.541/0001-33"></div>
+                        <div><input class="input" id="senhaEmpresa" type="password" placeholder="Nova senha"></div>
+                        <div><input class="input" id="novaSenhaEmpresa" type="password"
+                                placeholder="Confirme a nova senha"></div>
                     </form>
                     <footer class="modal-footer">
                         <button class="buttonCadPer green" id="sucessoEditarEmpresa">Salvar</button>
@@ -230,7 +231,16 @@
     }
     const closeModal = () => document.getElementById('modalExcluirEmpresa').classList.remove('active');
 
-    const openModal4 = () => document.getElementById('modalEditarEmpresa').classList.add('active');
+    async function openModal4() {
+        document.getElementById('modalEditarEmpresa').classList.add('active');
+        var dadosEmpresa = await listarDadosEmpresa();
+
+        razaoSocial.value = `${dadosEmpresa[0].razaoSocial}`
+        emailEmpresa.value = `${dadosEmpresa[0].email}`
+        cnpjEmpresa.value = `${dadosEmpresa[0].cnpj}`
+
+        document.getElementById('sucessoEditarEmpresa').addEventListener('click', () => atualizarDadosEmpresa(razaoSocial.value, emailEmpresa.value, cnpjEmpresa.value, senhaEmpresa.value, novaSenhaEmpresa.value));
+    }
     const closeModal4 = () => document.getElementById('modalEditarEmpresa').classList.remove('active');
 
     //USUARIOS
@@ -263,7 +273,7 @@
     document.getElementById('sucessoExcluirEmpresa').addEventListener('click', closeModal)
     document.getElementById('modalClose3').addEventListener('click', () => closeModal3())
 
-    document.getElementById('EditarEmpresa').addEventListener('click', openModal4)
+    document.getElementById('EditarEmpresa').addEventListener('click', () => openModal4())
     document.getElementById('modalClose4').addEventListener('click', closeModal4)
     document.getElementById('cancelarClienteEditarEmpresa').addEventListener('click', closeModal4)
     document.getElementById('sucessoEditarEmpresa').addEventListener('click', closeModal4)

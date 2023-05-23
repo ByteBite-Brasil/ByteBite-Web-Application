@@ -138,7 +138,34 @@ async function listarDadosEmpresa(){
     try {
         const request = await fetch(`/maquina/listarDadosEmpresa/${fkEmpresa}`);
         const dados = await request.json();
+
+        return dados;
     } catch (error) {
         console.log(error);
+    }
+}
+
+async function atualizarDadosEmpresa(razaoSocial, email, cnpj, senha, confirmacaoSenha){
+    var fkEmpresa = sessionStorage.ID_USUARIO;
+    if((razaoSocial != null || email != null || cnpj != null)){
+        try {
+            const conexao = await fetch("/maquina/atualizarEmpresa", {
+                method: "PUT",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    razaoSocialServer: razaoSocial,
+                    emailServer: email,
+                    cnpjServer: cnpj,
+                    fkEmpresaServer: fkEmpresa,
+                    senhaServer: senha,
+                })
+            });
+        } catch (error) {
+            console.log(error);
+        }
+        
+        
     }
 }

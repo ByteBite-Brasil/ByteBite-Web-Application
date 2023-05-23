@@ -40,12 +40,21 @@ function atualizarMaquina(nomeMaquina, id, fkEmpresa) {
 
 function atualizarUsuario(nome, id, fkEmpresa, email, senha ,telefone) {
     console.log("ACESSEI O ATUALIZAR MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizarUsuario():", nome, id, fkEmpresa, email, senha ,telefone);
-    var instrucao = `
+    if(senha == null || senha == undefined || senha == ''){
+        var instrucao = `
+        UPDATE usuario SET nome = 
+            '${nome}', email = '${email}', telefone = '${telefone}' 
+                where idUsuario = '${id}' and fk_empresa_usuario = '${fkEmpresa}';  
+    `;
+    }
+    else {
+        var instrucao = `
         UPDATE usuario SET nome = 
             '${nome}', email = '${email}', senha = '${senha}', telefone = '${telefone}' 
                 where idUsuario = '${id}' and fk_empresa_usuario = '${fkEmpresa}';
-        
     `;
+    }
+ 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -85,6 +94,37 @@ function excluirUser(id, fkEmpresa) {
     return database.executar(instrucao);
 }
 
+function listarDadosEmpresa(fkEmpresa) {
+    console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMaquinas()");
+    var instrucao = `
+        SELECT * FROM empresa where idEmpresa = '${fkEmpresa}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizarEmpresa(razaoSocial, emailEmpresa, cnpj, idEmpresa, senha) {
+    console.log("ACESSEI O ATUALIZAR MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizarEmpresa():", razaoSocial, emailEmpresa, cnpj, idEmpresa, senha);
+    if(senha == null || senha == undefined || senha == ''){
+        var instrucao = `
+        UPDATE empresa SET razaoSocial = 
+            '${razaoSocial}', email = '${emailEmpresa}', cnpj = '${cnpj}' where idEmpresa = '${idEmpresa}'
+        
+    `;
+    }
+    else {
+        var instrucao = `
+        UPDATE empresa SET razaoSocial = 
+            '${razaoSocial}', email = '${emailEmpresa}', cnpj = '${cnpj}', senha = '${senha}' where idEmpresa = '${idEmpresa}'
+        
+    `;
+    }
+    
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
 
 module.exports = {
     cadastrarMaquina,
@@ -94,5 +134,7 @@ module.exports = {
     listarUsuarios,
     excluirUser,
     atualizarUsuario,
-    excluirEmpresa
+    excluirEmpresa,
+    listarDadosEmpresa,
+    atualizarEmpresa
 }

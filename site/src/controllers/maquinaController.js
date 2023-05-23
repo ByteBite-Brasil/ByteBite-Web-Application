@@ -185,12 +185,61 @@ function atualizarUsuario(req, res) {
         res.status(400).send("Fk Empresa indefinida!");
     } else if (email == undefined) {
         res.status(400).send("Email indefinido!");
-    }else if (senha == undefined) {
-        res.status(400).send("Senha do Usuário indefinida!");
     } else if (telefone == undefined) {
         res.status(400).send("Telefone usuário indefinido!");
     }else {
         maquinaModel.atualizarUsuario(nomeUsuario, idUsuario, fkEmpresa, email, senha, telefone)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao atualizar a máquina! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function listarDadosEmpresa(req, res) {
+    var idEmpresa = req.params.fkEmpresa;
+    maquinaModel.listarDadosEmpresa(idEmpresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizarEmpresa(req, res) {
+    var razaoSocial = req.body.razaoSocialServer;
+    var emailEmpresa = req.body.emailServer;
+    var cnpj = req.body.cnpjServer;
+    var idEmpresa = req.body.fkEmpresaServer;
+    var senha = req.body.senhaServer;
+    if (emailEmpresa == undefined) {
+        res.status(400).send("Email empresa indefinido");
+    } else if (razaoSocial == undefined) {
+        res.status(400).send("Razao Social indefinida!");
+    } else if (cnpj == undefined) {
+        res.status(400).send("CNPJ indefinido!");
+    } else if (idEmpresa == undefined) {
+        res.status(400).send("ID empresa indefinido!");
+    } else {
+        maquinaModel.atualizarEmpresa(razaoSocial, emailEmpresa, cnpj, idEmpresa, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -217,5 +266,7 @@ module.exports = {
     listarUsuarios,
     excluirUsuario,
     atualizarUsuario,
-    excluirEmpresa
+    excluirEmpresa,
+    listarDadosEmpresa,
+    atualizarEmpresa
 }
