@@ -62,9 +62,9 @@
                 <span class="tooltip">Perfil</span>
             </li>
             <li>
-                <a href="index.html">
-                    <i class='bx bx-log-out'></i>
-                    <span class="links_name">Sair</span>
+                <a href="#" onclick="sair()">
+                    <i class='bx bx-log-out'onclick="sair()"></i>
+                    <span class="links_name" onclick="sair()">Sair</span>
                 </a>
                 <span class="tooltip">Sair</span>
             </li>
@@ -183,4 +183,31 @@
         side_bar.classList.toggle("active");
     }
 
+</script>
+<script>
+    function sair() {
+        let timerInterval
+Swal.fire({
+  title: 'Estamos te redirecionando!',
+  html: 'Sou fachado em  <b></b>  milliseconds.',
+  timer: 2000,
+  timerProgressBar: true,
+  didOpen: () => {
+    Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+    timerInterval = setInterval(() => {
+      b.textContent = Swal.getTimerLeft()
+    }, 100)
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+    window.location.href = "index.html"
+  }
+})
+    }
 </script>

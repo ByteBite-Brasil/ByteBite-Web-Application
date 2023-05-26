@@ -62,26 +62,26 @@
                 <span class="tooltip">Perfil</span>
             </li>
             <li>
-                <a href="index.html">
-                    <i class='bx bx-log-out'></i>
-                    <span class="links_name">Sair</span>
+                <a href="#" onclick="sair()">
+                    <i class='bx bx-log-out' onclick="sair()"></i>
+                    <span class="links_name" onclick="sair()">Sair</span>
                 </a>
-                <span class="tooltip">Sair</span>
+                <span class="tooltip" onclick="sair()">Sair</span>
             </li>
         </ul>
     </div>
     <div class="TelaPerfil">
         <header class="header">
-            <h1 class="header-title">Visão geral de suas máquinas</h1>
+            <h1 class="header-title">Visão geral de minhas máquinas</h1>
         </header class="header">
         <main class="main">
-            <label style="color: white;">
+            <label>
                 Aqui, você pode consultar de forma geral como estão seus processos
                 em relação aos totens de autoatendimento, verificando aqueles que estão em
                 conformidade com o padrão, os que estão em alerta e os que apresentam problemas generalizados. <br>
                 <i>As legendas correspondentes podem ser encontradas na parte inferior da tabela.</i>
             </label>
-            <div class="title-grid-user">
+            <div class="title-grid-user" >
                 <label>Minhas máquinas cadastradas</label>
             </div>
 
@@ -90,57 +90,51 @@
                     <div class="tr-t">
                         <div class="th-t">Nome da máquina</div>
                         <div class="th-t">Status</div>
+                        <div class="th-t">Horário Status</div>
 
                     </div>
                 </div>
                 <div class="tbody-t">
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 1</label></div>
-                        <div class="td-t">
-                            <icon>🚨</icon>
-                        </div>
+                        <div class="td-t"><icon>🚨</icon></div>
+                        <div class="td-t"><label>12:33</label></div>
                     </div>
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 2</label></div>
-                        <div class="td-t">
-                            <icon>⚠️</icon>
-                        </div>
+                        <div class="td-t"><icon>⚠️</icon></div>
+                        <div class="td-t"><label>12:33</label></div>
                     </div>
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t">
-                            <icon>✅</icon>
-                        </div>
+                        <div class="td-t"><icon>✅</icon></div>
+                        <div class="td-t"><label>12:33</label></div>   
                     </div>
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t">
-                            <icon>✅</icon>
-                        </div>
+                        <div class="td-t"><icon>🚨</icon></div>
+                        <div class="td-t"><label>12:33</label></div>   
                     </div>
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t">
-                            <icon>⚠️</icon>
-                        </div>
+                        <div class="td-t"><icon>⚠️</icon></div>
+                        <div class="td-t"><label>12:33</label></div>    
                     </div>
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t">
-                            <icon>✅</icon>
-                        </div>
+                        <div class="td-t"><icon>✅</icon></div>
+                        <div class="td-t"><label>12:33</label></div>    
                     </div>
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t">
-                            <icon>⚠️</icon>
-                        </div>
+                        <div class="td-t"><icon>⚠️</icon></div>
+                        <div class="td-t"><label>12:33</label></div>    
                     </div>
                 </div>
             </div>
 
 
-            <div class="legendas" style="color:white">
+            <div class="legendas">
                 <div class="leg">
                     <icon>✅</icon> As capturas estão de acordo com o esperado.
                 </div>

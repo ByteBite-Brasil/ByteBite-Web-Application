@@ -14,6 +14,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <script src="js/perfilEmpresa.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
+
 </head>
 
 <body>
@@ -59,11 +63,11 @@
                 <span class="tooltip">Perfil</span>
             </li>
             <li>
-                <a href="index.html">
-                    <i class='bx bx-log-out'></i>
-                    <span class="links_name">Sair</span>
+                <a href="#" onclick="sair()">
+                    <i class='bx bx-log-out' onclick="sair()"></i>
+                    <span class="links_name" onclick="sair()">Sair</span>
                 </a>
-                <span class="tooltip">Sair</span>
+                <span class="tooltip" onclick="sair()">Sair</span>
             </li>
         </ul>
     </div>
@@ -72,7 +76,7 @@
             <h1 class="header-title">Bem-vindo ao seu perfil</h1>
         </header class="header">
         <main class="main">
-            <label style="color: white;">Consulte a baixo seus painéis que estão cadastrados em nosso sistema.
+            <label>Consulte a baixo seus painéis que estão cadastrados em nosso sistema.
                 Você tem total acesso a editar e excluir seu usuários cadastrados.
             </label>
             <div class="botoes-editar-excluir">
@@ -90,7 +94,7 @@
             </div>
             <div class="areaUsuarios">
                 <div class="tableColumn id">
-                    <span>ID</span>
+                    <span>Id</span>
                 </div>
                 <div class="tableColumn name">
                     <span>Nome</span>
@@ -297,4 +301,31 @@
     document.getElementById('sucessoExcluirMaquina').addEventListener('click', sucesso)
     document.getElementById('modalClose3').addEventListener('click', () => closeModal3())
     document.getElementById('ok').addEventListener('click', () => closeModal3())
+</script>
+<script>
+    function sair() {
+        let timerInterval
+        Swal.fire({
+            title: 'Estamos te redirecionando!',
+            html: 'Sou fachado em  <b></b>  milliseconds.',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+                window.location.href = "././index.html"
+            }
+        })
+    }
 </script>
