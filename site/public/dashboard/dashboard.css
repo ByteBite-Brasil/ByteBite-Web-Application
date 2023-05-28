@@ -62,30 +62,6 @@ body {
     margin-right: 10px;
 }
 
-/* */
-
-/*header + navbar */
-/* .menu-content {
-
-    background-color: #f7f7f7;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 80vw;
-    height: 10vh;
-    box-shadow: 0.3px 0.3px 0.3px rgba(25, 25, 25, 0.447)   
-}
-
-
-
-.menu-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 10%;
-} */
-
 .container {
     position: absolute;
     right: 0;
@@ -234,6 +210,36 @@ a {
     font-weight: bold;
 }
 
+.conteudo1 {
+    color: white;
+    /* border: solid green; */
+    margin: 5px;
+
+}
+
+.conteudo2 {
+    color: white;
+    /* border: solid green; */
+    margin: 5px;
+
+}
+
+.conteudo3 {
+    color: white;
+    /* border: solid green; */
+    margin: 5px;
+    justify-content: center;
+
+}
+
+.conteudo4 {
+    color: white;
+    /* border: solid green; */
+    margin: 5px;
+    justify-content: center;
+
+}
+
 .alerta img {
     width: 90px;
     height: 90px;
@@ -277,7 +283,7 @@ a {
     height: 35.5em;
 }
 
-#dataJanelas {
+.Janelas {
     margin: 0px;
     color: green;
     font-family: var(--font-family-title);

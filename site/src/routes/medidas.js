@@ -11,6 +11,17 @@ router.get("/ultimas/dados/maquinas/:idMaquina/:idComponente/:idTipo", function 
     medidaController.buscarUltimasMedidas(req, res);
 });
 
+router.get("/top/dados/maquinas/:idMaquina/:idComponente/:idTipo", function (req, res) {
+    medidaController.buscarTopMedidas(req, res);
+});
+
+router.get("/ultimo/alerta/maquinas/:idMaquina", function (req, res) {
+
+    console.log('Passei pelo routers')
+
+    medidaController.buscarUltimoAlerta(req, res);
+});
+
 router.get("/tempo-real/:idMaquina", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })

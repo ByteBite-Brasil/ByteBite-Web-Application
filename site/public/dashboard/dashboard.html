@@ -84,28 +84,21 @@
             <div class="kpi">
                 <span>TOP TEMPERATURA PROCESSADOR NO DIA</span>
                 <div class="datakpi kpiruim">
-                    <span>85ºC</span>
+                    <span id="TopTemperaturaCPU"></span>
                 </div>
             </div>
             <div class="kpi kpi2">
                 <span>TOP USO DO PROCESSADOR NO DIA</span>
                 <div class="datakpi kpiboa">
-                    <span>60%</span>
+                    <span id="TopConsumoCPU"></span>
                 </div>
             </div>
             <div class="kpi kpi3">
                 <span>TOP USO DA MEMÓRIA RAM NO DIA</span>
                 <div class="datakpi kpiruim">
-                    <span>100%</span>
+                    <span id="TopConsumoRAM"></span>
                 </div>
             </div>
-            <!-- <div class="alerta">
-                <img src="../assets/images/alert_gif.gif" alt="">
-                <div class="alertBox">
-                    <span class="kpiruim">Temperatura acima da normalidade!</span>
-                    <button class="btnAlert">Verificar</button>
-                </div>
-            </div> -->
         </div>
 
         <div class="dadosTotem">
@@ -130,7 +123,12 @@
                     </div>
                     <H1>JANELAS DO SISTEMA</H1>
                     <div class="grafico">
-                        <canvas id="Janelas"></canvas>
+                        <div class="Janelas">
+
+                            <span id="Janelas"></span>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -142,12 +140,24 @@
                         <canvas id="ConsumoRAM"></canvas>
                     </div>
                     <H1>ALERTAS</H1>
-                    <div class="grafico1">
-                        <!-- <img src="../assets/images/alert_gif.gif" alt="">
-                        <div class="alertBox">
-                            <span class="kpiruim">Temperatura acima da normalidade!</span>
-                            <button class="btnAlert">Verificar</button>
-                        </div> -->
+                    <div id="alerta" class="grafico1">
+                        <div class="all">
+                            <div class="conteudo1">
+                                <span id="ID"></span>
+                            </div>
+                            <div class="conteudo2">
+                                <span id="Nivel"></span>
+                            </div>
+                            <div class="conteudo3">
+                                <span id="Descriçao"></span>
+                            </div>
+                            <div class="conteudo4">
+                                <span id="ValorLog"></span>
+                            </div>
+                            <div class="conteudo5" id="btnAlert">
+                                <button class="btnAlert" >Verificar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

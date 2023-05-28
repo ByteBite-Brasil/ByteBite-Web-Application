@@ -2,6 +2,18 @@ let myChart;
 let myChart1;
 let myChart2;
 let myChart3;
+let TopConsumoCPU;
+let TopConsumoRAM;
+let TopTemperaturaCPU;
+let criticidadeElement;
+let descricaoElement;
+let valorLogElement;
+let proximaAtualizacao;
+let idElement;
+let janelasElement;
+
+
+// OBTEM A LISTA DE MAQUINAS DIRETO DO BANCO AZURE PELO ID/FK EMPRESA
 
 function obterListaDeMaquinas() {
 
@@ -29,7 +41,7 @@ function obterListaDeMaquinas() {
                 // console.log(JSON.stringify(json));
                 var maquinas = json
 
-                console.log(maquinas)
+                // console.log(maquinas)
 
                 plotarListaDeMaquinas(maquinas)
 
@@ -48,6 +60,8 @@ function obterListaDeMaquinas() {
     return false;
 }
 
+// CRIA A COMBOBOX COM AS LISTA DE MAQUINAS DA EMPRESA 
+
 function plotarListaDeMaquinas(maquinas) {
 
     var comboBox = document.getElementById("sel_maquina");
@@ -61,30 +75,127 @@ function plotarListaDeMaquinas(maquinas) {
 
     var valorSelecionado = maquinas[0].idMaquina
 
+    obterKPI1(valorSelecionado)
+    obterKPI2(valorSelecionado)
+    obterKPI3(valorSelecionado)
     obterDadosConsumoCPU(valorSelecionado)
     obterDadosTemperaturaCPU(valorSelecionado);
     obterDadosConsumoDISCO(valorSelecionado);
     obterDadosConsumoRAM(valorSelecionado);
+    obterUltimoAlerta(valorSelecionado)
 
 }
 
 var minhaSelect = document.getElementById("sel_maquina");
 
+// TROCA DE MAQUINA COMBOBOX
+
 minhaSelect.addEventListener("change", function () {
 
     var valorSelecionado = minhaSelect.value;
 
+    obterKPI1(valorSelecionado)
+    obterKPI2(valorSelecionado)
+    obterKPI3(valorSelecionado)
     obterDadosConsumoCPU(valorSelecionado);
     obterDadosTemperaturaCPU(valorSelecionado);
     obterDadosConsumoDISCO(valorSelecionado);
     obterDadosConsumoRAM(valorSelecionado);
+    obterUltimoAlerta(valorSelecionado);
 
 });
 
-let proximaAtualizacao;
-
-
 // OBTER DADOS
+
+
+
+function obterKPI1(valorSelecionado, componente, tipo) {
+
+    componente = 1;
+    tipo = 2
+
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/top/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+
+            response.json().then(function (resposta) {
+
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                plotarKPI1(resposta);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+
+}
+
+function obterKPI2(valorSelecionado, componente, tipo) {
+
+    componente = 1;
+    tipo = 1
+
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/top/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+
+            response.json().then(function (resposta) {
+
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                plotarKPI2(resposta);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+
+}
+
+function obterKPI3(valorSelecionado, componente, tipo) {
+
+    componente = 2;
+    tipo = 1
+
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/top/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+
+            response.json().then(function (resposta) {
+
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                plotarKPI3(resposta);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+
+}
+
 function obterDadosConsumoCPU(valorSelecionado, componente, tipo) {
 
     componente = 1;
@@ -98,11 +209,15 @@ function obterDadosConsumoCPU(valorSelecionado, componente, tipo) {
         if (response.ok) {
 
             response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
                 resposta.reverse()
 
-
                 plotarGraficoConsumoCPU(resposta);
+
+
+
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -127,7 +242,7 @@ function obterDadosTemperaturaCPU(valorSelecionado, componente, tipo) {
         if (response.ok) {
 
             response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                //console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse()
 
                 plotarGraficoTemperaturaCPU(resposta);
@@ -155,7 +270,7 @@ function obterDadosConsumoDISCO(valorSelecionado, componente, tipo) {
         if (response.ok) {
 
             response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                //console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse()
 
                 plotarGraficoConsumoDISCO(resposta);
@@ -186,7 +301,9 @@ function obterDadosConsumoRAM(valorSelecionado, componente, tipo) {
         if (response.ok) {
 
             response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
                 resposta.reverse()
 
 
@@ -202,10 +319,89 @@ function obterDadosConsumoRAM(valorSelecionado, componente, tipo) {
 
 }
 
+function obterUltimoAlerta(valorSelecionado) {
+    console.log('Entrei para capturar o alerta');
+
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/ultimo/alerta/maquinas/${valorSelecionado}`, { cache: 'no-store' })
+        .then(function (response) {
+            if (response.ok) {
+
+                const contentLength = response.headers.get('content-length');
+
+                if (contentLength && contentLength !== '0') {
+
+                    response.json().then(function (resposta) {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        plotarUltimoAlerta(resposta);
+
+                    });
+
+                } else {
+                    console.error('Maquina sem alerta / resposta vazia');
+                    plotarUltimoAlertaVazio();
+
+                }
+
+            } else {
+
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+
+        })
+        .catch(function (error) {
+
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+
+        });
+
+}
+
 // PLOTAR DADOS
+
+function plotarKPI1(resposta) {
+
+    TopTemperaturaCPU = document.getElementById('TopTemperaturaCPU');
+
+    if (resposta[0].maior_medicao > 70.00) {
+
+        TopTemperaturaCPU.textContent = `${resposta[0].maior_medicao} ºC`;
+        TopTemperaturaCPU.style.color = 'red';
+    }
+
+    if (resposta[0].maior_medicao < 70.00) {
+
+        TopTemperaturaCPU.textContent = `${resposta[0].maior_medicao} ºC`;
+        TopTemperaturaCPU.style.color = 'rgb(26, 200, 26)';
+    }
+
+    // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+}
+
+function plotarKPI2(resposta) {
+
+    TopConsumoCPU = document.getElementById('TopConsumoCPU');
+    TopConsumoCPU.textContent = `${resposta[0].maior_medicao} %`;
+
+    // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+}
+
+function plotarKPI3(resposta) {
+
+    TopConsumoRAM = document.getElementById('TopConsumoRAM');
+    TopConsumoRAM.textContent = `${resposta[0].maior_medicao} %`;
+
+    // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+}
+
 function plotarGraficoConsumoCPU(resposta) {
 
-    console.log('iniciando plotagem do gráfico...');
+    // console.log('iniciando plotagem da KPI...');
 
     let labels = [];
 
@@ -266,13 +462,12 @@ function plotarGraficoConsumoCPU(resposta) {
         document.getElementById('ConsumoCPU'),
         config
     );
-
     // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
 }
 
 function plotarGraficoTemperaturaCPU(resposta) {
 
-    console.log('iniciando plotagem do gráfico...');
+    // console.log('iniciando plotagem do gráfico...');
 
     let labels1 = [];
 
@@ -339,7 +534,7 @@ function plotarGraficoTemperaturaCPU(resposta) {
 
 function plotarGraficoConsumoDISCO(resposta) {
 
-    console.log('iniciando plotagem do gráfico...');
+    // console.log('iniciando plotagem do gráfico...');
 
     let labels2 = [];
 
@@ -406,7 +601,7 @@ function plotarGraficoConsumoDISCO(resposta) {
 
 function plotarGraficoConsumoRAM(resposta) {
 
-    console.log('iniciando plotagem do gráfico...');
+    // console.log('iniciando plotagem do gráfico...');
 
     let labels3 = [];
 
@@ -471,6 +666,56 @@ function plotarGraficoConsumoRAM(resposta) {
     // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
 }
 
+function plotarUltimoAlerta(resposta) {
+
+    console.log('Entrei para plotar')
+
+    idElement = document.getElementById('ID');
+    criticidadeElement = document.getElementById('Nivel');
+    descricaoElement = document.getElementById('Descriçao');
+    valorLogElement = document.getElementById('ValorLog');
+    btnAlertElement = document.getElementById('btnAlert');
+
+    janelasElement = document.getElementById('Janelas');
+
+    janelasElement.textContent = 'Total de Janelas : ' + `${resposta[0].quantidade_janelas}`;
+
+    idElement.textContent = 'ID DO ALERTA: ' + `${resposta[0].idAlerta}`;
+    criticidadeElement.textContent = 'NÍVEL DO ALERTA: ' + `${resposta[0].criticidade}`;
+    descricaoElement.textContent = 'DESCRIÇÃO: ' + `${resposta[0].descricao}`;
+
+    if (resposta[0].tipo_log == 2) {
+
+        valorLogElement.textContent = 'TEMPERATURA DETECTADA: ' + `${resposta[0].valor_log_captura} ºC`;
+
+    } else {
+
+        valorLogElement.textContent = 'CONSUMO DETECTADO: ' + `${resposta[0].valor_log_captura} %`;
+
+    }
+
+    btnAlertElement.style.display = 'block';
+}
+
+function plotarUltimoAlertaVazio() {
+    console.log('Entrei para plotar')
+
+    idElement = document.getElementById('ID');
+    criticidadeElement = document.getElementById('Nivel');
+    descricaoElement = document.getElementById('Descriçao');
+    valorLogElement = document.getElementById('ValorLog');
+    btnAlertElement = document.getElementById('btnAlert');
+
+    idElement.textContent = '';
+    criticidadeElement.textContent = 'MÁQUINA SEM ALERTAS! :D';
+    descricaoElement.textContent = '';
+    valorLogElement.textContent = '';
+    btnAlertElement.style.display = 'none';
+    
+}
+
+
+
 
 // ATUALIZAR DADOS
 function atualizarGrafico(valorSelecionado, data, myChart) {
@@ -521,153 +766,4 @@ function atualizarGrafico(valorSelecionado, data, myChart) {
         });
 
 }
-
-// const ctx1 = document.getElementById('myChart1');
-
-// new Chart(ctx1, {
-//     type: 'line',
-//     options: {
-//         responsive: true,
-
-
-//     },
-//     data: {
-//         labels: ['', '', '', '', '', '', '', '', '', ''],
-//         datasets: [{
-//             label: 'Consumo - % de Uso',
-//             data: [50, 51, 49, 53, 64, 100, 50, 51, 49, 53],
-//             borderWidth: 1,
-//             pointStyle: false,
-//             borderWidth: 3,
-//             borderColor: '#c90a02',
-//             fill: true,
-//             backgroundColor: '#7d0400',
-//             color: '#c90a02',
-//             tickBorderDash: [8, 4]
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             x: {
-//                 border: {
-//                     display: false
-//                 },
-//                 grid: {
-//                     display: false,
-//                     drawTicks: true
-
-//                 }
-//             },
-//             y: {
-//                 beginAtZero: true,
-//                 border: { display: false },
-
-//                 grid: {
-//                     color: '#A7A6A6',
-//                     border: false
-//                 }
-//             },
-//         }
-//     }
-// });
-
-// const ctx2 = document.getElementById('temp2');
-
-// new Chart(ctx2, {
-//     type: 'bar',
-//     options: {
-//         responsive: true,
-
-
-//     },
-//     data: {
-//         labels: ['', '', '', '', '', '', '', '', '', ''],
-//         datasets: [{
-//             label: 'Temperatura - ºC',
-//             data: [50, 51, 49, 53, 64, 50, 50, 51, 49, 100],
-//             borderWidth: 1,
-//             pointStyle: false,
-//             borderWidth: 3,
-//             borderColor: '#c90a02',
-//             fill: true,
-//             backgroundColor: '#7d0400',
-//             color: '#c90a02',
-//             tickBorderDash: [8, 4]
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             x: {
-//                 border: {
-//                     display: false
-//                 },
-//                 grid: {
-//                     display: false,
-//                     drawTicks: true
-
-//                 }
-//             },
-//             y: {
-//                 beginAtZero: true,
-//                 border: { display: false },
-
-//                 grid: {
-//                     color: '#A7A6A6',
-//                     border: false
-//                 }
-//             },
-//         }
-//     }
-// });
-
-// const ram = document.getElementById('consumoRam');
-
-// new Chart(ram, {
-//     type: 'line',
-//     options: {
-//         responsive: true,
-
-
-//     },
-//     data: {
-//         labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-//         datasets: [{
-//             label: 'Consumo - % de Uso',
-//             data: [50, 51, 49, 53, 64, 50, 50, 51, 49, 70, 100, 80, 60, 40, 50, 44, 55],
-//             borderWidth: 1,
-//             pointStyle: false,
-//             borderWidth: 3,
-//             borderColor: '#c90a02',
-//             fill: true,
-//             backgroundColor: '#7d0400',
-//             color: '#c90a02',
-//             tickBorderDash: [8, 4]
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             x: {
-//                 border: {
-//                     display: false
-//                 },
-//                 grid: {
-//                     display: false,
-//                     drawTicks: true
-
-//                 }
-//             },
-//             y: {
-//                 beginAtZero: true,
-//                 border: { display: false },
-
-//                 grid: {
-//                     color: '#A7A6A6',
-//                     border: false
-//                 }
-//             },
-//         }
-//     }
-// });
-
-
 
