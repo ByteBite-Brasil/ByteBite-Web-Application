@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ByteBite | Visão geral</title>
+  <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/jpg" />
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styleNavbar.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/jpg" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
+
+</head>
+
+<body>
+  <div class="side_bar">
+    <div class="logo_content">
+      <div class="logo_nav">
+        <i class='bx bx1-c-plus-plus'></i>
+        <div class="logo_name">
+          <img src="../assets/logo/Logo_Branca.png" alt="" style="width: 120px; margin-top: 30%;">
+        </div>
+      </div>
+
+      <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav_list">
+      <li>
+        <a href="dashboard.html">
+          <i class='bx bx-line-chart'></i>
+          <span class="links_name"> Dashboard</span>
+        </a>
+        <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+        <a href="../cadastroFun.html">
+          <i class='bx bx-user-plus'></i>
+          <span class="links_name">Usuários</span>
+        </a>
+        <span class="tooltip">Usuários</span>
+      </li>
+      <li>
+        <a href="../cadMaquinas.html">
+          <i class='bx bx-border-all'></i>
+          <span class="links_name">Máquinas</span>
+        </a>
+        <span class="tooltip">Máquinas</span>
+      </li>
+      <li>
+        <a href="../telaPerfil.html">
+          <i class='bx bx-user-circle'></i>
+          <span class="links_name">Perfil</span>
+        </a>
+        <span class="tooltip">Perfil</span>
+      </li>
+      <li>
+        <a href="#" onclick="sair()">
+          <i class='bx bx-log-out' onclick="sair()"></i>
+          <span class="links_name" onclick="sair()">Sair</span>
+        </a>
+        <span class="tooltip" onclick="sair()">Sair</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="TelaPerfil">
+    <header class="header">
+      <h1 class="header-title">Visão geral </h1>
+    </header class="header">
+    <main class="main">
+      <div class="table-geral">
+        <div class="metrica-1">
+          <h3>Máquinas cadastradas atualmente</h3>
+          <label for="">200</label>
+        </div>
+        <div class="metrica-2">
+          <h3>Máquinas com maior margem de erros</h3>
+          <div>
+            <canvas id="grafic-error"></canvas>
+          </div>
+        </div>
+      </div>
+      <button class="visualizarInd" onclick="redirecionando()">
+        Clique aqui para visualizar suas máquinas individualmente
+      </button>
+    </main>
+  </div>
+</body>
+
+</html>
+<script>
+  // nav bar
+  let btn = document.querySelector("#btn");
+  let side_bar = document.querySelector(".side_bar");
+
+  btn.onclick = function () {
+    side_bar.classList.toggle("active");
+  }
+
+  function redirecionando() {
+
+    let timerInterval
+    Swal.fire({
+      title: 'Estamos te redirecionando!',
+      html: 'Sou fachado em  <b></b>  milliseconds.',
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+        window.location.href = "../index.html"
+      }
+    })
+  }
+
+
+  function sair() {
+        let timerInterval
+        Swal.fire({
+            title: 'Estamos te redirecionando!',
+            html: 'Sou fachado em  <b></b>  milliseconds.',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+                window.location.href = "../index.html"
+            }
+        })
+    }
+</script>
+<script>
+  const error = document.getElementById('grafic-error');
+
+  new Chart(error, {
+    type: 'bar',
+    data: {
+      labels: ['Maquina 1', 'Maquina 2', 'Maquina 3'],
+      datasets: [{
+        label: 'Quantidade de erros desde a instalação',
+        data: [40, 19, 7, 5, 1, 3],
+        borderWidth: 3,
+        borderColor: '#E00004',
+        backgroundColor: 'rgba(255,000,000, 0.20)'
+
+      }
+      ]
+
+    },
+    options: {
+      indexAxis: 'y',
+      scales: {
+        x: {
+          border: {
+            display: false
+          },
+          grid: {
+            display: false,
+            drawTicks: true
+
+          }
+        },
+        y: {
+          beginAtZero: true,
+          border: { display: false },
+
+          grid: {
+            color: '#A7A6A6',
+            border: false
+          }
+        },
+      }
+    }
+  });
+
+
+</script>
