@@ -3,7 +3,7 @@ var database = require("../database/config");
 function cadastrarMaquina(loginMaquina, senhaMaquina, fkEmpresa) {
     console.log("ACESSEI O CADASTRO MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", loginMaquina, senhaMaquina, fkEmpresa);
     var instrucao = `
-        INSERT INTO maquina (nome, senha, fk_empresa_maquina) VALUES ('${loginMaquina}', '${senhaMaquina}', '${fkEmpresa}');
+        INSERT INTO maquina (nome, senha, fk_empresa_maquina, ativa) VALUES ('${loginMaquina}', '${senhaMaquina}', '${fkEmpresa}', 'True');
         
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -13,7 +13,7 @@ function cadastrarMaquina(loginMaquina, senhaMaquina, fkEmpresa) {
 function listarMaquinas(fkEmpresa) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMaquinas()");
     var instrucao = `
-        SELECT * FROM maquina where fk_empresa_maquina = '${fkEmpresa}';
+        SELECT * FROM maquina where fk_empresa_maquina = '${fkEmpresa}' and ativa = 'True';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -62,7 +62,7 @@ function atualizarUsuario(nome, id, fkEmpresa, email, senha ,telefone) {
 function excluirMaquina(id, fkEmpresa) {
     console.log("ACESSEI O ATUALIZAR MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function excluirMaquina():", id, fkEmpresa);
     var instrucao = `
-        DELETE FROM maquina WHERE idMaquina = '${id}' and fk_empresa_maquina = '${fkEmpresa}';
+        UPDATE maquina SET ativa = 'False' where idMaquina = '${id}' and fk_empresa_maquina = '${fkEmpresa}';
         
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -71,14 +71,7 @@ function excluirMaquina(id, fkEmpresa) {
 function excluirEmpresa(fkEmpresa) {
     console.log("ACESSEI O ATUALIZAR MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function excluirEmpresa():", fkEmpresa);
     var instrucao = `
-        DELETE FROM usuario WHERE fk_empresa_usuario = '${fkEmpresa}';
-
-        DELETE FROM endereco WHERE fk_empresa_endereco = '${fkEmpresa}';
-
-        DELETE FROM maquina WHERE fk_empresa_maquina = '${fkEmpresa}';
-
-        DELETE FROM empresa WHERE idEmpresa = '${fkEmpresa}';
-        
+        UPDATE empresa SET ativa = 'False' where idEmpresa = '${fkEmpresa}';        
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

@@ -508,6 +508,16 @@ a {
     /* para deixar alinhado com os inputs, se mudar o form, pode apagar esse margin */
     /* margin-left: 65px; */
 }
+.selectTipoLogin{
+    background: #d9d9d9;
+    color: black;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 30vh;
+    height: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    margin: 10px 0;
+}
 
 /* TELAS DE CADASTRO FUNCIONARIO */
 .telasCad {
