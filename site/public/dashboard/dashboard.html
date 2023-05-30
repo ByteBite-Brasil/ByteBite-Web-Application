@@ -45,21 +45,21 @@
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
-            <li>
+            <li id="testeCadFun">
                 <a href="../cadastroFun.html">
                     <i class='bx bx-user-plus'></i>
                     <span class="links_name">Usuários</span>
                 </a>
                 <span class="tooltip">Usuários</span>
             </li>
-            <li>
+            <li id="testeCadMaq">
                 <a href="../cadMaquinas.html">
                     <i class='bx bx-border-all'></i>
                     <span class="links_name">Máquinas</span>
                 </a>
                 <span class="tooltip">Máquinas</span>
             </li>
-            <li>
+            <li id="testePerfilUser">
                 <a href="../telaPerfil.html">
                     <i class='bx bx-user-circle'></i>
                     <span class="links_name">Perfil</span>
@@ -160,7 +160,9 @@
 </body>
 
 </html>
+<script src="../js/validaLogin.js"></script>
 <script>
+    verificarTipoLogin();
     let btn = document.querySelector("#btn");
     let side_bar = document.querySelector(".side_bar");
 

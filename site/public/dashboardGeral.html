@@ -40,21 +40,21 @@
                 </a>
                 <span class="tooltip">Dashboards</span>
             </li>
-            <li>
+            <li id="testeCadFun">
                 <a href="cadastroFun.html">
                     <i class='bx bx-user-plus'></i>
                     <span class="links_name">Usuários</span>
                 </a>
                 <span class="tooltip">Usuários</span>
             </li>
-            <li>
+            <li id="testeCadMaq">
                 <a href="cadMaquinas.html">
                     <i class='bx bx-border-all'></i>
                     <span class="links_name">Máquinas</span>
                 </a>
                 <span class="tooltip">Máquinas</span>
             </li>
-            <li>
+            <li id="testePerfilUser">
                 <a href="telaPerfil.html">
                     <i class='bx bx-user-circle'></i>
                     <span class="links_name">Perfil</span>
@@ -81,7 +81,7 @@
                 conformidade com o padrão, os que estão em alerta e os que apresentam problemas generalizados. <br>
                 <i>As legendas correspondentes podem ser encontradas na parte inferior da tabela.</i>
             </label>
-            <div class="title-grid-user" >
+            <div class="title-grid-user">
                 <label>Minhas máquinas cadastradas</label>
             </div>
 
@@ -97,38 +97,52 @@
                 <div class="tbody-t">
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 1</label></div>
-                        <div class="td-t"><icon>🚨</icon></div>
+                        <div class="td-t">
+                            <icon>🚨</icon>
+                        </div>
                         <div class="td-t"><label>12:33</label></div>
                     </div>
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 2</label></div>
-                        <div class="td-t"><icon>⚠️</icon></div>
+                        <div class="td-t">
+                            <icon>⚠️</icon>
+                        </div>
                         <div class="td-t"><label>12:33</label></div>
                     </div>
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t"><icon>✅</icon></div>
-                        <div class="td-t"><label>12:33</label></div>   
+                        <div class="td-t">
+                            <icon>✅</icon>
+                        </div>
+                        <div class="td-t"><label>12:33</label></div>
                     </div>
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t"><icon>🚨</icon></div>
-                        <div class="td-t"><label>12:33</label></div>   
+                        <div class="td-t">
+                            <icon>🚨</icon>
+                        </div>
+                        <div class="td-t"><label>12:33</label></div>
                     </div>
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t"><icon>⚠️</icon></div>
-                        <div class="td-t"><label>12:33</label></div>    
+                        <div class="td-t">
+                            <icon>⚠️</icon>
+                        </div>
+                        <div class="td-t"><label>12:33</label></div>
                     </div>
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t"><icon>✅</icon></div>
-                        <div class="td-t"><label>12:33</label></div>    
+                        <div class="td-t">
+                            <icon>✅</icon>
+                        </div>
+                        <div class="td-t"><label>12:33</label></div>
                     </div>
                     <div class="tr-t">
                         <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t"><icon>⚠️</icon></div>
-                        <div class="td-t"><label>12:33</label></div>    
+                        <div class="td-t">
+                            <icon>⚠️</icon>
+                        </div>
+                        <div class="td-t"><label>12:33</label></div>
                     </div>
                 </div>
             </div>
@@ -153,6 +167,7 @@
 </body>
 
 </html>
+<script src="js/validaLogin.js"></script>
 <script>
     // nav bar
     let btn = document.querySelector("#btn");

@@ -27,14 +27,17 @@ function listar(req, res) {
 function entrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var tipoLogin = req.body.tipoLoginServer;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
+    } else if (tipoLogin == undefined) {
+        res.status(400).send("Sua tipo de login está indefinida!");
     } else {
 
-        usuarioModel.entrar(email, senha)
+        usuarioModel.entrar(email, senha, tipoLogin)
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
