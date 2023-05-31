@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteBite | Visão geral</title>
+    <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/jpg" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styleNavbar.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
+
+</head>
+
+<body onload="obterListaDeMaquinas1()">
+    <!-- Navbar -->
+    <div class="side_bar">
+        <div class="logo_content">
+            <div class="logo_nav">
+                <i class='bx bx1-c-plus-plus'></i>
+                <div class="logo_name">
+                    <img src="assets/logo/Logo_Branca.png" alt="" style="width: 120px; margin-top: 30%;">
+                </div>
+            </div>
+
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <a href="dashboardGeral.html">
+                    <i class='bx bx-line-chart'></i>
+                    <span class="links_name">Dashboards</span>
+                </a>
+                <span class="tooltip">Dashboards</span>
+            </li>
+            <li>
+                <a href="cadastroFun.html">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="links_name">Usuários</span>
+                </a>
+                <span class="tooltip">Usuários</span>
+            </li>
+            <li>
+                <a href="cadMaquinas.html">
+                    <i class='bx bx-border-all'></i>
+                    <span class="links_name">Máquinas</span>
+                </a>
+                <span class="tooltip">Máquinas</span>
+            </li>
+            <li>
+                <a href="telaPerfil.html">
+                    <i class='bx bx-user-circle'></i>
+                    <span class="links_name">Perfil</span>
+                </a>
+                <span class="tooltip">Perfil</span>
+            </li>
+            <li>
+                <a href="index.html">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links_name">Sair</span>
+                </a>
+                <span class="tooltip">Sair</span>
+            </li>
+        </ul>
+    </div>
+    <div class="TelaPerfil">
+        <header class="header">
+            <h1 class="header-title">Visão geral de suas máquinas</h1>
+        </header class="header">
+        <main class="main">
+            <label style="color: white;">
+                Aqui, você pode consultar de forma geral como estão seus processos
+                em relação aos totens de autoatendimento, verificando aqueles que estão em
+                conformidade com o padrão, os que estão em alerta e os que apresentam problemas generalizados. <br>
+                <i>As legendas correspondentes podem ser encontradas na parte inferior da tabela.</i>
+            </label>
+            <div class="title-grid-user">
+                <label>Minhas máquinas cadastradas</label>
+            </div>
+
+            <div class="table-t">
+                <div class="thead-t">
+                    <div class="tr-t">
+                        <div class="th-t">Nome da máquina</div>
+                        <div class="th-t">Status</div>
+
+                    </div>
+                </div>
+                <div class="tbody-t">
+
+                </div>
+            </div>
+
+
+            <div class="legendas" style="color:white">
+                <div class="leg">
+                    <icon>✅</icon> As capturas estão de acordo com o esperado.
+                </div>
+                <div class="leg">
+                    <icon>⚠️</icon> As capturas não estão de acordo com o esperado, requerer atenção.
+                </div>
+                <div class="leg">
+                    <icon>🚨</icon> As capturas estão de registrando dados extremanete prejudiciais, requer urgência.
+                </div>
+            </div>
+            <button class="visualizarInd" onclick="redirecionando()">
+                Clique aqui para visualizar suas máquinas individualmente
+            </button>
+        </main>
+    </div>
+</body>
+
+</html>
+<script>
+
+    let btn = document.querySelector("#btn");
+    let side_bar = document.querySelector(".side_bar");
+
+    btn.onclick = function () {
+        side_bar.classList.toggle("active");
+    }
+
+    function redirecionando() {
+
+        let timerInterval
+        Swal.fire({
+            title: 'Estamos te redirecionando!',
+            html: 'Sou fachado em  <b></b>  milliseconds.',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+                window.location.href = "./dashboard/dashboard.html"
+            }
+        })
+    }
+
+    function obterListaDeMaquinas1() {
+
+        var idEmpresa = sessionStorage.ID_USUARIO
+
+        fetch(`/medidas/getMaquinas`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+
+                idServer: idEmpresa
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+
+                    // console.log(JSON.stringify(json));
+                    var maquinas = json
+
+                    console.log(maquinas)
+
+                    plotarListaDeMaquinas1(maquinas)
+
+                });
+
+            } else {
+
+                throw ("Houve um erro ao tentar o certo");
+
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+        });
+
+        return false;
+    }
+
+    async function obterTotalAlertasPorMaquina1(valorSelecionado) {
+        try {
+            const response = await fetch(`/medidas/total/alerta/maquinas/${valorSelecionado}`, { cache: 'no-store' });
+            if (response.ok) {
+                const data = await response.json();
+                return data;
+            } else {
+                throw new Error('Nenhum dado encontrado ou erro na API');
+            }
+        } catch (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        }
+    }
+
+    function obterIconePorMaquina1(idMaquina) {
+        return fetch(`/medidas/total/alerta/maquinas/${idMaquina}`)
+            .then(response => response.json())
+            .then(totalAlertas => {
+                const quantidadeAlertas = totalAlertas.length > 0 ? totalAlertas[0].total_alertas : 0;
+
+                switch (true) {
+                    case quantidadeAlertas === 0:
+                        return '✅';
+                    case quantidadeAlertas > 0 && quantidadeAlertas <= 5:
+                        return '⚠️';
+                    case quantidadeAlertas > 5:
+                        return '🚨';
+                    default:
+                        return '';
+                }
+            })
+            .catch(error => {
+                console.error(`Erro ao obter total de alertas para a máquina ${idMaquina}: ${error.message}`);
+                return ''; // Ícone padrão em caso de erro
+            });
+    }
+
+    function plotarListaDeMaquinas1(maquinas) {
+        const areaMaquinas = document.querySelector('.tbody-t');
+
+        const promises = maquinas.map(maquina => {
+            const totalAlertasPromise = obterIconePorMaquina1(maquina.idMaquina);
+
+            const tr = document.createElement('div');
+            tr.classList.add('tr-t');
+
+            const tdNome = document.createElement('div');
+            tdNome.classList.add('td-t');
+            const nomeLabel = document.createElement('label');
+            nomeLabel.textContent = maquina.nome;
+            tdNome.appendChild(nomeLabel);
+
+            const tdStatus = document.createElement('div');
+            tdStatus.classList.add('td-t');
+            const statusIcon = document.createElement('icon');
+            tdStatus.appendChild(statusIcon);
+
+            tr.appendChild(tdNome);
+            tr.appendChild(tdStatus);
+            areaMaquinas.appendChild(tr);
+
+            return totalAlertasPromise.then(icon => {
+                statusIcon.textContent = icon;
+            });
+        });
+
+        Promise.all(promises).catch(error => {
+            console.error(`Erro ao plotar lista de máquinas: ${error.message}`);
+        });
+    }
+</script>

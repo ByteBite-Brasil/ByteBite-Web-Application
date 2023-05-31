@@ -17,12 +17,15 @@ router.get("/top/dados/maquinas/:idMaquina/:idComponente/:idTipo", function (req
 
 router.get("/ultimo/alerta/maquinas/:idMaquina", function (req, res) {
 
-    console.log('Passei pelo routers')
-
     medidaController.buscarUltimoAlerta(req, res);
 });
 
-router.get("/tempo-real/:idMaquina", function (req, res) {
+router.get("/total/alerta/maquinas/:idMaquina", function (req, res) {
+
+    medidaController.buscarNumeroTotaldeAlertas(req, res);
+});
+
+router.get("/tempo-real/:idMaquina/:idComponente/:idTipo", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 

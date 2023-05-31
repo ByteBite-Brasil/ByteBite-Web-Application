@@ -214,7 +214,7 @@ function obterDadosConsumoCPU(valorSelecionado, componente, tipo) {
 
                 resposta.reverse()
 
-                plotarGraficoConsumoCPU(resposta);
+                plotarGraficoConsumoCPU(resposta, valorSelecionado, componente, tipo);
 
 
 
@@ -245,7 +245,7 @@ function obterDadosTemperaturaCPU(valorSelecionado, componente, tipo) {
                 //console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse()
 
-                plotarGraficoTemperaturaCPU(resposta);
+                plotarGraficoTemperaturaCPU(resposta, valorSelecionado, componente, tipo);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -273,7 +273,7 @@ function obterDadosConsumoDISCO(valorSelecionado, componente, tipo) {
                 //console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse()
 
-                plotarGraficoConsumoDISCO(resposta);
+                plotarGraficoConsumoDISCO(resposta, valorSelecionado, componente, tipo);
 
 
 
@@ -307,7 +307,7 @@ function obterDadosConsumoRAM(valorSelecionado, componente, tipo) {
                 resposta.reverse()
 
 
-                plotarGraficoConsumoRAM(resposta);
+                plotarGraficoConsumoRAM(resposta, valorSelecionado, componente, tipo);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -399,9 +399,7 @@ function plotarKPI3(resposta) {
     // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
 }
 
-function plotarGraficoConsumoCPU(resposta) {
-
-    // console.log('iniciando plotagem da KPI...');
+function plotarGraficoConsumoCPU(resposta, valorSelecionado, componente, tipo) {
 
     let labels = [];
 
@@ -462,10 +460,10 @@ function plotarGraficoConsumoCPU(resposta) {
         document.getElementById('ConsumoCPU'),
         config
     );
-    // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+    setTimeout(() => atualizarGrafico(valorSelecionado, componente, tipo, data, myChart), 5000);
 }
 
-function plotarGraficoTemperaturaCPU(resposta) {
+function plotarGraficoTemperaturaCPU(resposta, valorSelecionado1, componente1, tipo1) {
 
     // console.log('iniciando plotagem do gráfico...');
 
@@ -529,10 +527,10 @@ function plotarGraficoTemperaturaCPU(resposta) {
         config1
     );
 
-    // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+    setTimeout(() => atualizarGrafico(valorSelecionado1, componente1, tipo1, data1, myChart1), 5000);
 }
 
-function plotarGraficoConsumoDISCO(resposta) {
+function plotarGraficoConsumoDISCO(resposta, valorSelecionado2, componente2, tipo2) {
 
     // console.log('iniciando plotagem do gráfico...');
 
@@ -596,10 +594,10 @@ function plotarGraficoConsumoDISCO(resposta) {
         config2
     );
 
-    // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+    setTimeout(() => atualizarGrafico(valorSelecionado2, componente2, tipo2, data2, myChart2), 5000);
 }
 
-function plotarGraficoConsumoRAM(resposta) {
+function plotarGraficoConsumoRAM(resposta, valorSelecionado3, componente3, tipo3) {
 
     // console.log('iniciando plotagem do gráfico...');
 
@@ -663,7 +661,7 @@ function plotarGraficoConsumoRAM(resposta) {
         config3
     );
 
-    // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+    setTimeout(() => atualizarGrafico(valorSelecionado3, componente3, tipo3, data3, myChart3), 5000);
 }
 
 function plotarUltimoAlerta(resposta) {
@@ -711,16 +709,20 @@ function plotarUltimoAlertaVazio() {
     descricaoElement.textContent = '';
     valorLogElement.textContent = '';
     btnAlertElement.style.display = 'none';
-    
+
 }
 
 
 
 
 // ATUALIZAR DADOS
-function atualizarGrafico(valorSelecionado, data, myChart) {
+function atualizarGrafico(valorSelecionado, componente, tipo, data, myChart) {
 
-    fetch(`/medidas/tempo-real/${valorSelecionado}`, { cache: 'no-store' }).then(function (response) {
+    console.log("maq" + valorSelecionado)
+    console.log("comp" + componente)
+    console.log("tip" + tipo)
+
+    fetch(`/medidas/tempo-real/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
@@ -738,8 +740,6 @@ function atualizarGrafico(valorSelecionado, data, myChart) {
                     console.log("---------------------------------------------------------------")
                 } else {
 
-                    // tirando e colocando valores no gráfico
-
                     data.labels.shift(); // apagar o primeiro
 
                     data.labels.push(novoRegistro[0].hora); // incluir um novo momento
@@ -749,16 +749,15 @@ function atualizarGrafico(valorSelecionado, data, myChart) {
 
                     myChart.update();
 
-
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(valorSelecionado, componente, tipo, data, myChart), 5000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(valorSelecionado, componente, tipo, data, myChart), 5000);
         }
     })
         .catch(function (error) {
@@ -766,4 +765,5 @@ function atualizarGrafico(valorSelecionado, data, myChart) {
         });
 
 }
+
 

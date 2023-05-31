@@ -45,6 +45,28 @@ function buscarUltimasMedidas(req, res) {
 
 }
 
+function buscarMedidasEmTempoReal(req, res) {
+
+    var idMaquina = req.params.idMaquina;
+    var idComponente = req.params.idComponente;
+    var idTipo = req.params.idTipo;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.buscarMedidasEmTempoReal(idMaquina, idComponente, idTipo).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+
+}
+
 function buscarTopMedidas(req, res) {
 
     const limite_linhas = 10;
@@ -73,7 +95,6 @@ function buscarTopMedidas(req, res) {
 
 function buscarUltimoAlerta(req, res) {
 
-    console.log('Passei pelo controllers')
 
     var idMaquina = req.params.idMaquina;
 
@@ -92,13 +113,13 @@ function buscarUltimoAlerta(req, res) {
 
 }
 
-function buscarMedidasEmTempoReal(req, res) {
+
+
+function buscarNumeroTotaldeAlertas(req, res) {
 
     var idMaquina = req.params.idMaquina;
 
-    console.log(`Recuperando medidas em tempo real`);
-
-    medidaModel.buscarMedidasEmTempoReal(idMaquina).then(function (resultado) {
+    medidaModel.buscarNumeroTotaldeAlertas(idMaquina).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -110,6 +131,7 @@ function buscarMedidasEmTempoReal(req, res) {
         res.status(500).json(erro.sqlMessage);
     });
 
+
 }
 
 module.exports = {
@@ -117,6 +139,7 @@ module.exports = {
     buscarUltimoAlerta,
     buscarUltimasMedidas,
     buscarTopMedidas,
+    buscarNumeroTotaldeAlertas,
     buscarMedidasEmTempoReal
 
 }
