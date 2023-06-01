@@ -13,6 +13,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="js/perfilEmpresa.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
 
 </head>
 
@@ -52,18 +56,18 @@
                 <span class="tooltip">Máquinas</span>
             </li>
             <li>
-                <a href="index.html">
+                <a href="telaPerfil.html">
                     <i class='bx bx-user-circle'></i>
                     <span class="links_name">Perfil</span>
                 </a>
                 <span class="tooltip">Perfil</span>
             </li>
             <li>
-                <a href="index.html">
-                    <i class='bx bx-log-out'></i>
-                    <span class="links_name">Sair</span>
+                <a href="#" onclick="sair()">
+                    <i class='bx bx-log-out' onclick="sair()"></i>
+                    <span class="links_name" onclick="sair()">Sair</span>
                 </a>
-                <span class="tooltip">Sair</span>
+                <span class="tooltip" onclick="sair()">Sair</span>
             </li>
         </ul>
     </div>
@@ -72,124 +76,42 @@
             <h1 class="header-title">Bem-vindo ao seu perfil</h1>
         </header class="header">
         <main class="main">
-            <label style="color: white;">Consulte a baixo seus painéis que estão cadastrados em nosso sistema.
-                Você tem total acesso a editar e excluir suas máquinas cadastradas.
+            <label>Consulte a baixo seus painéis que estão cadastrados em nosso sistema.
+                Você tem total acesso a editar e excluir seu usuários cadastrados.
             </label>
-            <button type="button" class="buttonCadPer blue" id="ExcluirEmpresa">Excluir conta da empresa</button>
-            <table class="records">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Responsável</th>
-                        <th>E-mail</th>
-                        <th>Celular</th>
-                        <th>Cidade</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>100</td>
-                        <td>Breno</td>
-                        <td>Brenojose1@gmail.com</td>
-                        <td>(11)989890797</td>
-                        <td>Jundiaí</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>130</td>
-                        <td>Micah</td>
-                        <td>micahRodrigues@gmail.com</td>
-                        <td>(11)956749123</td>
-                        <td>São Paulo </td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>140</td>
-                        <td>Joaquim</td>
-                        <td>joaquimRibeiro@gmail.com</td>
-                        <td>(11)978405758</td>
-                        <td>Jandira</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>188</td>
-                        <td>Lucas</td>
-                        <td>Lucas@gmail.com</td>
-                        <td>(11)945245555</td>
-                        <td>Trianon-MASP</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>198</td>
-                        <td>Lucia</td>
-                        <td>Lucia@gmail.com</td>
-                        <td>(11)985736788</td>
-                        <td>Mauá</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>123</td>
-                        <td>Mariana</td>
-                        <td>mariana1230@gmail.com</td>
-                        <td>(11)908768675</td>
-                        <td>Santo André</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>177</td>
-                        <td>Túlio</td>
-                        <td>tulio@gmail.com</td>
-                        <td>(11)908086746</td>
-                        <td>São Caetano</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>112</td>
-                        <td>Jandira</td>
-                        <td>jandira@gmail.com</td>
-                        <td>(11)908765437</td>
-                        <td>Caieiras</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>113</td>
-                        <td>Victor</td>
-                        <td>victor@gmail.com</td>
-                        <td>(11)908648209</td>
-                        <td>Praia Grande</td>
-                        <td>
-                            <button class="buttonCadPer green" id="editarCliente">Editar</button>
-                            <button class="buttonCadPer red" id="excluirCliente">Excluir</button>
-                        </td>
-                    </tr>
+            <div class="botoes-editar-excluir">
+                <label id="editar-botao">
+                    <button type="button" class="buttonCadPer orange" id="EditarEmpresa">Editar conta da
+                        empresa</button>
+                </label>
+                <label id="excluir-botao">
+                    <button type="button" class="buttonCadPer blue" id="ExcluirEmpresa">Excluir conta da
+                        empresa</button>
+                </label>
+            </div>
+            <div class="title-grid-user">
+                <label>Meus usuários cadastrados</label>
+            </div>
+            <div class="areaUsuarios">
+                <div class="tableColumn id">
+                    <span>Id</span>
+                </div>
+                <div class="tableColumn name">
+                    <span>Nome</span>
+                </div>
+                <div class="tableColumn celPhone">
+                    <span>Celular</span>
+                </div>
+                <div class="tableColumn email">
+                    <span>E-mail</span>
+                </div>
+                <div class="tableColumn acao">
+                    <span>Ação</span>
+                </div>
+            </div>
+            <div id="usuariosBody">
 
-                </tbody>
-            </table>
+            </div>
             <div class="modal" id="modalExcluirEmpresa">
                 <div class="modal-content">
                     <header class="modal-header">
@@ -210,6 +132,28 @@
                 </div>
             </div>
 
+            <div class="modal" id="modalEditarEmpresa">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2>Editar dados da empresa</h2>
+                        <span class="modal-close" id="modalClose4">✖</span>
+                    </header>
+                    <form class="modal-form">
+                        <!-- Inserir dos dados da empresa puxando do banco no placeholder  -->
+                        <div><input class="input" id="razaoSocial" type="text" placeholder="Razão Social"></div>
+                        <div><input class="input" id="emailEmpresa" type="email" placeholder="exemplo@gmail"></div>
+                        <div><input class="input" id="cnpjEmpresa" type="text" placeholder="23.920.541/0001-33"></div>
+                        <div><input class="input" id="senhaEmpresa" type="password" placeholder="Nova senha"></div>
+                        <div><input class="input" id="novaSenhaEmpresa" type="password"
+                                placeholder="Confirme a nova senha"></div>
+                    </form>
+                    <footer class="modal-footer">
+                        <button class="buttonCadPer green" id="sucessoEditarEmpresa">Salvar</button>
+                        <button class="buttonCadPer blue" id="cancelarClienteEditarEmpresa">Cancelar</button>
+                    </footer>
+                </div>
+            </div>
+
             <div class="modal" id="modalEditar">
                 <div class="modal-content">
                     <header class="modal-header">
@@ -217,34 +161,20 @@
                         <span class="modal-close" id="modalClose1">✖</span>
                     </header>
                     <form class="modal-form">
-                        <div><input class="input" id="id" type="number" placeholder="Id para editação"></div>
-                        <div><input class="input" id="username" type="text" placeholder="Nome do responsável"></div>
-                        <div><input class="input" id="email" type="email" placeholder="exemplo@gmail"></div>
-                        <div><input class="input" id="telefone" type="" placeholder="(11)0000-0000"></div>
-                        <div><input class="input" id="senha" type="password" placeholder="Senha"></div>
 
-                        <div>
-                            <select name="permissao" id="permissao" class="input">
-                                <option value="">Selecione</option>
-                                <option value="">Visualização</option>
-                                <option value="">Modificação</option>
-                                <option value="">Administrador</option>
-                            </select>
+                        <div><input class="input" id="username" type="text" placeholder="Nome do usuário"></div>
+                        <div><input class="input" id="emailUser" type="email" placeholder="exemplo@gmail"></div>
+                        <div><input class="input" id="telefone" type="" placeholder="(11)0000-0000"></div>
+                        <div><input class="input" id="newSenha" type="password" placeholder="Nova senha"></div>
+                        <div><input class="input" id="confirmSenha" type="password" placeholder="Confirme a nova senha">
                         </div>
-                        <div><input class="input" id="senha" type="password" placeholder="Confirme a senha"></div>
-                        <div>
-                            <select name="genero" id="genero" class="input">
-                                <option value="">Selecione</option>
-                                <option value="">Feminino</option>
-                                <option value="">Masculino</option>
-                                <option value="">Prefiro não dizer</option>
-                            </select>
-                        </div>
+
                     </form>
-                    <label style="margin-left: 5px;">⚠️⚠️Ao editar os dados de um usuário, você não perderá os respectivos dados!!!</label>
+                    <label style="margin-left: 20px;">Ao editar os dados de um usuário, você não perderá os
+                        respectivos dados!!!</label>
 
                     <footer class="modal-footer">
-                        
+
                         <button class="buttonCadPer green" id="sucessoEditar">Salvar</button>
                         <button class="buttonCadPer blue" id="cancelarClienteEditar">Cancelar</button>
                     </footer>
@@ -254,11 +184,11 @@
             <div class="modal" id="modalExcluirMaquina">
                 <div class="modal-content">
                     <header class="modal-header">
-                        <h2>Excluir cliente</h2>
+                        <h2>Excluir usuário</h2>
                         <span class="modal-close" id="modalClose2">✖</span>
                     </header>
                     <form class="modal-form">
-                        <label for="">Deseja mesmo excluir a máquina?</label>
+                        <label for="">Deseja mesmo excluir o usuário?</label>
                     </form>
                     <footer class="modal-footer">
                         <button class="buttonCadPer green" id="sucessoExcluirMaquina">Excluir</button>
@@ -269,7 +199,7 @@
             <div class="modal" id="modalConcluir">
                 <div class="modal-content">
                     <header class="modal-header">
-                        <h2>Excluir cliente</h2>
+                        <h2>Sucesso</h2>
                         <span class="modal-close" id="modalClose3">✖</span>
                     </header>
                     <form class="modal-form">
@@ -296,50 +226,106 @@
     }
 </script>
 <script>
-    // pop-ups
-    // variaveis
-    const openModal = () => document.getElementById('modalExcluirEmpresa').classList.add('active');
+    // modais
+
+    //EMPRESA
+    function openModal() {
+        document.getElementById('modalExcluirEmpresa').classList.add('active');
+        document.getElementById('sucessoExcluirEmpresa').addEventListener('click', () => excluirEmpresa())
+    }
     const closeModal = () => document.getElementById('modalExcluirEmpresa').classList.remove('active');
 
+    async function openModal4() {
+        document.getElementById('modalEditarEmpresa').classList.add('active');
+        var dadosEmpresa = await listarDadosEmpresa();
 
-    const openModal1 = () => document.getElementById('modalEditar').classList.add('active');
+        razaoSocial.value = `${dadosEmpresa[0].razaoSocial}`
+        emailEmpresa.value = `${dadosEmpresa[0].email}`
+        cnpjEmpresa.value = `${dadosEmpresa[0].cnpj}`
+
+        document.getElementById('sucessoEditarEmpresa').addEventListener('click', () => atualizarDadosEmpresa(razaoSocial.value, emailEmpresa.value, cnpjEmpresa.value, senhaEmpresa.value, novaSenhaEmpresa.value));
+    }
+    const closeModal4 = () => document.getElementById('modalEditarEmpresa').classList.remove('active');
+
+    //USUARIOS
+    function openModal1(id, nome, telefoneUser, email) {
+        username.value = `${nome}`
+        emailUser.value = `${email}`
+        telefone.value = `${telefoneUser}`
+        document.getElementById('modalEditar').classList.add('active');
+        document.getElementById('sucessoEditar').addEventListener('click', () => editarUsuario(id, username.value, emailUser.value, telefone.value, newSenha.value, confirmSenha.value))
+    }
     const closeModal1 = () => document.getElementById('modalEditar').classList.remove('active');
 
-
-    const openModal2 = () => document.getElementById('modalExcluirMaquina').classList.add('active');
+    function openModal2(id) {
+        document.getElementById('modalExcluirMaquina').classList.add('active');
+        document.getElementById('sucessoExcluirMaquina').addEventListener('click', () => excluirUser(id));
+    }
     const closeModal2 = () => document.getElementById('modalExcluirMaquina').classList.remove('active');
 
     const sucesso = () => document.getElementById('modalConcluir').classList.add('active')
-    const closeModal3 = () => document.getElementById('modalConcluir').classList.remove('active')
+    function closeModal3() {
+        document.getElementById('modalConcluir').classList.remove('active')
+        window.location = 'telaPerfil.html';
+    }
 
-
-
-    // funcoes
-    document.getElementById('ExcluirEmpresa').addEventListener('click', openModal)
+    // funcoes dos modais
+    //EMPRESA
+    document.getElementById('ExcluirEmpresa').addEventListener('click', () => openModal())
     document.getElementById('modalClose').addEventListener('click', closeModal)
     document.getElementById('cancelarClienteExcluirEmpresa').addEventListener('click', closeModal)
     document.getElementById('sucessoExcluirEmpresa').addEventListener('click', closeModal)
-    document.getElementById('sucessoExcluirEmpresa').addEventListener('click', sucesso)
-    document.getElementById('modalClose3').addEventListener('click', closeModal3)
-    document.getElementById('ok').addEventListener('click', closeModal3)
+    document.getElementById('modalClose3').addEventListener('click', () => closeModal3())
 
+    document.getElementById('EditarEmpresa').addEventListener('click', () => openModal4())
+    document.getElementById('modalClose4').addEventListener('click', closeModal4)
+    document.getElementById('cancelarClienteEditarEmpresa').addEventListener('click', closeModal4)
+    document.getElementById('sucessoEditarEmpresa').addEventListener('click', closeModal4)
+    document.getElementById('sucessoEditarEmpresa').addEventListener('click', sucesso)
+    document.getElementById('modalClose3').addEventListener('click', () => closeModal3())
+    document.getElementById('ok').addEventListener('click', () => closeModal3())
 
-    document.getElementById('editarCliente').addEventListener('click', openModal1)
+    //USUARIOS
+    // document.getElementById('editarCliente').addEventListener('click', openModal1)
     document.getElementById('modalClose1').addEventListener('click', closeModal1)
     document.getElementById('cancelarClienteEditar').addEventListener('click', closeModal1)
     document.getElementById('sucessoEditar').addEventListener('click', closeModal1)
     document.getElementById('sucessoEditar').addEventListener('click', sucesso)
-    document.getElementById('modalClose3').addEventListener('click', closeModal3)
-    document.getElementById('ok').addEventListener('click', closeModal3)
+    document.getElementById('modalClose3').addEventListener('click', () => closeModal3())
+    document.getElementById('ok').addEventListener('click', () => closeModal3())
 
-
-    document.getElementById('excluirCliente').addEventListener('click', openModal2);
+    // document.getElementById('excluirCliente').addEventListener('click', openModal2);
     document.getElementById('modalClose2').addEventListener('click', closeModal2)
     document.getElementById('cancelarClienteExcluirMaquina').addEventListener('click', closeModal2)
     document.getElementById('sucessoExcluirMaquina').addEventListener('click', closeModal2)
     document.getElementById('sucessoExcluirMaquina').addEventListener('click', sucesso)
-    document.getElementById('modalClose3').addEventListener('click', closeModal3)
-    document.getElementById('ok').addEventListener('click', closeModal3)
-
-
+    document.getElementById('modalClose3').addEventListener('click', () => closeModal3())
+    document.getElementById('ok').addEventListener('click', () => closeModal3())
+</script>
+<script>
+    function sair() {
+        let timerInterval
+        Swal.fire({
+            title: 'Estamos te redirecionando!',
+            html: 'Sou fachado em  <b></b>  milliseconds.',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+                window.location.href = "././index.html"
+            }
+        })
+    }
 </script>

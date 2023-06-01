@@ -40,21 +40,21 @@
                 </a>
                 <span class="tooltip">Dashboards</span>
             </li>
-            <li>
+            <li id="testeCadFun">
                 <a href="cadastroFun.html">
                     <i class='bx bx-user-plus'></i>
                     <span class="links_name">Usuários</span>
                 </a>
                 <span class="tooltip">Usuários</span>
             </li>
-            <li>
+            <li id="testeCadMaq">
                 <a href="cadMaquinas.html">
                     <i class='bx bx-border-all'></i>
                     <span class="links_name">Máquinas</span>
                 </a>
                 <span class="tooltip">Máquinas</span>
             </li>
-            <li>
+            <li id="testePerfilUser">
                 <a href="telaPerfil.html">
                     <i class='bx bx-user-circle'></i>
                     <span class="links_name">Perfil</span>
@@ -62,20 +62,20 @@
                 <span class="tooltip">Perfil</span>
             </li>
             <li>
-                <a href="index.html">
-                    <i class='bx bx-log-out'></i>
-                    <span class="links_name">Sair</span>
+                <a href="#" onclick="sair()">
+                    <i class='bx bx-log-out' onclick="sair()"></i>
+                    <span class="links_name" onclick="sair()">Sair</span>
                 </a>
-                <span class="tooltip">Sair</span>
+                <span class="tooltip" onclick="sair()">Sair</span>
             </li>
         </ul>
     </div>
     <div class="TelaPerfil">
         <header class="header">
-            <h1 class="header-title">Visão geral de suas máquinas</h1>
+            <h1 class="header-title">Visão geral de minhas máquinas</h1>
         </header class="header">
         <main class="main">
-            <label style="color: white;">
+            <label>
                 Aqui, você pode consultar de forma geral como estão seus processos
                 em relação aos totens de autoatendimento, verificando aqueles que estão em
                 conformidade com o padrão, os que estão em alerta e os que apresentam problemas generalizados. <br>
@@ -94,12 +94,11 @@
                     </div>
                 </div>
                 <div class="tbody-t">
-
                 </div>
             </div>
 
 
-            <div class="legendas" style="color:white">
+            <div class="legendas">
                 <div class="leg">
                     <icon>✅</icon> As capturas estão de acordo com o esperado.
                 </div>
@@ -118,8 +117,9 @@
 </body>
 
 </html>
+<script src="js/validaLogin.js"></script>
 <script>
-
+    // nav bar
     let btn = document.querySelector("#btn");
     let side_bar = document.querySelector(".side_bar");
 

@@ -18,6 +18,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
 </head>
 
 <body onload="obterListaDeMaquinas()">
@@ -42,33 +45,33 @@
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
-            <li>
+            <li id="testeCadFun">
                 <a href="../cadastroFun.html">
                     <i class='bx bx-user-plus'></i>
                     <span class="links_name">Usuários</span>
                 </a>
                 <span class="tooltip">Usuários</span>
             </li>
-            <li>
+            <li id="testeCadMaq">
                 <a href="../cadMaquinas.html">
                     <i class='bx bx-border-all'></i>
                     <span class="links_name">Máquinas</span>
                 </a>
                 <span class="tooltip">Máquinas</span>
             </li>
-            <li>
-                <a href="index.html">
+            <li id="testePerfilUser">
+                <a href="../telaPerfil.html">
                     <i class='bx bx-user-circle'></i>
                     <span class="links_name">Perfil</span>
                 </a>
                 <span class="tooltip">Perfil</span>
             </li>
             <li>
-                <a href="index.html">
-                    <i class='bx bx-log-out'></i>
-                    <span class="links_name">Sair</span>
+                <a href="#" onclick="sair()">
+                    <i class='bx bx-log-out' onclick="sair()"></i>
+                    <span class="links_name" onclick="sair()">Sair</span>
                 </a>
-                <span class="tooltip">Sair</span>
+                <span class="tooltip" onclick="sair()">Sair</span>
             </li>
         </ul>
     </div>
@@ -168,7 +171,9 @@
 </body>
 
 </html>
+<script src="../js/validaLogin.js"></script>
 <script>
+    verificarTipoLogin();
     let btn = document.querySelector("#btn");
     let side_bar = document.querySelector(".side_bar");
 
@@ -176,4 +181,31 @@
         side_bar.classList.toggle("active");
     }
 
+</script>
+<script>
+    function sair() {
+        let timerInterval
+        Swal.fire({
+            title: 'Estamos te redirecionando!',
+            html: 'Sou fachado em  <b></b>  milliseconds.',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+                window.location.href = "../index.html"
+            }
+        })
+    }
 </script>

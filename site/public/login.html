@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/jpg"/>
+    <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/jpg" />
     <title>ByteBite Solutions</title>
 </head>
+
 <body>
     <aside class="menu">
         <div class="menu-content">
-            <span ><a href=""><img id="logo" src="assets/logo/data-company-logo-creator-with-a-computer-chip-icon-388b-el1.png"
+            <span><a href=""><img id="logo"
+                        src="assets/logo/data-company-logo-creator-with-a-computer-chip-icon-388b-el1.png"
                         alt="LOGO"></a></span>
             <nav>
                 <ul>
@@ -22,9 +25,9 @@
             </nav>
         </div>
     </aside>
-     <!-- <div class="menu-spacing"></div> -->
+    <!-- <div class="menu-spacing"></div> -->
 
-     <div class="box">
+    <div class="box">
         <div class="alerta_erro">
             <div class="card_erro" id="cardErro">
                 <span id="mensagem_erro"></span>
@@ -32,36 +35,40 @@
         </div>
         <div class="box-form">
             <div class="mid-box">
-            <div class="form">
-                <h1>Realize o login</h1>
-                <p>E-mail:</p>
-                <input id="email_input" placeholder="exemplo@gmail.com" type="email">
-                <p>Senha:</p>
-                <input id="senha_input" placeholder="********" type="password">         
+                <div class="form">
+                    <h1>Realize o login</h1>
+                    <p>E-mail:</p>
+                    <input id="email_input" placeholder="exemplo@gmail.com" type="email">
+                    <p>Senha:</p>
+                    <input id="senha_input" placeholder="********" type="password">
+                    <p>Tipo:</p>
+                    <select id="tipoLogin" class="selectTipoLogin">
+                        <option value="empresa">Empresa</option>
+                        <option value="usuario">Usuario</option>
+                    </select>
+                </div>
+                <button class="btns" onclick="entrar()">Entrar</button>
+                <p><a href="cadastro.html"><u>Criar nova conta</u></a></p>
             </div>
-            <button class="btns" onclick="entrar()" >Entrar</button>
-            <p><a href="cadastro.html"><u>Criar nova conta</u></a></p>
         </div>
-    </div>
         <div class="box-logo">
             <div class="logo">
-            <img src="assets/logo/BBS-logo.png" alt="">
-            <p>Monitoramento e gerenciamento de computadores</p>
-         </div>
-       </div>
+                <img src="assets/logo/BBS-logo.png" alt="">
+                <p>Monitoramento e gerenciamento de computadores</p>
+            </div>
+        </div>
     </div>
 
 </body>
+
 </html>
 
 <script>
-
-
     function entrar() {
-        // aguardar();
-
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
+        var select = document.getElementById('tipoLogin');
+        var tipoLogin = select.options[select.selectedIndex].value;
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
@@ -69,13 +76,6 @@
             // finalizarAguardar();
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
         fetch("/usuarios/autenticar", {
             method: "POST",
             headers: {
@@ -83,27 +83,37 @@
             },
             body: JSON.stringify({
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
+                tipoLoginServer: tipoLogin
             })
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
             if (resposta.ok) {
-                console.log(resposta);
-
                 resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
                     sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.razaoSocial;
-                    sessionStorage.ID_USUARIO = json.idEmpresa;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    if (tipoLogin == 'empresa') {
+                        sessionStorage.ID_USUARIO = json.idEmpresa;
+                        sessionStorage.TYPE_LOGIN = 'empresa';
+                    }
+                    else {
+                        sessionStorage.ID_USUARIO = json.fk_empresa_usuario;
+                        sessionStorage.TYPE_LOGIN = 'usuario';
+                    }
 
-                    console.log(json.id)
-
-                    setTimeout(function () {
-                        window.location = "./dashboardGeral.html";
-                    }, 1000); // apenas para exibir o loading
+                    if (tipoLogin == 'empresa' && json.ativa == true) {
+                        setTimeout(function () {
+                            window.location = "./dashboardGeral.html";
+                        }, 1000);
+                    }
+                    else if (tipoLogin == 'usuario') {
+                        setTimeout(function () {
+                            window.location = "./dashboardGeral.html";
+                        }, 1000);
+                    }
+                    else {
+                        console.log('Empresa inativa!')
+                    }
+                    // apenas para exibir o loading
 
                 });
 
@@ -123,9 +133,4 @@
 
         return false;
     }
-
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
-
 </script>
