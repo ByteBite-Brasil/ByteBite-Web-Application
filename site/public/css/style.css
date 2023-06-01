@@ -25,6 +25,24 @@ body {
     width: 100%;
 }
 
+.escolhaTotem {
+    border: solid 2px #A7A6A6;
+    height: 2.5em;
+    width: 9em;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #000000;
+    color: #EEEEEE;
+}
+
+.selecionarMaquina {
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+}
+
 .main-bg {
     background-color: #f7f7f7;
     background-image: url("../assets/background/layered-waves-haikei-invert.svg");
@@ -944,6 +962,8 @@ select {
 
 
 }
+
+
 
 .tbody-t .tr-t {
     border-radius: 10px;

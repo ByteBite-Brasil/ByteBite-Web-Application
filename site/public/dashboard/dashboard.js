@@ -11,6 +11,7 @@ let valorLogElement;
 let proximaAtualizacao;
 let idElement;
 let janelasElement;
+let valorMaquina;
 
 
 // OBTEM A LISTA DE MAQUINAS DIRETO DO BANCO AZURE PELO ID/FK EMPRESA
@@ -93,6 +94,12 @@ var minhaSelect = document.getElementById("sel_maquina");
 minhaSelect.addEventListener("change", function () {
 
     var valorSelecionado = minhaSelect.value;
+    valorMaquina = minhaSelect.value
+
+    if (proximaAtualizacao =! undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
 
     obterKPI1(valorSelecionado)
     obterKPI2(valorSelecionado)
@@ -113,10 +120,6 @@ function obterKPI1(valorSelecionado, componente, tipo) {
 
     componente = 1;
     tipo = 2
-
-    if (proximaAtualizacao != undefined) {
-        clearTimeout(proximaAtualizacao);
-    }
 
     fetch(`/medidas/top/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -143,7 +146,7 @@ function obterKPI2(valorSelecionado, componente, tipo) {
     componente = 1;
     tipo = 1
 
-    if (proximaAtualizacao != undefined) {
+    if (proximaAtualizacao) {
         clearTimeout(proximaAtualizacao);
     }
 
@@ -172,7 +175,7 @@ function obterKPI3(valorSelecionado, componente, tipo) {
     componente = 2;
     tipo = 1
 
-    if (proximaAtualizacao != undefined) {
+    if (proximaAtualizacao) {
         clearTimeout(proximaAtualizacao);
     }
 
@@ -200,10 +203,6 @@ function obterDadosConsumoCPU(valorSelecionado, componente, tipo) {
 
     componente = 1;
     tipo = 1
-
-    if (proximaAtualizacao != undefined) {
-        clearTimeout(proximaAtualizacao);
-    }
 
     fetch(`/medidas/ultimas/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -234,10 +233,6 @@ function obterDadosTemperaturaCPU(valorSelecionado, componente, tipo) {
     componente = 1;
     tipo = 2
 
-    if (proximaAtualizacao != undefined) {
-        clearTimeout(proximaAtualizacao);
-    }
-
     fetch(`/medidas/ultimas/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
 
@@ -261,10 +256,6 @@ function obterDadosConsumoDISCO(valorSelecionado, componente, tipo) {
 
     componente = 3;
     tipo = 1
-
-    if (proximaAtualizacao != undefined) {
-        clearTimeout(proximaAtualizacao);
-    }
 
     fetch(`/medidas/ultimas/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -293,10 +284,6 @@ function obterDadosConsumoRAM(valorSelecionado, componente, tipo) {
     componente = 2;
     tipo = 1
 
-    if (proximaAtualizacao != undefined) {
-        clearTimeout(proximaAtualizacao);
-    }
-
     fetch(`/medidas/ultimas/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
 
@@ -322,9 +309,7 @@ function obterDadosConsumoRAM(valorSelecionado, componente, tipo) {
 function obterUltimoAlerta(valorSelecionado) {
     console.log('Entrei para capturar o alerta');
 
-    if (proximaAtualizacao != undefined) {
-        clearTimeout(proximaAtualizacao);
-    }
+    
 
     fetch(`/medidas/ultimo/alerta/maquinas/${valorSelecionado}`, { cache: 'no-store' })
         .then(function (response) {
@@ -460,7 +445,7 @@ function plotarGraficoConsumoCPU(resposta, valorSelecionado, componente, tipo) {
         document.getElementById('ConsumoCPU'),
         config
     );
-    setTimeout(() => atualizarGrafico(valorSelecionado, componente, tipo, data, myChart), 5000);
+    setTimeout(() => atualizarGrafico(valorSelecionado, componente, tipo, data, myChart), 10000);
 }
 
 function plotarGraficoTemperaturaCPU(resposta, valorSelecionado1, componente1, tipo1) {
@@ -527,7 +512,7 @@ function plotarGraficoTemperaturaCPU(resposta, valorSelecionado1, componente1, t
         config1
     );
 
-    setTimeout(() => atualizarGrafico(valorSelecionado1, componente1, tipo1, data1, myChart1), 5000);
+    setTimeout(() => atualizarGrafico(valorSelecionado1, componente1, tipo1, data1, myChart1), 10000);
 }
 
 function plotarGraficoConsumoDISCO(resposta, valorSelecionado2, componente2, tipo2) {
@@ -594,7 +579,7 @@ function plotarGraficoConsumoDISCO(resposta, valorSelecionado2, componente2, tip
         config2
     );
 
-    setTimeout(() => atualizarGrafico(valorSelecionado2, componente2, tipo2, data2, myChart2), 5000);
+    setTimeout(() => atualizarGrafico(valorSelecionado2, componente2, tipo2, data2, myChart2), 10000);
 }
 
 function plotarGraficoConsumoRAM(resposta, valorSelecionado3, componente3, tipo3) {
@@ -661,7 +646,7 @@ function plotarGraficoConsumoRAM(resposta, valorSelecionado3, componente3, tipo3
         config3
     );
 
-    setTimeout(() => atualizarGrafico(valorSelecionado3, componente3, tipo3, data3, myChart3), 5000);
+    setTimeout(() => atualizarGrafico(valorSelecionado3, componente3, tipo3, data3, myChart3), 10000);
 }
 
 function plotarUltimoAlerta(resposta) {
@@ -718,26 +703,31 @@ function plotarUltimoAlertaVazio() {
 // ATUALIZAR DADOS
 function atualizarGrafico(valorSelecionado, componente, tipo, data, myChart) {
 
+    console.log("---------------------------------------------------------------")
     console.log("maq" + valorSelecionado)
     console.log("comp" + componente)
     console.log("tip" + tipo)
+    console.log("---------------------------------------------------------------")
+
+    console.log(proximaAtualizacao)
 
     fetch(`/medidas/tempo-real/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
-                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                console.log(`Dados atuais do gráfico:`);
-                console.log(data);
+                // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                // console.log(`Dados atuais do gráfico:`);
+                // console.log(data);
 
                 if (novoRegistro[0].hora == data.labels[data.labels.length - 1]) {
-                    console.log("---------------------------------------------------------------")
-                    console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                    console.log("Horário do novo dado capturado:")
-                    console.log(novoRegistro[0].hora)
-                    console.log("Horário do último dado capturado:")
-                    console.log(data.labels[data.labels.length - 1])
-                    console.log("---------------------------------------------------------------")
+                    // console.log("---------------------------------------------------------------")
+                    // console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                    // console.log("Horário do novo dado capturado:")
+                    // console.log(novoRegistro[0].hora)
+                    // console.log("Horário do último dado capturado:")
+                    // console.log(data.labels[data.labels.length - 1])
+                    // console.log("---------------------------------------------------------------")
+
                 } else {
 
                     data.labels.shift(); // apagar o primeiro
@@ -751,14 +741,18 @@ function atualizarGrafico(valorSelecionado, componente, tipo, data, myChart) {
 
                 }
 
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(valorSelecionado, componente, tipo, data, myChart), 5000);
+
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(valorSelecionado, componente, tipo, data, myChart), 10000);
+
+
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
-            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(valorSelecionado, componente, tipo, data, myChart), 5000);
+
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(valorSelecionado, componente, tipo, data, myChart), 10000);
         }
+
+
     })
         .catch(function (error) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
@@ -766,4 +760,10 @@ function atualizarGrafico(valorSelecionado, componente, tipo, data, myChart) {
 
 }
 
+function ir() {
 
+    sessionStorage.setItem('maquinaSelecionada', valorMaquina);
+    window.location = "../alertas.html";
+
+
+}

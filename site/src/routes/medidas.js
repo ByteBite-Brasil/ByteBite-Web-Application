@@ -7,6 +7,10 @@ router.post("/getMaquinas", function (req, res) {
     medidaController.getMaquinas(req, res);
 });
 
+router.post("/getMaquinasAlertas", function (req, res) {
+    medidaController.getMaquinasAlertas(req, res);
+});
+
 router.get("/ultimas/dados/maquinas/:idMaquina/:idComponente/:idTipo", function (req, res) {
     medidaController.buscarUltimasMedidas(req, res);
 });
@@ -23,6 +27,11 @@ router.get("/ultimo/alerta/maquinas/:idMaquina", function (req, res) {
 router.get("/total/alerta/maquinas/:idMaquina", function (req, res) {
 
     medidaController.buscarNumeroTotaldeAlertas(req, res);
+});
+
+router.get("/todos/alerta/maquinas/:idMaquina", function (req, res) {
+
+    medidaController.buscarTodosOsAlertas(req, res);
 });
 
 router.get("/tempo-real/:idMaquina/:idComponente/:idTipo", function (req, res) {

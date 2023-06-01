@@ -7,7 +7,24 @@ function getMaquinas(idEmpresa) {
     instrucaoSql = `select * from maquina where fk_empresa_maquina = ${idEmpresa};`
 
 
-    // console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function getMaquinasAlertas(idEmpresa) {
+
+    instrucaoSql = `SELECT m.idMaquina, m.nome AS nomeMaquina, COUNT(a.idAlerta) AS quantidadeAlertas
+    FROM maquina m
+    INNER JOIN configuracao cfg ON m.idMaquina = cfg.fk_maquina
+    INNER JOIN log_captura lc ON cfg.idConfiguracao = lc.fk_configuracao
+    INNER JOIN alerta a ON lc.idLog = a.fk_log_captura
+    WHERE m.fk_empresa_maquina = ${idEmpresa}
+    GROUP BY m.idMaquina, m.nome
+    HAVING COUNT(a.idAlerta) > 0
+    ORDER BY m.idMaquina;`
+
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
@@ -31,6 +48,25 @@ function buscarUltimoAlerta(idMaquina) {
     console.log('Passei pelo models')
 
     instrucaoSql = `SELECT top 1 a.idAlerta, a.fk_log_captura, lc.medicao AS valor_log_captura, c.nome AS criticidade, d.descricaoAlerta AS descricao, m.nome AS maquina, j.quantidade AS quantidade_janelas, tl.idTipoLog AS tipo_log
+    FROM alerta a
+    INNER JOIN log_captura lc ON a.fk_log_captura = lc.idLog
+    INNER JOIN criticidade c ON a.fk_criticidade = c.idCriticidade
+    INNER JOIN descricao d ON a.fk_descricao = d.idDescricao
+    INNER JOIN configuracao cfg ON lc.fk_configuracao = cfg.idConfiguracao
+    INNER JOIN maquina m ON cfg.fk_maquina = m.idMaquina
+    INNER JOIN janelas j ON a.fk_janelas = j.idJanelas
+    INNER JOIN tipo_log tl ON lc.fk_tipo_log = tl.idTipoLog
+    WHERE m.idMaquina = ${idMaquina} order by a.idAlerta desc;`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarTodosOsAlertas(idMaquina) {
+
+    console.log('Passei pelo models')
+
+    instrucaoSql = `SELECT a.idAlerta, a.fk_log_captura, lc.medicao AS valor_log_captura, lc.data_, lc.hora, c.nome AS criticidade, d.descricaoAlerta AS descricao, m.nome AS maquina, j.quantidade AS quantidade_janelas, tl.idTipoLog AS tipo_log
     FROM alerta a
     INNER JOIN log_captura lc ON a.fk_log_captura = lc.idLog
     INNER JOIN criticidade c ON a.fk_criticidade = c.idCriticidade
@@ -98,6 +134,8 @@ function buscarMedidasEmTempoReal(idMaquina, idComponente, idTipo) {
 
 module.exports = {
     getMaquinas,
+    buscarTodosOsAlertas,
+    getMaquinasAlertas,
     buscarUltimoAlerta,
     buscarUltimasMedidas,
     buscarTopMedidas,
