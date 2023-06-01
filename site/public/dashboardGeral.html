@@ -19,7 +19,7 @@
 
 </head>
 
-<body>
+<body onload="obterListaDeMaquinas1()">
     <!-- Navbar -->
     <div class="side_bar">
         <div class="logo_content">
@@ -34,7 +34,7 @@
         </div>
         <ul class="nav_list">
             <li>
-                <a href="dashboard/dashboard.html">
+                <a href="dashboardGeral.html">
                     <i class='bx bx-line-chart'></i>
                     <span class="links_name">Dashboards</span>
                 </a>
@@ -90,60 +90,10 @@
                     <div class="tr-t">
                         <div class="th-t">Nome da máquina</div>
                         <div class="th-t">Status</div>
-                        <div class="th-t">Horário Status</div>
 
                     </div>
                 </div>
                 <div class="tbody-t">
-                    <div class="tr-t">
-                        <div class="td-t"><label>Totem teste 1</label></div>
-                        <div class="td-t">
-                            <icon>🚨</icon>
-                        </div>
-                        <div class="td-t"><label>12:33</label></div>
-                    </div>
-                    <div class="tr-t">
-                        <div class="td-t"><label>Totem teste 2</label></div>
-                        <div class="td-t">
-                            <icon>⚠️</icon>
-                        </div>
-                        <div class="td-t"><label>12:33</label></div>
-                    </div>
-                    <div class="tr-t">
-                        <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t">
-                            <icon>✅</icon>
-                        </div>
-                        <div class="td-t"><label>12:33</label></div>
-                    </div>
-                    <div class="tr-t">
-                        <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t">
-                            <icon>🚨</icon>
-                        </div>
-                        <div class="td-t"><label>12:33</label></div>
-                    </div>
-                    <div class="tr-t">
-                        <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t">
-                            <icon>⚠️</icon>
-                        </div>
-                        <div class="td-t"><label>12:33</label></div>
-                    </div>
-                    <div class="tr-t">
-                        <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t">
-                            <icon>✅</icon>
-                        </div>
-                        <div class="td-t"><label>12:33</label></div>
-                    </div>
-                    <div class="tr-t">
-                        <div class="td-t"><label>Totem teste 3</label></div>
-                        <div class="td-t">
-                            <icon>⚠️</icon>
-                        </div>
-                        <div class="td-t"><label>12:33</label></div>
-                    </div>
                 </div>
             </div>
 
@@ -204,4 +154,118 @@
         })
     }
 
+    function obterListaDeMaquinas1() {
+
+        var idEmpresa = sessionStorage.ID_USUARIO
+
+        fetch(`/medidas/getMaquinas`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+
+                idServer: idEmpresa
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+
+                    // console.log(JSON.stringify(json));
+                    var maquinas = json
+
+                    console.log(maquinas)
+
+                    plotarListaDeMaquinas1(maquinas)
+
+                });
+
+            } else {
+
+                throw ("Houve um erro ao tentar o certo");
+
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+        });
+
+        return false;
+    }
+
+    async function obterTotalAlertasPorMaquina1(valorSelecionado) {
+        try {
+            const response = await fetch(`/medidas/total/alerta/maquinas/${valorSelecionado}`, { cache: 'no-store' });
+            if (response.ok) {
+                const data = await response.json();
+                return data;
+            } else {
+                throw new Error('Nenhum dado encontrado ou erro na API');
+            }
+        } catch (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        }
+    }
+
+    function obterIconePorMaquina1(idMaquina) {
+        return fetch(`/medidas/total/alerta/maquinas/${idMaquina}`)
+            .then(response => response.json())
+            .then(totalAlertas => {
+                const quantidadeAlertas = totalAlertas.length > 0 ? totalAlertas[0].total_alertas : 0;
+
+                switch (true) {
+                    case quantidadeAlertas === 0:
+                        return '✅';
+                    case quantidadeAlertas > 0 && quantidadeAlertas <= 5:
+                        return '⚠️';
+                    case quantidadeAlertas > 5:
+                        return '🚨';
+                    default:
+                        return '';
+                }
+            })
+            .catch(error => {
+                console.error(`Erro ao obter total de alertas para a máquina ${idMaquina}: ${error.message}`);
+                return ''; // Ícone padrão em caso de erro
+            });
+    }
+
+    function plotarListaDeMaquinas1(maquinas) {
+        const areaMaquinas = document.querySelector('.tbody-t');
+
+        const promises = maquinas.map(maquina => {
+            const totalAlertasPromise = obterIconePorMaquina1(maquina.idMaquina);
+
+            const tr = document.createElement('div');
+            tr.classList.add('tr-t');
+
+            const tdNome = document.createElement('div');
+            tdNome.classList.add('td-t');
+            const nomeLabel = document.createElement('label');
+            nomeLabel.textContent = maquina.nome;
+            tdNome.appendChild(nomeLabel);
+
+            const tdStatus = document.createElement('div');
+            tdStatus.classList.add('td-t');
+            const statusIcon = document.createElement('icon');
+            tdStatus.appendChild(statusIcon);
+
+            tr.appendChild(tdNome);
+            tr.appendChild(tdStatus);
+            areaMaquinas.appendChild(tr);
+
+            return totalAlertasPromise.then(icon => {
+                statusIcon.textContent = icon;
+            });
+        });
+
+        Promise.all(promises).catch(error => {
+            console.error(`Erro ao plotar lista de máquinas: ${error.message}`);
+        });
+    }
 </script>
