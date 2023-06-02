@@ -644,11 +644,12 @@ select {
     padding: 60px;
     width: 40%;
     align-items: center;
-    height: max-content;
+    height: 400px;
     font-family: 'Poppins', sans-serif;
     font-size: 1.rem;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    overflow: auto;
 }
 
 .btnmaq {
@@ -746,10 +747,12 @@ select {
     transition: box-shadow 0.3s ease;
     font-family: 'Poppins', sans-serif;
     border-radius: 12px;
+    float: right;
 }
 
 .buttonCadPer.blue {
     background-color: rgb(60, 60, 255);
+    margin-right: 5px;
 }
 
 .buttonCadPer.green {
@@ -774,9 +777,12 @@ select {
     display: flex;
     justify-content: space-between;
     margin: auto;
-    color: #000;
+    color: #ffffff;
     font-weight: bold;
     font-size: 20px;
+    padding: 5px;
+    /* border: #000 solid 2px; */
+    /* border-radius: 15px; */
 }
 
 .title {
@@ -784,37 +790,34 @@ select {
 }
 
 .idMaq {
-    border: 2px solid black;
     text-align: center;
     width: 20%;
     background-color: #c90a02;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 7px;
 }
 
 .maquina {
-    border-top: 2px solid black;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
     text-align: center;
-    width: 40%;
+    width: 55%;
     background-color: #c90a02;
+    padding: 7px;
 }
 
 .acaoMaquina {
-    border-top: 2px solid black;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
     text-align: center;
-    width: 40%;
+    width: 50%;
     background-color: #c90a02;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 7px;
 }
 
 .idMaquina {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
-    border-left: 2px solid black;
     text-align: center;
     width: 20%;
 }
@@ -823,30 +826,30 @@ select {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
     text-align: center;
-    width: 40%;
+    width: 55%;
 }
 
 .maqAcao {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
     text-align: center;
-    width: 40%;
+    width: 50%;
 }
 
 .bodyTable {
     display: flex;
     height: 55px;
+    background-color: #4b4646;
+    color: white;
+    border-radius: 10px;
+    border: white 3px solid;
 }
 
 
 .modal {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -1046,10 +1049,16 @@ select {
     font-size: 18px;
     font-weight: bold;
     margin-top: 20px;
+    border-radius: 10px;
+    border: white solid 3px;
 }
 
 #usuariosBody {
     width: 100%;
+    height: 200px;
+    overflow: auto;
+    border-bottom-right-radius: 10px ;
+    border-bottom-left-radius: 10px ;
 }
 
 .bodyUsuarios {
@@ -1057,17 +1066,28 @@ select {
     margin: 0 auto;
     width: 100%;
     color: white;
+    background-color: #4b4646;
+    border-radius: 10px;
+    border-bottom: white 3px solid;
+}
+
+.bodyUsuarios:hover , .bodyTable:hover{
+    background-color: grey;
+    color: white;
+
 }
 
 .tableColumn {
-    background-color: wheat;
+    background-color: #c91515;
+    padding: 5px;
     text-align: center;
-    border: 2px solid black;
+    color: white;
+    font-size: 20px;
+    
 }
 
 .bodyUserTable {
     text-align: center;
-    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1076,6 +1096,8 @@ select {
 
 .id {
     width: 10%;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 .name {
@@ -1099,8 +1121,17 @@ select {
     width: 15%;
     display: flex;
     justify-content: space-around;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
+.botoes-editar-excluir {
+    margin-top: 20px;
+    padding: 5px;
+    width: 100%;
+    align-items: end;
+    display: inline;
+}
 /* Config do scroll */
 
 body::-webkit-scrollbar {
@@ -1129,7 +1160,7 @@ body::-webkit-scrollbar {
     height: 300px;
   } */
 
-  .tbody-t{
+  .tbody-t {
     overflow: auto;
     height: 300px;
   }
