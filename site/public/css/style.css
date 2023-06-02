@@ -462,6 +462,9 @@ a {
     font-family: 'Poppins', sans-serif;
 }
 
+.form input{
+    outline: none;
+}
 
 .box-form a {
     color: blue;
