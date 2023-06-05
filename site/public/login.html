@@ -60,6 +60,7 @@
     </div>
 
 </body>
+
 </html>
 
 <script>
@@ -101,15 +102,15 @@
 
                     if (tipoLogin == 'empresa' && json.ativa == true) {
                         setTimeout(function () {
-                            window.location = "./dashboard/dashboard.html";
+                            window.location = "./dashboardGeral.html";
                         }, 1000);
                     }
                     else if (tipoLogin == 'usuario') {
                         setTimeout(function () {
-                            window.location = "./dashboard/dashboard.html";
+                            window.location = "./dashboardGeral.html";
                         }, 1000);
                     }
-                    else{
+                    else {
                         console.log('Empresa inativa!')
                     }
                     // apenas para exibir o loading

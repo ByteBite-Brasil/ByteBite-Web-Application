@@ -30,7 +30,7 @@ body {
     flex-direction: column;
     box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2);
     top: 0;
-    
+
 
 }
 
@@ -62,36 +62,12 @@ body {
     margin-right: 10px;
 }
 
-/* */
-
-/*header + navbar */
-/* .menu-content {
-
-    background-color: #f7f7f7;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 80vw;
-    height: 10vh;
-    box-shadow: 0.3px 0.3px 0.3px rgba(25, 25, 25, 0.447)   
-}
-
-
-
-.menu-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 10%;
-} */
-
 .container {
     position: absolute;
     right: 0;
     width: 90%;
     margin-right: 30px;
-    
+
     /* background: #5F818A; */
 }
 
@@ -192,6 +168,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 5.0rem;
 }
 
 .kpi {
@@ -207,16 +184,20 @@ a {
     font-family: var(--font-family-subtitle);
     justify-content: space-around;
 }
+
 .kpiruim {
     color: red;
 }
+
 .kpiboa {
     color: rgb(26, 200, 26);
 }
+
 .datakpi span {
     font-size: 30px;
 }
-.alerta{
+
+.alerta {
     border-radius: 10px;
     width: 17em;
     height: 8em;
@@ -228,10 +209,42 @@ a {
     text-align: center;
     font-weight: bold;
 }
-.alerta img{
+
+.conteudo1 {
+    color: white;
+    /* border: solid green; */
+    margin: 5px;
+
+}
+
+.conteudo2 {
+    color: white;
+    /* border: solid green; */
+    margin: 5px;
+
+}
+
+.conteudo3 {
+    color: white;
+    /* border: solid green; */
+    margin: 5px;
+    justify-content: center;
+
+}
+
+.conteudo4 {
+    color: white;
+    /* border: solid green; */
+    margin: 5px;
+    justify-content: center;
+
+}
+
+.alerta img {
     width: 90px;
     height: 90px;
 }
+
 .btnAlert {
     background-color: var(--red-bytebite);
     color: var(--primary-text);
@@ -270,24 +283,27 @@ a {
     height: 35.5em;
 }
 
-#dataJanelas{
+.Janelas {
     margin: 0px;
     color: green;
     font-family: var(--font-family-title);
     font-size: 30px;
     font-weight: bold;
 }
+
 .areaJanelas {
     height: 10em;
     width: 100%;
     border: 2px solid var(--primary-text);
 }
-.areaGraficoRam{
+
+.areaGraficoRam {
     height: 30em;
     margin-top: 22px;
     margin-right: 20px;
 }
-.areaGraficoJanelas{
+
+.areaGraficoJanelas {
     height: 30em;
     margin-top: 22px;
 }
@@ -318,7 +334,7 @@ a {
     border-radius: 10px;
 }
 
-.graficoJanelas{
+.graficoJanelas {
     height: 17em;
     width: 34em;
     background-color: #1b1a1a;
@@ -341,7 +357,7 @@ a {
     color: rgb(26, 200, 26);
 }
 
-.dadosTotem{
+.dadosTotem {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
