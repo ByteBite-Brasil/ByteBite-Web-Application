@@ -70,6 +70,11 @@
         </a>
         <span class="tooltip" onclick="sair()">Sair</span>
       </li>
+      <li>
+        <div>
+          <img src="../assets/icons/favicon.png" class="side-footer">
+        </div>
+      </li>
     </ul>
   </div>
 
@@ -136,30 +141,30 @@
 
 
   function sair() {
-        let timerInterval
-        Swal.fire({
-            title: 'Estamos te redirecionando!',
-            html: 'Sou fachado em  <b></b>  milliseconds.',
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: () => {
-                Swal.showLoading()
-                const b = Swal.getHtmlContainer().querySelector('b')
-                timerInterval = setInterval(() => {
-                    b.textContent = Swal.getTimerLeft()
-                }, 100)
-            },
-            willClose: () => {
-                clearInterval(timerInterval)
-            }
-        }).then((result) => {
-            /* Read more about handling dismissals below */
-            if (result.dismiss === Swal.DismissReason.timer) {
-                console.log('I was closed by the timer')
-                window.location.href = "../index.html"
-            }
-        })
-    }
+    let timerInterval
+    Swal.fire({
+      title: 'Estamos te redirecionando!',
+      html: 'Sou fachado em  <b></b>  milliseconds.',
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+        window.location.href = "../index.html"
+      }
+    })
+  }
 </script>
 <script>
   const error = document.getElementById('grafic-error');

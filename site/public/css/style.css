@@ -232,6 +232,7 @@ a {
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
+    margin-left: -50px;
 
 }
 
@@ -357,14 +358,13 @@ a {
     display: flex;
     flex-direction: row;
     width: 100%;
+    height: 24vh;
     justify-content: space-around;
-    gap: var(--gap);
-
 }
 
 #logo-footer {
     width: 200px;
-    height: 200px;
+    /* height: 200px; */
     align-items: center;
     display: flex;
 
@@ -385,6 +385,7 @@ a {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-top: 25px;
 
 }
 
@@ -403,7 +404,14 @@ a {
 .icon-footer img:hover {
     transform: translate(-1%, 1%) scale(1.1);
 }
-
+.frase_final{
+    text-align: center;
+    font-style: italic;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    margin-bottom: 10px;
+    margin-top: -10px;
+}
 /*--------------Cadastro--------------*/
 
 .hide {
@@ -421,17 +429,16 @@ a {
 }
 
 .box-form {
-    margin-top: 150px;
+    margin-top: 100px;
     width: 60vh;
-    height: 70vh;
+    height: 77vh;
     background-color: #D9D9D9;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     display: flex;
-    /* text-align: center; */
-    /* align-items: center; */
     justify-content: center;
     flex-direction: column;
+
 
 }
 
@@ -447,7 +454,7 @@ a {
 .form p {
     font-family: var(--font-inter);
     font-size: 17px;
-    padding-top: 25px;
+    padding-top: 10px;
     display: flex;
     font-weight: 1000;
     font-family: 'Poppins', sans-serif;
@@ -473,6 +480,9 @@ a {
     font-family: 'Poppins', sans-serif;
 }
 
+.form input{
+    outline: none;
+}
 
 .box-form a {
     color: blue;
@@ -483,9 +493,9 @@ a {
 
 
 .box-logo {
-    margin-top: 150px;
-    width: 50vh;
-    height: 70vh;
+    margin-top: 100px;
+    width: 60vh;
+    height: 77vh;
     background-color: #c3c1c1;
     display: flex;
     justify-content: center;
@@ -655,11 +665,12 @@ select {
     padding: 60px;
     width: 40%;
     align-items: center;
-    height: max-content;
+    height: 400px;
     font-family: 'Poppins', sans-serif;
     font-size: 1.rem;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    overflow: auto;
 }
 
 .btnmaq {
@@ -689,10 +700,11 @@ select {
 
 /* Tela de perfil */
 .header-title {
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: 2rem;
     text-transform: none;
     font-family: 'Poppins', sans-serif;
+    background-color: #4b4646;
 }
 
 .TelaPerfil {
@@ -723,7 +735,7 @@ select {
     box-shadow: 2px 2px 10px grey;
 }
 .main label{
-    font-size: 18px;
+    font-size: 20px;
     color: #000;
 }
 .main .title-grid-user label{
@@ -756,10 +768,12 @@ select {
     transition: box-shadow 0.3s ease;
     font-family: 'Poppins', sans-serif;
     border-radius: 12px;
+    float: right;
 }
 
 .buttonCadPer.blue {
     background-color: rgb(60, 60, 255);
+    margin-right: 5px;
 }
 
 .buttonCadPer.green {
@@ -784,9 +798,12 @@ select {
     display: flex;
     justify-content: space-between;
     margin: auto;
-    color: #000;
+    color: #ffffff;
     font-weight: bold;
     font-size: 20px;
+    padding: 5px;
+    /* border: #000 solid 2px; */
+    /* border-radius: 15px; */
 }
 
 .title {
@@ -794,37 +811,34 @@ select {
 }
 
 .idMaq {
-    border: 2px solid black;
     text-align: center;
     width: 20%;
     background-color: #c90a02;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 7px;
 }
 
 .maquina {
-    border-top: 2px solid black;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
     text-align: center;
-    width: 40%;
+    width: 55%;
     background-color: #c90a02;
+    padding: 7px;
 }
 
 .acaoMaquina {
-    border-top: 2px solid black;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
     text-align: center;
-    width: 40%;
+    width: 50%;
     background-color: #c90a02;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 7px;
 }
 
 .idMaquina {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
-    border-left: 2px solid black;
     text-align: center;
     width: 20%;
 }
@@ -833,30 +847,30 @@ select {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
     text-align: center;
-    width: 40%;
+    width: 55%;
 }
 
 .maqAcao {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
     text-align: center;
-    width: 40%;
+    width: 50%;
 }
 
 .bodyTable {
     display: flex;
     height: 55px;
+    background-color: #4b4646;
+    color: white;
+    border-radius: 10px;
+    border: white 3px solid;
 }
 
 
 .modal {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -1036,11 +1050,13 @@ select {
     background-color: rgb(245, 245, 72);
     font-family: 'Poppins', sans-serif;
     font-size: 23px;
+    font-weight: bold;
 }
 
 .legendas {
     margin: 20px 20px;
     color: #000;
+    font-size: 20px;
 }
 
 /*TELA PERFIL EMPRESA */
@@ -1054,10 +1070,16 @@ select {
     font-size: 18px;
     font-weight: bold;
     margin-top: 20px;
+    border-radius: 10px;
+    border: white solid 3px;
 }
 
 #usuariosBody {
     width: 100%;
+    height: 200px;
+    overflow: auto;
+    border-bottom-right-radius: 10px ;
+    border-bottom-left-radius: 10px ;
 }
 
 .bodyUsuarios {
@@ -1065,17 +1087,28 @@ select {
     margin: 0 auto;
     width: 100%;
     color: white;
+    background-color: #4b4646;
+    border-radius: 10px;
+    border-bottom: white 3px solid;
+}
+
+.bodyUsuarios:hover , .bodyTable:hover{
+    background-color: grey;
+    color: white;
+
 }
 
 .tableColumn {
-    background-color: wheat;
+    background-color: #c91515;
+    padding: 5px;
     text-align: center;
-    border: 2px solid black;
+    color: white;
+    font-size: 20px;
+    
 }
 
 .bodyUserTable {
     text-align: center;
-    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1084,6 +1117,8 @@ select {
 
 .id {
     width: 10%;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 .name {
@@ -1107,8 +1142,17 @@ select {
     width: 15%;
     display: flex;
     justify-content: space-around;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
+.botoes-editar-excluir {
+    margin-top: 20px;
+    padding: 5px;
+    width: 100%;
+    align-items: end;
+    display: inline;
+}
 /* Config do scroll */
 
 body::-webkit-scrollbar {
@@ -1125,6 +1169,22 @@ body::-webkit-scrollbar {
     border: 3px solid var(--primary-color);  /* creates padding around scroll thumb */
   }
 
+  /* criar scroll para listagens*/
+
+  /* #usuariosBody{
+    overflow: auto;
+    height: 300px;
+  }
+
+  .areaUsuarios{
+    overflow: auto;
+    height: 300px;
+  } */
+
+  .tbody-t {
+    overflow: auto;
+    height: 300px;
+  }
 /* Responsividade */
 
 @media only screen and (max-width: 600px) {
