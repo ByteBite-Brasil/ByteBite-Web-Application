@@ -100,6 +100,12 @@
             </div>
         </div>
     </div>
+
+    <!-- Start of bytebitebrasil Zendesk Widget script -->
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=5b5b0925-116f-4fa8-946f-9c0084b217af">
+    </script>
+    <!-- End of bytebitebrasil Zendesk Widget script -->
+
 </body>
 
 </html>
@@ -342,9 +348,9 @@
 
                     console.log(JSON.stringify(json));
                     console.log(JSON.stringify(json.idEmpresa));
-                   
 
-                    
+
+
                     sessionStorage.ID_EMPRESA = json.idEmpresa;
                     idempresa = sessionStorage.ID_EMPRESA;
 
@@ -384,7 +390,7 @@
         if (cep == '') {
             alert('Preencha o CEP.');
             return false;
-        }if(cep.length > 9){
+        } if (cep.length > 9) {
             alert('CEP inválido.');
             return false;
         }
