@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/jpg"/>
+    <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/jpg" />
     <title>ByteBite Solutions</title>
 </head>
+
 <body id="bg-body">
 
     <aside class="menu">
         <div class="menu-content">
-            <span ><a href="index.html"><img id="logo" src="assets/logo/data-company-logo-creator-with-a-computer-chip-icon-388b-el1.png"
+            <span><a href="index.html"><img id="logo"
+                        src="assets/logo/data-company-logo-creator-with-a-computer-chip-icon-388b-el1.png"
                         alt="LOGO"></a></span>
             <nav>
                 <ul>
@@ -23,95 +26,247 @@
             </nav>
         </div>
     </aside>
-    
+
     <!-- <div class="menu-spacing"></div> -->
 
-  <div class="box">
-    <div class="box-form">
-      <div class="mid-box">
-        <div class="form dataEtp" id="dataEtp" style="display: block;" >
-            <h1>Registre-se</h1>
-            <p>Razão Social</p>
-            <input id="razao_social_input" placeholder="Xtpo Xtpo Ltda">
-            <p>CNPJ:</p>
-            <input id="cnpj_input" placeholder="80.642.622/0001-52">
-            <p>E-mail:</p>
-            <input id="email_input" placeholder="exemplo@gmail.com" type="email">
-            <p>Senha:</p>
-            <input id="senha_input" placeholder="********"  type="password">
-            <p>Confirme a senha:</p>
-            <input id="confirmacao_senha_input" placeholder="********" type="password"><br>
-            <p><a href="login.html"><u>Já tem conta? Entre aqui</u></a></p>
-            
+    <div class="box">
+        <div class="box-form">
+            <div class="mid-box">
+                <div class="form dataEtp" id="dataEtp" style="display: block;">
+                    <h1>Registre-se</h1>
+                    <p>Razão Social</p>
+                    <input id="razao_social_input" placeholder="Xtpo Xtpo Ltda">
+                    <p>CNPJ:</p>
+                    <input id="cnpj_input" placeholder="80.642.622/0001-52">
+                    <p>E-mail:</p>
+                    <input id="email_input" placeholder="exemplo@gmail.com" type="email">
+                    <p>Senha:</p>
+                    <input id="senha_input" placeholder="********" type="password">
+                    <p>Confirme a senha:</p>
+                    <input id="confirmacao_senha_input" placeholder="********" type="password"><br>
+                    <p><a href="login.html"><u>Já tem conta? Entre aqui</u></a></p>
+
+                </div>
+                <div class="form adressEtp" id="adressEtp" style="display: none;">
+                    <h1>Endereço</h1>
+                    <p>CEP:</p>
+                    <input id="cep_input" placeholder="00000-000">
+                    <p>Logradouro:</p>
+                    <input id="rua_input" placeholder="Rua Haddock Lobo">
+                    <p>Numero:</p>
+                    <input id="num_input" placeholder="1234">
+                    <p>Cidade:</p>
+                    <input id="cidade_input" placeholder="São Paulo">
+                    <p>Estado:</p>
+                    <select id="estado_input" placeholder="SP">
+                        <option value="--">---</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select><br>
+                </div>
+                <button class="btns" id="cadastrarEndereco" style="display: block;">Endereço+</button>
+                <button class="btns" onclick="validarEndereco()" id="cadas" style="display: none;">Salvar</button>
+            </div>
         </div>
-        <div class="form adressEtp" id="adressEtp" style="display: none;">
-            <h1>Endereço</h1>
-            <p>CEP:</p>
-            <input id="cep_input" placeholder="00000-000">
-            <p>Logradouro:</p>
-            <input id="rua_input" placeholder="Rua Haddock Lobo">
-            <p>Numero:</p>
-            <input id="num_input" placeholder="1234" >
-            <p>Cidade:</p>
-            <input id="cidade_input" placeholder="São Paulo"  >
-            <p>Estado:</p>
-            <input id="estado_input" placeholder="SP" ><br>    
+        <div class="box-logo">
+            <div class="logo">
+                <img src="assets/logo/BBS-logo.png" alt="">
+                <p>Monitoramento e gerenciamento de computadores</p>
+            </div>
         </div>
-        <button class="btns" id="cadastrarEndereco" style="display: block;">Endereço+</button>
-        <button class="btns" onclick="cadastrar()" id="cadas" style="display: none;">Salvar</button>
     </div>
-    </div>
-    <div class="box-logo">
-        <div class="logo">
-        <img src="assets/logo/BBS-logo.png" alt="">
-        <p>Monitoramento e gerenciamento de computadores</p>
-     </div>
-   </div>
-</div>
 </body>
+
 </html>
 
 <script>
-   
+
+    var razaoVar = "";
+    var cnpjVar = "";
+    var emailVar = "";
+    var senhaVar = "";
+    var confirmacaoSenhaVar = "";
+
+    var cepVar = "";
+    var ruaVar = "";
+    var numVar = "";
+    var cidadeVar = "";
+    var estadoVar = "";
+
+    var idempresa = "";
+
+    var validado = false;
     var button = document.getElementById("cadastrarEndereco");
-    button.addEventListener("click", function(){
-        var adress = document.getElementById("adressEtp");
-        var data = document.getElementById("dataEtp");
-        if(adress.style.display === "none"){
-            adress.style.display = "block";
-            cadas.style. display = "block";
-            
-        }else{
-            adress.style.display = "none";
-            cadas.style. display = "none";
-            
+
+    button.addEventListener("click", function () {
+
+
+
+        razaoVar = razao_social_input.value;
+        cnpjVar = cnpj_input.value;
+        emailVar = email_input.value;
+        senhaVar = senha_input.value;
+        confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+        if (validado == false) {
+            razaoVar = razao_social_input.value.trim();
+            if (razaoVar === '') {
+
+                alert('Preencher a razão social é obrigatório.');
+                razao_social_input.style.outline = "solid 1px red";
+                return false;
+            }
+
+            cnpjVar = cnpj_input.value.replace(/[^\d]+/g, '');
+            if (cnpj_input.value === '') {
+                cnpj_input.style.outline = "solid 1px red";
+                alert('Preencha o CNPJ.');
+                return false;
+            }
+
+            if (!validarCNPJ(cnpjVar)) {
+                alert('CNPJ inválido. Por favor, verifique o formato.');
+                cnpj_input.style.outline = "solid 1px red";
+                return false;
+            }
+
+            var emailVar = email_input.value.trim();
+            if (email_input.value === '') {
+                email_input.style.outline = "solid 1px red";
+                alert('Preencha o e-mail.');
+                return false;
+            }
+
+            if (!validarEmail(emailVar)) {
+                alert('E-mail inválido. Por favor, verifique o formato.');
+                return false;
+            }
+
+            var senhaVar = senha_input.value.trim();
+            if (senha_input.value === '') {
+                senha_input.style.outline = "solid 1px red";
+                alert('Por favor, preencha a senha.');
+                return false;
+            } else if (senhaVar.length < 8) {
+                senha_input.style.outline = "solid 1px red";
+                alert('A senha deve conter no minimo 8 caracteres.')
+                return false;
+            }
+
+
+            var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
+            if (confirmacao_senha_input === '') {
+                confirmacao_senha_input.style.outline = "solid 1px red";
+                alert('Por favor, preencha a confirmação de senha.');
+                return false;
+            }
+            if (senhaVar !== confirmacaoSenhaVar) {
+                confirmacao_senha_input.style.outline = "solid 1px red";
+                alert('A senha e a confirmação de senha não correspondem.');
+                return false;
+            }
+
+
+
+
+
+            function validarCNPJ(cnpjVar) {
+                if (cnpjVar.length !== 14) {
+                    return false;
+                }
+
+
+                var soma = 0;
+                var peso = 2;
+                for (var i = 11; i >= 0; i--) {
+                    soma += parseInt(cnpjVar.charAt(i)) * peso;
+                    peso = peso === 9 ? 2 : peso + 1;
+                }
+                var digitoVerificador1 = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+
+                soma = 0;
+                peso = 2;
+                for (var j = 12; j >= 0; j--) {
+                    soma += parseInt(cnpjVar.charAt(j)) * peso;
+                    peso = peso === 9 ? 2 : peso + 1;
+                }
+                var digitoVerificador2 = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+
+                return (
+                    parseInt(cnpjVar.charAt(12)) === digitoVerificador1 &&
+                    parseInt(cnpjVar.charAt(13)) === digitoVerificador2
+                );
+            }
+
+            function validarEmail(emailVar) {
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(emailVar);
+            }
+
+            validado = true;
+            // console.log(razaoVar, cnpjVar, emailVar, senhaVar)
+            validarForm(razaoVar, cnpjVar, emailVar, senhaVar)
         }
 
-        if(data.style.display === "block"){
-            data.style.display = "none";
-            button.style.display = "none";
-        }else{
-            data.style.display = "block";
-            button.style.display = "block";
-        }
     })
 
-    function cadastrar() {
-        
-        var razaoVar = razao_social_input.value;
-        var cnpjVar = cnpj_input.value;
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-        var confirmacaoSenhaVar = confirmacao_senha_input.value;
-        
+    function validarForm(razao, cnpj, email, senha) {
+        if (validado) {
+            var adress = document.getElementById("adressEtp");
+            var data = document.getElementById("dataEtp");
 
-        if (razaoVar == "" || cnpjVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            if (adress.style.display === "none") {
+                adress.style.display = "block";
+                cadas.style.display = "block";
+            } else {
+                adress.style.display = "none";
+                cadas.style.display = "none";
 
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            }
 
-            return false;
+            if (data.style.display === "block") {
+                data.style.display = "none";
+                button.style.display = "none";
+            } else {
+                data.style.display = "block";
+                button.style.display = "block";
+            }
+            cadastrar(razao, cnpj, email, senha)
+            console.log(razao, cnpj, email, senha)
         }
-        
+
+
+
+    }
+
+    function cadastrar(razao, cnpj, email, senha) {
+
+
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
@@ -120,11 +275,11 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                razaoServer: razaoVar,
-                cnpjServer: cnpjVar, 
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-               
+                razaoServer: razao,
+                cnpjServer: cnpj,
+                emailServer: email,
+                senhaServer: senha,
+
 
             })
         }).then(function (resposta) {
@@ -132,34 +287,38 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-               
+                console.log(razao, cnpj, email, senha)
                 getIdEmpresa()
                 console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login")
 
-               
+
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
+                console.log(razao, cnpj, email, senha)
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-      
+
         });
 
         return false;
     }
 
-//GET
+
+    //GET
     function getIdEmpresa() {
 
+
+        console.log(razaoVar, cnpjVar, emailVar, senhaVar)
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-           
+
             return false;
         }
-       
+
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -174,28 +333,32 @@
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
-           
-                
+
+
             if (resposta.ok) {
                 console.log(resposta);
-                
+
                 resposta.json().then(json => {
-                    
+
                     console.log(JSON.stringify(json));
                     console.log(JSON.stringify(json.idEmpresa));
-                    const idempresa = json.idEmpresa;
+                   
+
                     
-                    cadastrarEndereco(idempresa)
-         
+                    sessionStorage.ID_EMPRESA = json.idEmpresa;
+                    idempresa = sessionStorage.ID_EMPRESA;
+
+                    console.log(idempresa)
+
                 });
-                
+
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    
+
                 });
             }
 
@@ -207,24 +370,62 @@
     }
 
 
-    function cadastrarEndereco(idempresa) {
-     
+    function validarEndereco() {
+        var idEmpresaVar = sessionStorage.ID_EMPRESA;
 
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-       
         var cepVar = cep_input.value;
         var ruaVar = rua_input.value;
         var numVar = num_input.value;
         var cidadeVar = cidade_input.value;
         var estadoVar = estado_input.value;
-        var idEmpresaVar = idempresa;
 
-        if (cepVar == "" || ruaVar == "" || numVar == "" || cidadeVar == "" || estadoVar == "" || idEmpresaVar == "") {
-           
+
+        var cep = cepVar.replace(/[^\d]+/g, '');
+        if (cep == '') {
+            alert('Preencha o CEP.');
+            return false;
+        }if(cep.length > 9){
+            alert('CEP inválido.');
             return false;
         }
-       
+
+        var logradouro = ruaVar.trim();
+        if (logradouro == '') {
+            alert('Preencha o logradouro.');
+            return false;
+        }
+
+        var numero = numVar.trim();
+        if (numero == '') {
+            alert('Preencha o número.');
+            return false;
+        }
+
+        var cidade = cidadeVar.trim();
+        if (cidade == '') {
+            alert('Por favor, preencha a cidade.');
+            return false;
+        }
+
+        var estado = estadoVar.trim();
+        if (estado == '') {
+            alert('Por favor, preencha o estado.');
+            return false;
+
+        }
+        console.log(idEmpresaVar, "O CERTO")
+        cadastrarEndereco(idEmpresaVar)
+    }
+
+    function cadastrarEndereco(idempresa) {
+
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+
+
+
+
         fetch("/usuarios/cadastrarEndereco", {
             method: "POST",
             headers: {
@@ -233,32 +434,32 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                
-                cepServer : cepVar,
-                ruaServer : ruaVar,
+
+                cepServer: cepVar,
+                ruaServer: ruaVar,
                 numServer: numVar,
-                cidadeServer : cidadeVar,
+                cidadeServer: cidadeVar,
                 estadoServer: estadoVar,
-                idempresaServer : idEmpresaVar
+                idempresaServer: idempresa
             })
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-               
+
 
                 setTimeout(() => {
                     window.location = "login.html";
                 }, "2000")
-                
-              
+
+
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-         
+
         });
 
         return false;

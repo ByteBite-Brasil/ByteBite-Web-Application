@@ -96,9 +96,9 @@ minhaSelect.addEventListener("change", function () {
     var valorSelecionado = minhaSelect.value;
     valorMaquina = minhaSelect.value
 
-    if (proximaAtualizacao = !undefined) {
-        clearTimeout(proximaAtualizacao);
-    }
+    // if (proximaAtualizacao = !undefined) {
+    //     clearTimeout(proximaAtualizacao);
+    // }
 
 
     obterKPI1(valorSelecionado)
@@ -146,9 +146,9 @@ function obterKPI2(valorSelecionado, componente, tipo) {
     componente = 1;
     tipo = 1
 
-    if (proximaAtualizacao) {
-        clearTimeout(proximaAtualizacao);
-    }
+    // if (proximaAtualizacao) {
+    //     clearTimeout(proximaAtualizacao);
+    // }
 
     fetch(`/medidas/top/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -175,9 +175,9 @@ function obterKPI3(valorSelecionado, componente, tipo) {
     componente = 2;
     tipo = 1
 
-    if (proximaAtualizacao) {
-        clearTimeout(proximaAtualizacao);
-    }
+    // if (proximaAtualizacao) {
+    //     clearTimeout(proximaAtualizacao);
+    // }
 
     fetch(`/medidas/top/dados/maquinas/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {

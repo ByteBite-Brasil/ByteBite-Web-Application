@@ -155,6 +155,14 @@ a {
     transition: all 300ms ease-in-out;
 }
 
+.all {
+
+    width: 80%;
+    margin: 40px auto;
+   
+
+}
+
 .menu ul li a:hover::after {
     width: 50%;
     left: 25%;
@@ -195,6 +203,10 @@ a {
 
 .datakpi span {
     font-size: 30px;
+}
+
+#alerta {
+    margin-top: 21.5px;
 }
 
 .alerta {
@@ -279,8 +291,6 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 5px;
-    height: 35.5em;
 }
 
 .Janelas {
@@ -304,7 +314,7 @@ a {
 }
 
 .areaGraficoJanelas {
-    height: 30em;
+    /* height: 30em; */
     margin-top: 22px;
 }
 
@@ -363,6 +373,12 @@ a {
     flex-wrap: wrap;
 }
 
+#esquerda_lado_dash,
+#direito_lado_dash {
+    /* border:solid red 3px; */
+    padding: 15px;
+}
+
 .hardware h1 {
     text-align: center;
     font-size: 24px;
@@ -392,7 +408,7 @@ a {
 
 /* Dashboard inicial */
 
-.table-geral{
+.table-geral {
     width: 100%;
     height: 60vh;
     display: flex;
@@ -400,21 +416,22 @@ a {
     align-items: center;
 
 }
-.metrica-1{
+
+.metrica-1 {
     width: 30%;
     background-color: #c9c0c0b4;
     border-radius: 50px;
     height: 40vh;
     text-align: center;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    transition: 500ms linear;    
-    
+    transition: 500ms linear;
+
 }
 
-.metrica-1 h3{
-color: rgb(0, 0, 0);
-font-size: 23px;
-margin-top: 30px;
+.metrica-1 h3 {
+    color: rgb(0, 0, 0);
+    font-size: 23px;
+    margin-top: 30px;
 
 }
 
@@ -422,7 +439,8 @@ margin-top: 30px;
     color: rgb(0, 0, 0);
     font-size: 80px;
 }
-.metrica-1:hover{
+
+.metrica-1:hover {
     background-color: #18161654;
     border-radius: 50px;
     text-align: center;
@@ -430,7 +448,7 @@ margin-top: 30px;
     transform: scale(1.01);
 }
 
-.metrica-2{
+.metrica-2 {
     width: 50%;
     padding: 30px;
     margin-left: 38vh;

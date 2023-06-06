@@ -70,12 +70,39 @@
         var select = document.getElementById('tipoLogin');
         var tipoLogin = select.options[select.selectedIndex].value;
 
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            // finalizarAguardar();
+
+        var emailInput = document.getElementById('email_input');
+        var email = emailInput.value.trim();
+        if (email === '') {
+            alert('Por favor, preencha o email.');
             return false;
         }
+        if (!validarEmail(email)) {
+            alert('Email inválido. Por favor, verifique o formato.');
+            return false;
+        }
+
+        var senhaInput = document.getElementById('senha_input');
+        var senha = senhaInput.value.trim();
+        if (senha === '') {
+            alert('Por favor, preencha a senha.');
+            return false;
+        }
+
+        var tipoLoginInput = document.getElementById('tipoLogin');
+        var tipoLogin = tipoLoginInput.value;
+        if (tipoLogin === '') {
+            alert('Por favor, selecione o tipo de login.');
+            return false;
+        }
+
+
+
+        function validarEmail(email) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
         fetch("/usuarios/autenticar", {
             method: "POST",
             headers: {
