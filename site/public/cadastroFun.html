@@ -63,7 +63,7 @@
             </li>
             <li>
                 <a href="#" onclick="sair()">
-                    <i class='bx bx-log-out'onclick="sair()"></i>
+                    <i class='bx bx-log-out' onclick="sair()"></i>
                     <span class="links_name" onclick="sair()">Sair</span>
                 </a>
                 <span class="tooltip">Sair</span>
@@ -107,7 +107,7 @@
         </div>
         <div id="btn">
             <a href="telaPerfil.html"><button type="submit" onclick="cadastrarFunc()">Cadastrar</button></a>
-            
+
         </div>
 
         <!-- </form> -->
@@ -131,12 +131,69 @@
         const idEmpresaVar = sessionStorage.ID_USUARIO;
 
 
-        if (nomeVar == "" || emailVar == "" || telefoneVar == "" || senhaVar == "" || permissaoVar == "" || generoVar == "" || idEmpresaVar == "") {
-
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+       
             
-            return false;
-        }
+            // var username = nomeVar.trim();
+            // if (username === '') {
+            //     alert('Por favor, preencha o nome de usuário.');
+            //     // return false;
+            // }
+
+            // var email = emailVar.trim();
+            // if (email === '') {
+            //     alert('Por favor, preencha o email.');
+            //     return false;
+            // }
+            // if (!validarEmail(email)) {
+            //     alert('Email inválido. Por favor, verifique o formato.');
+            //     // return false;
+            // }
+
+            
+            // var telefone = telefoneVar.trim();
+            // telefone = telefone.replace(/[^\d]+/g, '');
+            // if (telefone === '') {
+            //     alert('Por favor, preencha o telefone.');
+            //     // return false;
+            // }
+            // if (!validarTelefone(telefone)) {
+            //     alert('Telefone inválido. Por favor, verifique o formato.');
+            //     // return false;
+            // }
+
+            // var senha = senhaVar.trim();
+            // if (senha === '') {
+            //     alert('Por favor, preencha a senha.');
+            //     // return false;
+            // }
+
+            
+            // var permissao = permissaoVar;
+            // if (permissao === '') {
+            //     alert('Por favor, selecione a permissão.');
+            //     // return false;
+            // }
+
+    
+            // var genero = generoVar;
+            // if (genero === '') {
+            //     alert('Por favor, selecione o gênero.');
+            //     // return false;
+            // }
+
+       
+        
+        // function validarEmail(email) {
+        //     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        //     return emailRegex.test(email);
+        // }
+
+        // function validarTelefone(telefone) {
+        //     var telefoneRegex = /^\(\d{2}\)\d{4}-\d{4}$/;
+        //     return telefoneRegex.test(telefone);
+        // }
+
+     
 
         fetch("/usuarios/cadastrarFunc", {
             method: "POST",
@@ -192,27 +249,27 @@
 <script>
     function sair() {
         let timerInterval
-Swal.fire({
-  title: 'Estamos te redirecionando!',
-  html: 'Sou fachado em  <b></b>  milliseconds.',
-  timer: 2000,
-  timerProgressBar: true,
-  didOpen: () => {
-    Swal.showLoading()
-    const b = Swal.getHtmlContainer().querySelector('b')
-    timerInterval = setInterval(() => {
-      b.textContent = Swal.getTimerLeft()
-    }, 100)
-  },
-  willClose: () => {
-    clearInterval(timerInterval)
-  }
-}).then((result) => {
-  /* Read more about handling dismissals below */
-  if (result.dismiss === Swal.DismissReason.timer) {
-    console.log('I was closed by the timer')
-    window.location.href = "index.html"
-  }
-})
+        Swal.fire({
+            title: 'Estamos te redirecionando!',
+            html: 'Sou fachado em  <b></b>  milliseconds.',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+                window.location.href = "index.html"
+            }
+        })
     }
 </script>
