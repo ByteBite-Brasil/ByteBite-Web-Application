@@ -517,7 +517,7 @@ function plotarGraficoTemperaturaCPU(resposta, valorSelecionado1, componente1, t
     };
 
     for (i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
+        var registro = resposta[i]; 
 
         labels1.push(registro.hora);
         data1.datasets[0].data.push(registro.medicao);
