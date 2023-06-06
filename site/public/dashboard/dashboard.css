@@ -16,7 +16,7 @@
 }
 
 body {
-    background-color: var(--background-color);
+    background-color: #f7f7f7;
 }
 
 
@@ -180,14 +180,14 @@ a {
 }
 
 .kpi {
-    border: 1px solid var(--secundary-text);
+    border: 5px solid black;
     width: 10em;
     height: 8em;
     display: flex;
     flex-direction: column;
     text-align: center;
     border-radius: 10px;
-    color: var(--primary-text);
+    color: black;
     font-weight: bold;
     font-family: var(--font-family-subtitle);
     justify-content: space-around;
@@ -379,10 +379,16 @@ a {
     padding: 15px;
 }
 
+#Janelas{
+
+    color: white;
+
+}
+
 .hardware h1 {
     text-align: center;
     font-size: 24px;
-    color: var(--primary-text);
+    color: black;
     margin-bottom: 10px;
     margin-top: 20px;
     font-family: var(--font-family-subtitle);
