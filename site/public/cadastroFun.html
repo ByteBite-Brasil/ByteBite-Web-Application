@@ -128,65 +128,65 @@
 
        
             
-            var username = nomeVar.trim();
-            if (username === '') {
-                alert('Por favor, preencha o nome de usuário.');
-                return false;
-            }
+            // var username = nomeVar.trim();
+            // if (username === '') {
+            //     alert('Por favor, preencha o nome de usuário.');
+            //     // return false;
+            // }
 
-            var email = emailVar.trim();
-            if (email === '') {
-                alert('Por favor, preencha o email.');
-                return false;
-            }
-            if (!validarEmail(email)) {
-                alert('Email inválido. Por favor, verifique o formato.');
-                return false;
-            }
-
-            
-            var telefone = telefoneVar.trim();
-            if (telefone === '') {
-                alert('Por favor, preencha o telefone.');
-                return false;
-            }
-            if (!validarTelefone(telefone)) {
-                alert('Telefone inválido. Por favor, verifique o formato.');
-                return false;
-            }
-
-            var senha = senhaVar.trim();
-            if (senha === '') {
-                alert('Por favor, preencha a senha.');
-                return false;
-            }
+            // var email = emailVar.trim();
+            // if (email === '') {
+            //     alert('Por favor, preencha o email.');
+            //     return false;
+            // }
+            // if (!validarEmail(email)) {
+            //     alert('Email inválido. Por favor, verifique o formato.');
+            //     // return false;
+            // }
 
             
-            var permissao = permissaoVar;
-            if (permissao === '') {
-                alert('Por favor, selecione a permissão.');
-                return false;
-            }
+            // var telefone = telefoneVar.trim();
+            // telefone = telefone.replace(/[^\d]+/g, '');
+            // if (telefone === '') {
+            //     alert('Por favor, preencha o telefone.');
+            //     // return false;
+            // }
+            // if (!validarTelefone(telefone)) {
+            //     alert('Telefone inválido. Por favor, verifique o formato.');
+            //     // return false;
+            // }
+
+            // var senha = senhaVar.trim();
+            // if (senha === '') {
+            //     alert('Por favor, preencha a senha.');
+            //     // return false;
+            // }
+
+            
+            // var permissao = permissaoVar;
+            // if (permissao === '') {
+            //     alert('Por favor, selecione a permissão.');
+            //     // return false;
+            // }
 
     
-            var genero = generoVar;
-            if (genero === '') {
-                alert('Por favor, selecione o gênero.');
-                return false;
-            }
+            // var genero = generoVar;
+            // if (genero === '') {
+            //     alert('Por favor, selecione o gênero.');
+            //     // return false;
+            // }
 
        
-        // Função para validar o email
-        function validarEmail(email) {
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
+        
+        // function validarEmail(email) {
+        //     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        //     return emailRegex.test(email);
+        // }
 
-        // Função para validar o telefone
-        function validarTelefone(telefone) {
-            var telefoneRegex = /^\(\d{2}\)\d{4}-\d{4}$/;
-            return telefoneRegex.test(telefone);
-        }
+        // function validarTelefone(telefone) {
+        //     var telefoneRegex = /^\(\d{2}\)\d{4}-\d{4}$/;
+        //     return telefoneRegex.test(telefone);
+        // }
 
      
 

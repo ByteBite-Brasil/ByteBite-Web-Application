@@ -66,7 +66,7 @@ function cadastrarEndereco(cep, rua, num, cidade, estado, id) {
 
     var instrucaoEdc = `
        
-        INSERT INTO endereco (cep, cidade, estado, logradouro, numero, fk_empresa) VALUES ('${cep}', '${cidade}', '${estado}', '${rua}', '${num}', '${id}');
+        INSERT INTO endereco (cep, cidade, estado, logradouro, numero, fk_empresa_endereco) VALUES ('${cep}', '${cidade}', '${estado}', '${rua}', '${num}', '${id}');
 
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoEdc);

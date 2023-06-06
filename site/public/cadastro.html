@@ -90,7 +90,7 @@
                     </select><br>
                 </div>
                 <button class="btns" id="cadastrarEndereco" style="display: block;">Endereço+</button>
-                <button class="btns" onclick="cadastrar()" id="cadas" style="display: none;">Salvar</button>
+                <button class="btns" onclick="validarEndereco()" id="cadas" style="display: none;">Salvar</button>
             </div>
         </div>
         <div class="box-logo">
@@ -106,123 +106,165 @@
 
 <script>
 
+    var razaoVar = "";
+    var cnpjVar = "";
+    var emailVar = "";
+    var senhaVar = "";
+    var confirmacaoSenhaVar = "";
+
+    var cepVar = "";
+    var ruaVar = "";
+    var numVar = "";
+    var cidadeVar = "";
+    var estadoVar = "";
+
+    var idempresa = "";
+
+    var validado = false;
     var button = document.getElementById("cadastrarEndereco");
+
     button.addEventListener("click", function () {
-        var adress = document.getElementById("adressEtp");
-        var data = document.getElementById("dataEtp");
-        if (adress.style.display === "none") {
-            adress.style.display = "block";
-            cadas.style.display = "block";
-
-        } else {
-            adress.style.display = "none";
-            cadas.style.display = "none";
-
-        }
-
-        if (data.style.display === "block") {
-            data.style.display = "none";
-            button.style.display = "none";
-        } else {
-            data.style.display = "block";
-            button.style.display = "block";
-        }
-    })
-
-    function cadastrar() {
-
-        var razaoVar = razao_social_input.value;
-        var cnpjVar = cnpj_input.value;
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-        var confirmacaoSenhaVar = confirmacao_senha_input.value;
-
-
-        var razaoSocial = razaoVar.trim();
-        if (razaoSocial === '') {
-            alert('Preencher a razão social é obrigatório.');
-            return false;
-        }
-
-
-        var cnpj = cnpjVar.replace(/[^\d]+/g, '');
-        if (cnpj === '') {
-
-            alert('Preencha o CNPJ.');
-            return false;
-        }
-
-        if (!validarCNPJ(cnpj)) {
-            alert('CNPJ inválido. Por favor, verifique o formato.');
-            return false;
-        }
-
-        var email = emailVar.trim();
-        if (email === '') {
-            alert('Preencha o e-mail.');
-            return false;
-        }
-
-        if (!validarEmail(email)) {
-            alert('E-mail inválido. Por favor, verifique o formato.');
-            return false;
-        }
-
-        var senha = senhaVar.trim();
-        if (senha === '') {
-            alert('Por favor, preencha a senha.');
-            return false;
-        }else if (senha.length < 8) {
-            alert('A senha deve conter no minimo 8 caracteres.')
-        }
-
-
-        var confirmacaoSenha = confirmacaoSenhaVar.trim();
-        if (confirmacaoSenha === '') {
-            alert('Por favor, preencha a confirmação de senha.');
-            return false;
-        }
-        if (senha !== confirmacaoSenha) {
-            alert('A senha e a confirmação de senha não correspondem.');
-            return false;
-        }
 
 
 
+        razaoVar = razao_social_input.value;
+        cnpjVar = cnpj_input.value;
+        emailVar = email_input.value;
+        senhaVar = senha_input.value;
+        confirmacaoSenhaVar = confirmacao_senha_input.value;
 
+        if (validado == false) {
+            razaoVar = razao_social_input.value.trim();
+            if (razaoVar === '') {
 
-        function validarCNPJ(cnpj) {
-            if (cnpj.length !== 14) {
+                alert('Preencher a razão social é obrigatório.');
+                razao_social_input.style.outline = "solid 1px red";
+                return false;
+            }
+
+            cnpjVar = cnpj_input.value.replace(/[^\d]+/g, '');
+            if (cnpj_input.value === '') {
+                cnpj_input.style.outline = "solid 1px red";
+                alert('Preencha o CNPJ.');
+                return false;
+            }
+
+            if (!validarCNPJ(cnpjVar)) {
+                alert('CNPJ inválido. Por favor, verifique o formato.');
+                cnpj_input.style.outline = "solid 1px red";
+                return false;
+            }
+
+            var emailVar = email_input.value.trim();
+            if (email_input.value === '') {
+                email_input.style.outline = "solid 1px red";
+                alert('Preencha o e-mail.');
+                return false;
+            }
+
+            if (!validarEmail(emailVar)) {
+                alert('E-mail inválido. Por favor, verifique o formato.');
+                return false;
+            }
+
+            var senhaVar = senha_input.value.trim();
+            if (senha_input.value === '') {
+                senha_input.style.outline = "solid 1px red";
+                alert('Por favor, preencha a senha.');
+                return false;
+            } else if (senhaVar.length < 8) {
+                senha_input.style.outline = "solid 1px red";
+                alert('A senha deve conter no minimo 8 caracteres.')
                 return false;
             }
 
 
-            var soma = 0;
-            var peso = 2;
-            for (var i = 11; i >= 0; i--) {
-                soma += parseInt(cnpj.charAt(i)) * peso;
-                peso = peso === 9 ? 2 : peso + 1;
+            var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
+            if (confirmacao_senha_input === '') {
+                confirmacao_senha_input.style.outline = "solid 1px red";
+                alert('Por favor, preencha a confirmação de senha.');
+                return false;
             }
-            var digitoVerificador1 = soma % 11 < 2 ? 0 : 11 - (soma % 11);
-
-            soma = 0;
-            peso = 2;
-            for (var j = 12; j >= 0; j--) {
-                soma += parseInt(cnpj.charAt(j)) * peso;
-                peso = peso === 9 ? 2 : peso + 1;
+            if (senhaVar !== confirmacaoSenhaVar) {
+                confirmacao_senha_input.style.outline = "solid 1px red";
+                alert('A senha e a confirmação de senha não correspondem.');
+                return false;
             }
-            var digitoVerificador2 = soma % 11 < 2 ? 0 : 11 - (soma % 11);
 
-            return (
-                parseInt(cnpj.charAt(12)) === digitoVerificador1 &&
-                parseInt(cnpj.charAt(13)) === digitoVerificador2
-            );
+
+
+
+
+            function validarCNPJ(cnpjVar) {
+                if (cnpjVar.length !== 14) {
+                    return false;
+                }
+
+
+                var soma = 0;
+                var peso = 2;
+                for (var i = 11; i >= 0; i--) {
+                    soma += parseInt(cnpjVar.charAt(i)) * peso;
+                    peso = peso === 9 ? 2 : peso + 1;
+                }
+                var digitoVerificador1 = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+
+                soma = 0;
+                peso = 2;
+                for (var j = 12; j >= 0; j--) {
+                    soma += parseInt(cnpjVar.charAt(j)) * peso;
+                    peso = peso === 9 ? 2 : peso + 1;
+                }
+                var digitoVerificador2 = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+
+                return (
+                    parseInt(cnpjVar.charAt(12)) === digitoVerificador1 &&
+                    parseInt(cnpjVar.charAt(13)) === digitoVerificador2
+                );
+            }
+
+            function validarEmail(emailVar) {
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(emailVar);
+            }
+
+            validado = true;
+            // console.log(razaoVar, cnpjVar, emailVar, senhaVar)
+            validarForm(razaoVar, cnpjVar, emailVar, senhaVar)
         }
 
-        function validarEmail(email) {
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
+    })
+
+    function validarForm(razao, cnpj, email, senha) {
+        if (validado) {
+            var adress = document.getElementById("adressEtp");
+            var data = document.getElementById("dataEtp");
+
+            if (adress.style.display === "none") {
+                adress.style.display = "block";
+                cadas.style.display = "block";
+            } else {
+                adress.style.display = "none";
+                cadas.style.display = "none";
+
+            }
+
+            if (data.style.display === "block") {
+                data.style.display = "none";
+                button.style.display = "none";
+            } else {
+                data.style.display = "block";
+                button.style.display = "block";
+            }
+            cadastrar(razao, cnpj, email, senha)
+            console.log(razao, cnpj, email, senha)
         }
+
+
+
+    }
+
+    function cadastrar(razao, cnpj, email, senha) {
 
 
         fetch("/usuarios/cadastrar", {
@@ -233,10 +275,10 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                razaoServer: razaoVar,
-                cnpjServer: cnpjVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
+                razaoServer: razao,
+                cnpjServer: cnpj,
+                emailServer: email,
+                senhaServer: senha,
 
 
             })
@@ -245,13 +287,14 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-
+                console.log(razao, cnpj, email, senha)
                 getIdEmpresa()
                 console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login")
 
 
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
+                console.log(razao, cnpj, email, senha)
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
@@ -261,9 +304,12 @@
         return false;
     }
 
+
     //GET
     function getIdEmpresa() {
 
+
+        console.log(razaoVar, cnpjVar, emailVar, senhaVar)
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
@@ -296,9 +342,13 @@
 
                     console.log(JSON.stringify(json));
                     console.log(JSON.stringify(json.idEmpresa));
-                    const idempresa = json.idEmpresa;
+                   
 
-                    cadastrarEndereco(idempresa)
+                    
+                    sessionStorage.ID_EMPRESA = json.idEmpresa;
+                    idempresa = sessionStorage.ID_EMPRESA;
+
+                    console.log(idempresa)
 
                 });
 
@@ -320,50 +370,60 @@
     }
 
 
-    function cadastrarEndereco(idempresa) {
-
-
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
+    function validarEndereco() {
+        var idEmpresaVar = sessionStorage.ID_EMPRESA;
 
         var cepVar = cep_input.value;
         var ruaVar = rua_input.value;
         var numVar = num_input.value;
         var cidadeVar = cidade_input.value;
         var estadoVar = estado_input.value;
-        var idEmpresaVar = idempresa;
+
 
         var cep = cepVar.replace(/[^\d]+/g, '');
-        if (cep === '') {
+        if (cep == '') {
             alert('Preencha o CEP.');
+            return false;
+        }if(cep.length > 9){
+            alert('CEP inválido.');
             return false;
         }
 
         var logradouro = ruaVar.trim();
-        if (logradouro === '') {
+        if (logradouro == '') {
             alert('Preencha o logradouro.');
             return false;
         }
 
         var numero = numVar.trim();
-        if (numero === '') {
+        if (numero == '') {
             alert('Preencha o número.');
             return false;
         }
 
         var cidade = cidadeVar.trim();
-        if (cidade === '') {
+        if (cidade == '') {
             alert('Por favor, preencha a cidade.');
             return false;
         }
 
         var estado = estadoVar.trim();
-        if (estado === '') {
+        if (estado == '') {
             alert('Por favor, preencha o estado.');
             return false;
-        }
 
- 
+        }
+        console.log(idEmpresaVar, "O CERTO")
+        cadastrarEndereco(idEmpresaVar)
+    }
+
+    function cadastrarEndereco(idempresa) {
+
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+
+
 
 
         fetch("/usuarios/cadastrarEndereco", {
@@ -380,7 +440,7 @@
                 numServer: numVar,
                 cidadeServer: cidadeVar,
                 estadoServer: estadoVar,
-                idempresaServer: idEmpresaVar
+                idempresaServer: idempresa
             })
         }).then(function (resposta) {
 
