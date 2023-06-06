@@ -196,7 +196,9 @@ a {
 .datakpi span {
     font-size: 30px;
 }
-
+#alerta{
+    margin-top: 21.5px;
+}
 .alerta {
     border-radius: 10px;
     width: 17em;
@@ -279,8 +281,6 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 5px;
-    height: 35.5em;
 }
 
 .Janelas {
@@ -304,7 +304,7 @@ a {
 }
 
 .areaGraficoJanelas {
-    height: 30em;
+    /* height: 30em; */
     margin-top: 22px;
 }
 
@@ -363,6 +363,10 @@ a {
     flex-wrap: wrap;
 }
 
+#esquerda_lado_dash, #direito_lado_dash{
+    /* border:solid red 3px; */
+    padding: 15px;
+}
 .hardware h1 {
     text-align: center;
     font-size: 24px;

@@ -73,6 +73,11 @@
                 </a>
                 <span class="tooltip" onclick="sair()">Sair</span>
             </li>
+            <li>
+                <div>
+                    <img src="../assets/icons/favicon.png" class="side-footer">
+                </div>
+            </li>
         </ul>
     </div>
 
@@ -105,9 +110,9 @@
         </div>
 
         <div class="dadosTotem">
-            <div class="hardware">
+            <div class="hardware" id="esquerda_lado_dash">
                 <h1>CONSUMO CPU</h1>
-                <div class="areaGrafico">
+                <div class="areaGrafico" >
                     <div class="grafico1">
                         <canvas id="ConsumoCPU"></canvas>
                     </div>
@@ -116,54 +121,50 @@
                         <canvas id="TemperaturaCPU"></canvas>
                     </div>
                 </div>
+                <h1>JANELAS DO SISTEMA</h1>
+                <div class="areaGraficoJanelas">
+                    <div class="graficoJanelas">
+                        <h1 id="dataJanelas">2 JANELAS ATIVAS</h1>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="hardware">
+            <div class="hardware" id="direito_lado_dash">
                 <h1>CONSUMO DISCO</h1>
                 <div class="areaGrafico">
                     <div class="grafico1">
                         <canvas id="ConsumoDISCO"></canvas>
                     </div>
-                    <H1>JANELAS DO SISTEMA</H1>
-                    <div class="grafico">
-                        <div class="Janelas">
-
-                            <span id="Janelas"></span>
-
-                        </div>
-
-                    </div>
                 </div>
-            </div>
-
-            <div class="hardware">
                 <h1>CONSUMO MEMÓRIA RAM</h1>
                 <div class="areaGrafico">
                     <div class="grafico1">
                         <canvas id="ConsumoRAM"></canvas>
                     </div>
-                    <H1>ALERTAS</H1>
-                    <div id="alerta" class="grafico1">
-                        <div class="all">
-                            <div class="conteudo1">
-                                <span id="ID"></span>
-                            </div>
-                            <div class="conteudo2">
-                                <span id="Nivel"></span>
-                            </div>
-                            <div class="conteudo3">
-                                <span id="Descriçao"></span>
-                            </div>
-                            <div class="conteudo4">
-                                <span id="ValorLog"></span>
-                            </div>
-                            <div class="conteudo5" id="btnAlert">
-                                <button class="btnAlert" onclick="ir()" >Verificar</button>
-                            </div>
+                </div>
+                <H1>ALERTAS</H1>
+                <div id="alerta" class="grafico1">
+                    <div class="all">
+                        <div class="conteudo1">
+                            <span id="ID"></span>
+                        </div>
+                        <div class="conteudo2">
+                            <span id="Nivel"></span>
+                        </div>
+                        <div class="conteudo3">
+                            <span id="Descriçao"></span>
+                        </div>
+                        <div class="conteudo4">
+                            <span id="ValorLog"></span>
+                        </div>
+                        <div class="conteudo5" id="btnAlert">
+                            <button class="btnAlert" onclick="ir()">Verificar</button>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <script src="dashboard.js"></script>
