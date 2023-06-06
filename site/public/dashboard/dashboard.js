@@ -96,7 +96,7 @@ minhaSelect.addEventListener("change", function () {
     var valorSelecionado = minhaSelect.value;
     valorMaquina = minhaSelect.value
 
-    if (proximaAtualizacao =! undefined) {
+    if (proximaAtualizacao = !undefined) {
         clearTimeout(proximaAtualizacao);
     }
 
@@ -213,6 +213,8 @@ function obterDadosConsumoCPU(valorSelecionado, componente, tipo) {
 
                 resposta.reverse()
 
+
+
                 plotarGraficoConsumoCPU(resposta, valorSelecionado, componente, tipo);
 
 
@@ -309,7 +311,7 @@ function obterDadosConsumoRAM(valorSelecionado, componente, tipo) {
 function obterUltimoAlerta(valorSelecionado) {
     console.log('Entrei para capturar o alerta');
 
-    
+
 
     fetch(`/medidas/ultimo/alerta/maquinas/${valorSelecionado}`, { cache: 'no-store' })
         .then(function (response) {
@@ -353,16 +355,22 @@ function plotarKPI1(resposta) {
 
     TopTemperaturaCPU = document.getElementById('TopTemperaturaCPU');
 
-    if (resposta[0].maior_medicao > 70.00) {
+    if (resposta[0].maior_medicao >= 71) {
 
         TopTemperaturaCPU.textContent = `${resposta[0].maior_medicao} ºC`;
         TopTemperaturaCPU.style.color = 'red';
     }
 
-    if (resposta[0].maior_medicao < 70.00) {
+    if (resposta[0].maior_medicao >= 65 && resposta[0].maior_medicao <= 71) {
 
         TopTemperaturaCPU.textContent = `${resposta[0].maior_medicao} ºC`;
-        TopTemperaturaCPU.style.color = 'rgb(26, 200, 26)';
+        TopTemperaturaCPU.style.color = 'yellow';
+    }
+
+    if (resposta[0].maior_medicao < 65) {
+
+        TopTemperaturaCPU.textContent = `${resposta[0].maior_medicao} ºC`;
+        TopTemperaturaCPU.style.color = 'green';
     }
 
     // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
@@ -371,7 +379,26 @@ function plotarKPI1(resposta) {
 function plotarKPI2(resposta) {
 
     TopConsumoCPU = document.getElementById('TopConsumoCPU');
-    TopConsumoCPU.textContent = `${resposta[0].maior_medicao} %`;
+
+
+
+    if (resposta[0].maior_medicao >= 90) {
+
+        TopConsumoCPU.textContent = `${resposta[0].maior_medicao} %`;
+        TopConsumoCPU.style.color = 'red';
+    }
+
+    if (resposta[0].maior_medicao >= 70 && resposta[0].maior_medicao < 90) {
+
+        TopConsumoCPU.textContent = `${resposta[0].maior_medicao} %`;
+        TopConsumoCPU.style.color = 'yellow';
+    }
+
+    if (resposta[0].maior_medicao < 70) {
+
+        TopConsumoCPU.textContent = `${resposta[0].maior_medicao} %`;
+        TopConsumoCPU.style.color = 'green';
+    }
 
     // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
 }
@@ -379,7 +406,24 @@ function plotarKPI2(resposta) {
 function plotarKPI3(resposta) {
 
     TopConsumoRAM = document.getElementById('TopConsumoRAM');
-    TopConsumoRAM.textContent = `${resposta[0].maior_medicao} %`;
+
+    if (resposta[0].maior_medicao >= 90) {
+
+        TopConsumoRAM.textContent = `${resposta[0].maior_medicao} %`;
+        TopConsumoRAM.style.color = 'red';
+    }
+
+    if (resposta[0].maior_medicao >= 80 && resposta[0].maior_medicao < 90) {
+
+        TopConsumoRAM.textContent = `${resposta[0].maior_medicao} %`;
+        TopConsumoRAM.style.color = 'yellow';
+    }
+
+    if (resposta[0].maior_medicao < 80) {
+
+        TopConsumoRAM.textContent = `${resposta[0].maior_medicao} %`;
+        TopConsumoRAM.style.color = 'green';
+    }
 
     // setTimeout(() => atualizarGrafico(valorSelecionado, data, myChart), 5000);
 }
@@ -408,7 +452,7 @@ function plotarGraficoConsumoCPU(resposta, valorSelecionado, componente, tipo) {
         var registro = resposta[i];
 
         labels.push(registro.hora);
-        data.datasets[0].data.push(registro.medicao);
+        data.datasets[0].data.push(registro.porcentagem);
     }
 
     const config = {
@@ -426,6 +470,8 @@ function plotarGraficoConsumoCPU(resposta, valorSelecionado, componente, tipo) {
                     }
                 },
                 y: {
+                    min: 0,
+                    max: 100,
                     beginAtZero: true,
                     border: { display: false },
                     grid: {
@@ -492,12 +538,14 @@ function plotarGraficoTemperaturaCPU(resposta, valorSelecionado1, componente1, t
                     }
                 },
                 y: {
+                    min: 0,
+                    max: 100,
                     beginAtZero: true,
                     border: { display: false },
                     grid: {
                         color: '#A7A6A6',
                         border: false
-                    }
+                    },
                 },
             }
         },
@@ -541,7 +589,7 @@ function plotarGraficoConsumoDISCO(resposta, valorSelecionado2, componente2, tip
         var registro = resposta[i];
 
         labels2.push(registro.hora);
-        data2.datasets[0].data.push(registro.medicao);
+        data2.datasets[0].data.push(registro.porcentagem);
     }
 
     const config2 = {
@@ -559,6 +607,8 @@ function plotarGraficoConsumoDISCO(resposta, valorSelecionado2, componente2, tip
                     }
                 },
                 y: {
+                    min: 0,
+                    max: 100,
                     beginAtZero: true,
                     border: { display: false },
                     grid: {
@@ -608,7 +658,7 @@ function plotarGraficoConsumoRAM(resposta, valorSelecionado3, componente3, tipo3
         var registro = resposta[i];
 
         labels3.push(registro.hora);
-        data3.datasets[0].data.push(registro.medicao);
+        data3.datasets[0].data.push(registro.porcentagem);
     }
 
     const config3 = {
@@ -626,6 +676,8 @@ function plotarGraficoConsumoRAM(resposta, valorSelecionado3, componente3, tipo3
                     }
                 },
                 y: {
+                    min: 0,
+                    max: 100,
                     beginAtZero: true,
                     border: { display: false },
                     grid: {
@@ -658,10 +710,11 @@ function plotarUltimoAlerta(resposta) {
     descricaoElement = document.getElementById('Descriçao');
     valorLogElement = document.getElementById('ValorLog');
     btnAlertElement = document.getElementById('btnAlert');
-
     janelasElement = document.getElementById('Janelas');
 
+
     janelasElement.textContent = 'Total de Janelas : ' + `${resposta[0].quantidade_janelas}`;
+
 
     idElement.textContent = 'ID DO ALERTA: ' + `${resposta[0].idAlerta}`;
     criticidadeElement.textContent = 'NÍVEL DO ALERTA: ' + `${resposta[0].criticidade}`;
@@ -688,12 +741,15 @@ function plotarUltimoAlertaVazio() {
     descricaoElement = document.getElementById('Descriçao');
     valorLogElement = document.getElementById('ValorLog');
     btnAlertElement = document.getElementById('btnAlert');
+    janelasElement = document.getElementById('Janelas');
 
     idElement.textContent = '';
     criticidadeElement.textContent = 'MÁQUINA SEM ALERTAS! :D';
     descricaoElement.textContent = '';
     valorLogElement.textContent = '';
     btnAlertElement.style.display = 'none';
+    // janelasElement.style.display = '';
+
 
 }
 
@@ -703,13 +759,13 @@ function plotarUltimoAlertaVazio() {
 // ATUALIZAR DADOS
 function atualizarGrafico(valorSelecionado, componente, tipo, data, myChart) {
 
-    console.log("---------------------------------------------------------------")
-    console.log("maq" + valorSelecionado)
-    console.log("comp" + componente)
-    console.log("tip" + tipo)
-    console.log("---------------------------------------------------------------")
+    // console.log("---------------------------------------------------------------")
+    // console.log("maq" + valorSelecionado)
+    // console.log("comp" + componente)
+    // console.log("tip" + tipo)
+    // console.log("---------------------------------------------------------------")
 
-    console.log(proximaAtualizacao)
+    // console.log(proximaAtualizacao)
 
     fetch(`/medidas/tempo-real/${valorSelecionado}/${componente}/${tipo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -735,10 +791,23 @@ function atualizarGrafico(valorSelecionado, componente, tipo, data, myChart) {
                     data.labels.push(novoRegistro[0].hora); // incluir um novo momento
 
                     data.datasets[0].data.shift();  // apagar o primeiro de temperatura
-                    data.datasets[0].data.push(novoRegistro[0].medicao); // incluir uma nova medida de temperatura
+
+                    if (tipo == 2) {
+
+                        data.datasets[0].data.push(novoRegistro[0].medicao); // incluir uma nova medida de temperatura
+
+                    } else {
+
+                        data.datasets[0].data.push(novoRegistro[0].porcentagem); // incluir uma nova medida de temperatura
+                    }
+
 
                     myChart.update();
 
+                    obterKPI1(valorSelecionado)
+                    obterKPI2(valorSelecionado)
+                    obterKPI3(valorSelecionado)
+                    obterUltimoAlerta(valorSelecionado)
                 }
 
 
